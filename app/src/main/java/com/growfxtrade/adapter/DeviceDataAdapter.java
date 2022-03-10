@@ -1,6 +1,7 @@
 package com.growfxtrade.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -52,6 +53,17 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
             mholder.main_row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                        final Dialog dialog1 = new Dialog(mContext, R.style.df_dialog);
+                        dialog1.setContentView(R.layout.dialog_watchlist);
+                        dialog1.setCancelable(true);
+                        dialog1.setCanceledOnTouchOutside(true);
+                       /* dialog1.findViewById(R.id.btnSpinAndWinRedeem).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog1.dismiss();
+                            }
+                        });*/
+                        dialog1.show();
 
                 }
             });

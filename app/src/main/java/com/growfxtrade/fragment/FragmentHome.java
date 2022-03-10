@@ -63,9 +63,7 @@ public class FragmentHome extends BaseFragment {
             if (clist.length() > 3) {
                 clist = clist.substring(1);
                 getCurrencyList(clist);
-
             }
-
         }
 
 //        handler = new Handler();
