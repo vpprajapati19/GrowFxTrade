@@ -3,6 +3,7 @@ package com.growfxtrade.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -96,10 +97,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
         Call<ResponseBody> call = req.getPrfile(PrefrenceManager.getString(ProfileActivity.this, PrefrenceManager.USERID));
-
+        Log.e("url_100","=="+call);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.e("res_104", "=" + response.body());
+                Log.e("res_105", "=" + response);
                 dialog.dismiss();
                 CommonMethods.PrintLog(TAG, "url  " + response.raw().request().url());
                 String usernm = "";
@@ -168,12 +171,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
         Call<ResponseBody> call = req.getPortfolio(PrefrenceManager.getString(ProfileActivity.this, PrefrenceManager.USERID));
-
+        Log.e("url_174","=="+call);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-
+                Log.e("res_179", "=" + response.body());
+                Log.e("res_180", "=" + response);
                 String profit_loss = "";
                 String available = "";
                 String total_buy = "";

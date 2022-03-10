@@ -84,6 +84,8 @@ public class MyPortfolioActivity extends AppCompatActivity implements View.OnCli
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.e("res_87", "=" + response.body());
+                Log.e("res__88", "=" + response);
                 dialog.dismiss();
                 CommonMethods.PrintLog(TAG, "url  " + response.raw().request().url());
                 String profit_loss = "";
