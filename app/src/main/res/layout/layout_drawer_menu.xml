@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="340dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="horizontal"
+        android:background="@color/colorBgHeader"
+        android:gravity="center"
+        android:paddingTop="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_15sdp"
+        android:paddingLeft="@dimen/_10sdp">
+
+        <com.growfxtrade.customviews.CircleImageView
+            android:id="@+id/ivuser"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/user_new"
+            android:tint="@color/white"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/_10sdp">
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/lato_bold"
+                android:textColor="@color/colorTextColorHeader"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="@color/colorTextColorHeader"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.fxrobo.customviews.CircleImageView
+                android:id="@+id/ivuser"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/user"
+                android:tint="@color/white"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="1dp" />
+
+            <TextView
+                android:id="@+id/tv_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_toRightOf="@+id/ivuser"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sdp"
+                android:textStyle="bold" />
+        </RelativeLayout>-->
+
+        <!--<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_blue">
+
+            &lt;!&ndash;<ImageView
+                app:tint="@color/white"
+                android:id="@+id/ivemail"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_envelope"/>&ndash;&gt;
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="12dp"
+                android:layout_centerVertical="true"
+                android:text="-"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold" />
+        </RelativeLayout>-->
+
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--<View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/cTextColor" />-->
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:text="Profile"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_5sdp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/drawer_item_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_profile_new" />
+
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="Profile" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/colorDrawerMenuLine"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+                <LinearLayout
+                    android:id="@+id/drawer_item_fxrobo"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        app:tint="@color/blackTextColor"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:src="@drawable/ic_trade" />
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="FX ROBO Trade" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:id="@+id/drawer_item_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:visibility="visible"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_chart_new" />
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="Chart" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/colorDrawerMenuLine"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:id="@+id/drawer_item_calaneder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_economic" />
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="Economic Calender" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/colorDrawerMenuLine"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:id="@+id/drawer_item_yourwishlist"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_invest_money" />
+
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="Invest Money" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/colorDrawerMenuLine"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:id="@+id/drawer_item_withdrawal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_widhdrow_money" />
+
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="Withdraw Money" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/colorDrawerMenuLine"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:id="@+id/drawer_item_portfolio"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_portfolio_new" />
+
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="Your Portfolio" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/colorDrawerMenuLine"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:id="@+id/drawer_item_traction"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_transaction_new" />
+
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="Your Transaction" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/colorDrawerMenuLine"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:id="@+id/drawer_orderhistory"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_order_history_new" />
+
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="Order History" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/colorDrawerMenuLine"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:id="@+id/drawer_item_chatwithus"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_contact_us_new" />
+
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="Contact Us" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/colorDrawerMenuLine1"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
+
+
+                <!--<TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:text="Terms"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_18sdp" />
+
+                <View
+                    android:layout_marginTop="@dimen/padding20"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@color/white"/>-->
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/drawer_item_refundpolicy"
+                    style="@style/DrawerItemStyle2"
+                    android:text="Refund Policy" />
+
+                <!--<TextView
+                    android:layout_marginTop="@dimen/padding16"
+                    android:id="@+id/drawer_item_logout"
+                    style="@style/DrawerItemStyle2"
+                    android:text="Log Out" />-->
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:id="@+id/drawer_item_logout"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_logout_new" />
+
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="Log Out" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/padding20"
+                    android:layout_marginLeft="@dimen/_42sdp"
+                    android:id="@+id/drawer_item_termsandcondition"
+                    style="@style/DrawerItemStyle2"
+                    android:text="Terms &amp; Policy" />
+
+
+                <TextView
+                    android:layout_marginTop="@dimen/padding18"
+                    android:layout_marginLeft="@dimen/_42sdp"
+                    android:id="@+id/drawer_item_aboutus"
+                    style="@style/DrawerItemStyle2"
+                    android:text="About Us" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/padding18"
+                    android:layout_marginLeft="@dimen/_42sdp"
+                    android:id="@+id/drawer_item_privacypolicy"
+                    style="@style/DrawerItemStyle2"
+                    android:text="Privacy &amp; Policy"
+                    />
+
+                <TextView
+                    android:layout_marginTop="@dimen/padding18"
+                    android:layout_marginLeft="@dimen/_42sdp"
+                    android:id="@+id/drawer_item_resetpwd"
+                    style="@style/DrawerItemStyle2"
+                    android:text="Reset Password" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_50sdp">
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

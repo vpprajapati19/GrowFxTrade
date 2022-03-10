@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBgHeader">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_scrollFlags="enterAlways|scroll">
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:id="@+id/mainc"
+            android:layout_height="100dp">
+
+            <androidx.appcompat.widget.Toolbar
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/toolbar"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:elevation="0dp"
+                android:background="@color/colorBgHeader">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/ivicon"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:padding="@dimen/_3sdp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_back_arrow_new"
+                        android:visibility="visible"  />
+
+                    <TextView
+                        android:id="@+id/tvtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/lato_bold"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:layout_marginLeft="@dimen/_55sdp"
+                        android:text="@string/yourporfolio"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="@dimen/_20sdp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_bgRounded"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/mainc"
+            android:background="@drawable/bg_profile_rounded"
+            android:layout_marginTop="15dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/abc"
+                        android:layout_marginTop="@dimen/_35sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/lato_bold"
+                                android:gravity="left|center"
+                                android:maxLines="1"
+                                android:layout_gravity="center"
+                                android:text="@string/yourprofitloss"
+                                android:textColor="@color/colorTextPortfolio"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/tv_proitloss"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/lato_bold"
+                                android:background="@drawable/square_edittext"
+                                android:gravity="right|center"
+                                android:layout_gravity="center"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:padding="@dimen/_5sdp"
+                                android:textSize="@dimen/_14sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp">
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorLinePortfolio">
+                            </View>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_25sdp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/lato_bold"
+                                android:gravity="left|center"
+                                android:layout_gravity="center"
+                                android:maxLines="1"
+                                android:text="@string/available"
+                                android:textColor="@color/colorTextPortfolio"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/tv_available"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="1"
+                                android:background="@drawable/square_edittext"
+                                android:gravity="right|center"
+                                android:layout_gravity="center"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:padding="@dimen/_5sdp"
+                                android:textSize="@dimen/_14sdp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp">
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorLinePortfolio">
+                            </View>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_25sdp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/lato_bold"
+                                android:gravity="left|center"
+                                android:layout_gravity="center"
+                                android:maxLines="1"
+                                android:text="@string/total"
+                                android:textColor="@color/colorTextPortfolio"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+                            <TextView
+                                android:id="@+id/tv_totalorex"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="1"
+                                android:background="@drawable/square_edittext"
+                                android:gravity="right|center"
+                                android:layout_gravity="center"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:padding="@dimen/_5sdp"
+                                android:textSize="@dimen/_14sdp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp">
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorLinePortfolio">
+                            </View>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_25sdp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/lato_bold"
+                                android:gravity="left|center"
+                                android:layout_gravity="center"
+                                android:maxLines="1"
+                                android:text="@string/totalportfolio"
+                                android:textColor="@color/colorTextPortfolio"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+                            <TextView
+                                android:id="@+id/tv_totalportfolio"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="1"
+                                android:background="@drawable/square_edittext"
+                                android:gravity="right|center"
+                                android:layout_gravity="center"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:padding="@dimen/_5sdp"
+                                android:textSize="@dimen/_14sdp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp">
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorLinePortfolio">
+                            </View>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_25sdp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/lato_bold"
+                                android:gravity="left|center"
+                                android:layout_gravity="center"
+                                android:maxLines="1"
+                                android:text="@string/withdrawl"
+                                android:textColor="@color/colorTextPortfolio"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/tv_withdrawl"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="1"
+                                android:background="@drawable/square_edittext"
+                                android:gravity="right|center"
+                                android:layout_gravity="center"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:padding="@dimen/_5sdp"
+                                android:textSize="@dimen/_14sdp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp">
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorLinePortfolio">
+                            </View>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_show_investmoney"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/lato_bold"
+                                android:gravity="left|center"
+                                android:textColor="#4CAF50"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/tv_show_wirthdawmoney"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/lato_bold"
+                                android:gravity="left"
+                                android:textColor="#FF0000"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_InvestMoneyMore"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:background="@drawable/bg_button_red_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Invest More Money"
+                            android:layout_weight="0.6"
+                            android:textSize="@dimen/_14sdp"
+                            android:textColor="@color/white"
+                            android:gravity="left"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:layout_marginLeft="@dimen/_25sdp"
+                            android:fontFamily="@font/lato_bold"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingBottom="@dimen/_11sdp"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_24sdp"
+                            facebook:tint="#FFFFFF"
+                            android:layout_weight="1.4"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_icon_button_new" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_WithdrawMoney"
+                        android:background="@drawable/bg_button_red_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Withdraw Money"
+                            android:layout_weight="0.6"
+                            android:textSize="@dimen/_14sdp"
+                            android:textColor="@color/white"
+                            android:textAllCaps="true"
+                            android:gravity="left"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="@dimen/_25sdp"
+                            android:fontFamily="@font/lato_bold"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingBottom="@dimen/_11sdp"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_24sdp"
+                            facebook:tint="#FFFFFF"
+                            android:layout_weight="1.4"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_icon_button_new" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_alignParentBottom="true"></LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </RelativeLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

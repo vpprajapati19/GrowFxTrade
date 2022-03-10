@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:elevation="0dp"
+        app:statusBarScrim="@android:color/transparent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:contentInsetStart="0dp"
+            app:elevation="0dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+                <ImageView
+                    android:id="@+id/iv_main_drawer"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:padding="@dimen/_8sdp"
+                    app:tint="@color/colorTitle"
+                    android:src="@drawable/ic_menu_drawer_new"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:src="@drawable/thiqah_souq_white"
+                    android:text="Watchlist"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="30dp"
+                    android:layout_marginLeft="@dimen/_70sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_bold"
+                    app:layout_anchorGravity="center" />
+                <ImageView
+                    android:id="@+id/img_search_back"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:src="@drawable/search_back"
+                    android:layout_toRightOf="@+id/iv_main_drawer"
+                    android:padding="@dimen/_8sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:visibility="gone"/>
+                <EditText
+                    android:id="@+id/edt_serch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Search"
+                    android:textColorHint="#999999"
+                    android:textSize="@dimen/_15sdp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:layout_toRightOf="@+id/img_search_back"
+                    android:layout_toLeftOf="@+id/img_search"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:layout_marginRight="15dp"
+                    android:id="@+id/iv_main_filter"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:padding="8dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_plus_new"/>
+                <ImageView
+                    android:id="@+id/img_search"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:src="@drawable/ic_delete_new"
+                    android:layout_toLeftOf="@+id/iv_main_filter"
+                    android:layout_centerVertical="true"
+                    android:padding="8dp"/>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/content_main" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

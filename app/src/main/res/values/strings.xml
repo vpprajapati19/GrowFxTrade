@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Growfx Trade</string>
+
+    <string name="welcome">WelCome to Thiqah Souq</string>
+    <string name="signup">Sign Up</string>
+
+    <string name="drawerhome">Home</string>
+    <string name="drawer_shopbycategory">Shop By Category</string>
+    <string name="drawer_yourorder">Your Order</string>
+    <string name="drawer_wishlist">Your Wishlist</string>
+    <string name="drawer_wallet">Wallet/Royalty</string>
+    <string name="drawer_privacy">Privacy Policy</string>
+    <string name="drawer_about">About Thiqah Souq</string>
+    <string name="drawer_refferfriend">Refer A Friend</string>
+    <string name="drawer_thiqahmoney">Thiqah Money</string>
+    <string name="drawer_redeemmoney">Redeem Money</string>
+    <string name="drawer_purchasecard">Purchased Cards</string>
+    <string name="drawerlogin">Login</string>
+    <string name="drawer_logout">Logout</string>
+    <string name="categories">Categories</string>
+    <string name="what_are_you_looking_for">What are you looking for?</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="emailDigits">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@_.-</string>
+    <string name="facebook_app_id">625063261241402</string>
+    <string name="continue_as_guest">Continue as Guest</string>
+    <string name="password">Password</string>
+    <string name="forgot">Forgot Password ?</string>
+    <string name="signuphere">Signup Here!</string>
+    <string name="donthaveaccount">Don\'t have an account ?</string>
+    <string name="accept">I accept Privacy Policy and Terms</string>
+    <string name="resendotp">Resend OTP ?</string>
+    <string name="addcurrency">Add Currency</string>
+    <string name="deletecurrency">Delete Currency</string>
+    <string name="investmoney">Invest Money</string>
+    <string name="reason">Reason</string>
+    <string name="message">Message</string>
+    <string name="Change">Change Password</string>
+    <string name="refundpolicy">Refund Policy</string>
+    <string name="withdrawal">Withdrawal Money</string>
+    <string name="fxrobotrade">Fx ROBO Trade</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="contactno">Contact No</string>
+    <string name="contactus">Contact Us</string>
+    <string name="coundtrycode">Country Code</string>
+    <string name="coundtry">Country</string>
+    <string name="submit">SUBMIT</string>
+    <string name="orderhistory">Order History</string>
+    <string name="currencyname">Currency Name : </string>
+    <string name="orderid">Order Id : </string>
+    <string name="price">Currency Price : </string>
+    <string name="date">Order Date : </string>
+    <string name="yourporfolio">Your Portfolio </string>
+    <string name="profile">Profile</string>
+    <string name="yourprofitloss">Your Profit / Loss </string>
+    <string name="available">Available</string>
+    <string name="total">Total Forex Buy</string>
+    <string name="totalportfolio">Total Portfolio</string>
+    <string name="withdrawl">Withdrawal</string>
+    <string name="profit">Profit</string>
+
+    <string name="text_login">Login</string>
+    <string name="text_login2">Add your detail to login</string>
+    <string name="text_signup">Add your detail to signup</string>
+    <string name="text_forgot">Forgot your password?</string>
+    <string name="text_signup1">Already have an Account? </string>
+    <string name="text_resetPassword">Reset Password</string>
+    <string name="text_resetPassword1">Please enter your email to recieve a</string>
+    <string name="text_resetPassword2">link to create a new password via email</string>
+
+    <string name="Select">Select</string>
+
+    <string name="add_photo">Add Photo</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_gallery">Choose From Gallery</string>
+    <string name="Remove_photo">Remove Photo</string>
+    <string name="Cancel">Cancel</string>
+
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>

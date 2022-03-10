@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2A275C</color>
+    <color name="colorPrimaryDark">#2A275C</color>
+    <color name="colorAccent">#ffffff</color>
+
+    <color name="primaryWhite">#ffffff</color>
+    <color name="gray_333">#333333</color>
+    <color name="whiteBodyColor">#FCFCFC</color>
+    <color name="extraLightGray">#f7f8f8</color>
+    <color name="contentTextColor">#020000</color>
+    <color name="cTextColor">#00CFDF</color>
+    <color name="grey">#d0cecd</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="light_black">#333333</color>
+    <color name="pink">#ff009a</color>
+    <color name="light_blue">#0099FF</color>
+
+    <color name="loginBackground">#272733</color>
+    <color name="colorBlue">#ff0d47a1</color>
+    <color name="colorSecondaryText">#ff727272</color>
+    <color name="footer_text">#929292</color>
+    <color name="colorYellow">#fffbc02d</color>
+    <color name="loginbg">#292935</color>
+    <color name="red">#e50000</color>
+    <color name="green">#009900</color>
+
+    <color name="whiteCardColor">#fff</color>
+    <color name="whiteTextColor">#fff</color>
+    <color name="blackTextColor">#000</color>
+    <color name="df_transparent_black_background">#80000000</color>
+
+
+    // New Design Color
+    <color name="colorSignupButton">#FC6011</color>
+    <color name="colorLoginButton">#C60E30</color>
+    <color name="colrBgEditText">#F2F2F2</color>
+    <color name="colorBgHeader">#ecf1fa</color>
+    <color name="colorLine">#8F92A1</color>
+    <color name="colorEditTextLine">#9ffcce</color>
+    <color name="colorTitle">#181461</color>
+    <color name="colorTextColorHeader">#2a2ac0</color>
+    <color name="colorDrawerMenu">#1c1c1c</color>
+    <color name="colorDrawerMenu2">#777777</color>
+    <color name="colorDrawerMenu60">#991C1C1C</color>
+    <color name="colorDrawerMenu20">#331C1C1C</color>
+    <color name="colorBgWatchlist">#f8f8f8</color>
+    <color name="colorTextAddCurrency">#29292a</color>
+    <color name="colorLineInvest">#f3f6f8</color>
+    <color name="colorTextInvest">#171717</color>
+    <color name="colorTextPortfolio">#252525</color>
+    <color name="colorLinePortfolio">#828282</color>
+
+    <color name="colorTextLogin">#4a4b4d</color>
+    <color name="colorTextLogin2">#7c7d7e</color>
+    <color name="colorTextHintEditText">#b6b7b7</color>
+    <color name="colorDrawerMenuLine">#8FD2CFCF</color>
+    <color name="colorDrawerMenuLine1">#707070</color>
+    <color name="colorEditTextSelected">#4dd942</color>
+
+</resources>

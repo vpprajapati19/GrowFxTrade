@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBgHeader">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:id="@+id/mainc"
+                android:layout_height="100dp">
+
+                <androidx.appcompat.widget.Toolbar
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/toolbar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:elevation="0dp"
+                    android:background="@color/colorBgHeader">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:id="@+id/ivicon"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:padding="@dimen/_3sdp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_back_arrow_new"
+                            android:visibility="visible"  />
+
+                        <TextView
+                            android:id="@+id/tvtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/lato_bold"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:layout_marginLeft="@dimen/_55sdp"
+                            android:text="Your Transaction"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/_20sdp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </RelativeLayout>
+                </androidx.appcompat.widget.Toolbar>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_bgRounded"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/mainc"
+                android:background="@drawable/bg_profile_rounded"
+                android:layout_marginTop="15dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:id="@+id/layall"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/abc"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/lato_bold"
+                            android:gravity="left|center"
+                            android:layout_gravity="center"
+                            android:maxLines="1"
+                            android:text="Total Invest"
+                            android:textColor="@color/colorTextPortfolio"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/tv_invest"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/lato_bold"
+                            android:background="@drawable/square_edittext"
+                            android:gravity="right|center"
+                            android:layout_gravity="center"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:padding="@dimen/_5sdp"
+                            android:textSize="@dimen/_14sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLinePortfolio">
+                        </View>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_17sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/lato_bold"
+                            android:gravity="left|center"
+                            android:layout_gravity="center"
+                            android:maxLines="1"
+                            android:text="Total Withdrawal"
+                            android:textColor="@color/colorTextPortfolio"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/tv_withdrawal"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/lato_bold"
+                            android:background="@drawable/square_edittext"
+                            android:gravity="right|center"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:padding="@dimen/_5sdp"
+                            android:textSize="@dimen/_14sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLinePortfolio">
+                        </View>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_17sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/lato_bold"
+                            android:gravity="left|center"
+                            android:layout_gravity="center"
+                            android:maxLines="1"
+                            android:text="Total Profit"
+                            android:textColor="@color/colorTextPortfolio"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+
+                        <TextView
+                            android:id="@+id/tv_profit"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/lato_bold"
+                            android:background="@drawable/square_edittext"
+                            android:gravity="right|center"
+                            android:layout_gravity="center"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:padding="@dimen/_5sdp"
+                            android:textSize="@dimen/_14sdp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLinePortfolio">
+                        </View>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_17sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/lato_bold"
+                            android:gravity="left|center"
+                            android:maxLines="1"
+                            android:text="Total Loss"
+                            android:textColor="@color/colorTextPortfolio"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/tv_loss"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/lato_bold"
+                            android:background="@drawable/square_edittext"
+                            android:gravity="right|center"
+                            android:layout_gravity="center"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:padding="@dimen/_5sdp"
+                            android:textSize="@dimen/_14sdp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLinePortfolio">
+                        </View>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:background="@drawable/square_edittext"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/layall"
+                    android:id="@+id/laydd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textColor="@color/blackTextColor"
+                        android:text="Date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_5sdp"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="@dimen/_14sdp" />
+                    <TextView
+                        android:textColor="@color/blackTextColor"
+                        android:gravity="center"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_5sdp"
+                        android:textSize="@dimen/_14sdp" />
+                    <TextView
+                        android:gravity="right"
+                        android:textColor="@color/blackTextColor"
+                        android:text="Amount"
+                        android:fontFamily="@font/lato_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_5sdp"
+                        android:textSize="@dimen/_14sdp" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_below="@+id/laydd"
+                    android:id="@+id/rec_home"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_250sdp" />
+
+                <LinearLayout
+                    android:layout_below="@+id/rec_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp">
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBgHeader">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:id="@+id/mainc"
+            android:layout_height="80dp"
+            app:layout_scrollFlags="enterAlways|scroll">
+
+            <androidx.appcompat.widget.Toolbar
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/toolbar"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:elevation="0dp"
+                android:background="@color/colorBgHeader">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/ivicon"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10.0dip"
+                        android:padding="@dimen/_3sdp"
+                        android:src="@drawable/ic_back_arrow_new"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/tvtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/lato_bold"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="@string/investmoney"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="@dimen/_20sdp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_bgRounded"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/mainc"
+            android:background="@drawable/bg_profile_rounded">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_marginRight="@dimen/_18sdp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/colorLine">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/colorLine"
+                            android:drawableLeft="@drawable/ic_user_new"
+                            android:cursorVisible="true"
+                            android:fontFamily="@font/lato_regular"
+                            android:drawablePadding="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_15sdp"
+                            android:hint="Name"
+                            android:inputType="text"
+                            android:textColorHint="@color/colorLine"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColorHint="@color/colorLine">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/colorLine"
+                            android:drawableLeft="@drawable/ic_email_new"
+                            android:cursorVisible="true"
+                            android:fontFamily="@font/lato_regular"
+                            android:drawablePadding="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_15sdp"
+                            android:hint="@string/email"
+                            android:inputType="text"
+                            android:textColorHint="@color/colorLine"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_contactno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColorHint="@color/colorLine">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_contactno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/colorLine"
+                            android:drawableLeft="@drawable/ic_phone_new"
+                            android:cursorVisible="true"
+                            android:fontFamily="@font/lato_regular"
+                            android:drawablePadding="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_15sdp"
+                            android:hint="@string/contactno"
+                            android:inputType="text"
+                            android:textColorHint="@color/colorLine"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_coundtrycode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColorHint="@color/colorLine">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_coundtrycode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/colorLine"
+                            android:drawableLeft="@drawable/ic_user_new"
+                            android:cursorVisible="true"
+                            android:fontFamily="@font/lato_regular"
+                            android:drawablePadding="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_15sdp"
+                            android:hint="@string/coundtrycode"
+                            android:inputType="text"
+                            android:textColorHint="@color/colorLine"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_coundtry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:hint="Country"
+                        android:textColorHint="@color/colorLine">
+
+                        <TextView
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@android:id/text1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorLine"
+                            android:layout_marginLeft="@dimen/_29sdp"
+                            android:text="Country"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/spinner_country"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textSize="@dimen/_14sdp"/>
+
+                        <View
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLine"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_investmoney"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColorHint="@color/colorLine">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_investmoney"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/colorLine"
+                            android:drawableLeft="@drawable/ic_invest_money2"
+                            android:cursorVisible="true"
+                            android:fontFamily="@font/lato_regular"
+                            android:drawablePadding="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_15sdp"
+                            android:hint="@string/investmoney"
+                            android:inputType="numberDecimal"
+                            android:textColorHint="@color/colorLine"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_payment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:hint="CRYPTO"
+                        android:textColorHint="@color/colorLine">
+
+                        <TextView
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@android:id/text1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorLine"
+                            android:layout_marginLeft="@dimen/_29sdp"
+                            android:text="Choose Deposit Option"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/spinner_payment"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textSize="@dimen/_14sdp"/>
+
+                        <View
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLine"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/btn_submit"
+                        android:layout_marginTop="@dimen/_45sdp"
+                        android:background="@drawable/bg_button_red_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="SUBMIT"
+                            android:layout_weight="0.6"
+                            android:textSize="@dimen/_18sdp"
+                            android:textColor="@color/white"
+                            android:gravity="left"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="@dimen/_25sdp"
+                            android:fontFamily="@font/lato_bold"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingBottom="@dimen/_11sdp"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_24sdp"
+                            facebook:tint="#FFFFFF"
+                            android:layout_weight="1.4"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_icon_button_new" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"></LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"></LinearLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
