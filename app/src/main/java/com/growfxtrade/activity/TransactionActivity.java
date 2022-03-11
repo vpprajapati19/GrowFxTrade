@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,7 +44,6 @@ public class TransactionActivity extends AppCompatActivity {
     ViewServiceAdapter viewServiceAdapter;
     ProgressDialog progressDialog;
     private ArrayList<ViewServiceModel> viewServiceModelArrayList=new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +104,16 @@ public class TransactionActivity extends AppCompatActivity {
                     withdrawal = jsonObject.getString("withdrawal");
                     profit = jsonObject.getString("profit");
                     loss = jsonObject.getString("loss");
+                    Log.e("invest170","=="+invest);
+                    Log.e("withdrawal170","=="+withdrawal);
+                    Log.e("profit170","=="+profit);
+                    Log.e("loss170","=="+loss);
 
+
+                    tv_invest.setText(invest);
+                    tv_withdrawal.setText(withdrawal);
+                    tv_profit.setText(profit);
+                    tv_loss.setText(loss);
                   /*  JSONObject jsonObject1= jsonObject.getJSONObject("data");
 
                     for(int i=0;i<jsonObject1.length();i++){
@@ -125,11 +134,6 @@ public class TransactionActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
                 }
-
-                tv_invest.setText(invest);
-                tv_withdrawal.setText(withdrawal);
-                tv_profit.setText(profit);
-                tv_loss.setText(loss);
             }
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {

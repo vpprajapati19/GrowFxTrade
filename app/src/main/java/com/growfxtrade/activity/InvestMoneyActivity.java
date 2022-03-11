@@ -109,7 +109,7 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
         final String prefix = "$ ";
         et_investmoney.setText(prefix);
 
-        et_investmoney.setFilters(new InputFilter[] {
+       /* et_investmoney.setFilters(new InputFilter[] {
                 new InputFilter() {
                     @Override
                     public CharSequence filter(final CharSequence source, final int start,
@@ -130,7 +130,7 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
                         }
                     }
                 }
-        });
+        });*/
 
 
         ivicon.setOnClickListener(this);
@@ -161,16 +161,23 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
                 et_investmoney.setError("Enter Valid Amount");
                 return;
             }
-
             if (!CommonMethods.getInternetStatus(this)) {
                 CommonMethods.showInternetDialog(this);
             } else {
                 if(selectPaymentValue.equals("UPI")) {
-                     Intent intent = new Intent(getApplicationContext(), InvestMoneyUpiActivity.class);
-                     startActivity(intent);
+                    Bundle b=new Bundle();
+                    Intent intent = new Intent(getApplicationContext(), InvestMoneyUpiActivity.class);
+                    Log.e("price170","=="+money);
+                    b.putString("price",money);
+                    intent.putExtras(b);
+                    startActivity(intent);
                 } else if(selectPaymentValue.equals("NET BANKING")) {
-                     Intent intent = new Intent(getApplicationContext(), InvestMoneyQrCodeActivity.class);
-                     startActivity(intent);
+                    Bundle b=new Bundle();
+                    Intent intent = new Intent(getApplicationContext(), InvestMoneyQrCodeActivity.class);
+                    Log.e("price176","=="+money);
+                    b.putString("price",money);
+                    intent.putExtras(b);
+                    startActivity(intent);
                 }
 
 
@@ -234,14 +241,10 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
                 }
                 if (staus.equalsIgnoreCase("0")) {
 
-
                     final Dialog dialog = new Dialog(InvestMoneyActivity.this);
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     dialog.setCancelable(false);
                     dialog.setContentView(R.layout.dialog);
-
-
-
 
                     CardView dialogButton = dialog.findViewById(R.id.btn_submit);
                     TextView txtt = dialog.findViewById(R.id.txtt);

@@ -185,6 +185,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             if (et_useremail.getText().length() <= 0) {
                 et_useremail.setError("Enter Valid Email");
                 return;
+            }else if ((isValidEmailAddress(et_useremail.getText().toString()) == false)) {
+                et_useremail.setError("Please enter a valid Email address");
+                et_useremail.requestFocus();
             }
             if (et_password.getText().length() <= 0) {
                 et_password.setError("Enter Valid Password");
@@ -193,6 +196,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             if (et_usermobile.getText().length() <= 0) {
                 et_usermobile.setError("Enter Valid Number");
                 return;
+            } else if (et_usermobile.length() <10 || et_usermobile.length() > 13) {
+
+                et_usermobile.setError("Phone number length should be 10 digits");
+                et_usermobile.requestFocus();
             }
             if (et_usercity.getText().length() <= 0) {
                 et_usercity.setError("Enter Valid City");
@@ -252,6 +259,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 */
 
         }
+    }
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
     }
     private void selectImage() {
         final CharSequence[] items = {RegisterActivity.this.getResources().getString(R.string.take_photo)

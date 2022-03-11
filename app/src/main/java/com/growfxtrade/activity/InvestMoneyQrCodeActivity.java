@@ -3,22 +3,32 @@ package com.growfxtrade.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.growfxtrade.R;
 
 public class InvestMoneyQrCodeActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView ivicon;
+    TextView tv_price;
+    String price;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invest_money_qr_code);
         initComponent();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            price = bundle.getString("price");
+            Log.e("price25","=="+price);
+            tv_price.setText(price);
+        }
     }
     private void initComponent() {
         ivicon = findViewById(R.id.ivicon);
-
+        tv_price = findViewById(R.id.tv_price);
         ivicon.setOnClickListener(this);
     }
 

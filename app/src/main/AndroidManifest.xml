@@ -120,6 +120,12 @@
             android:screenOrientation="nosensor"
             android:theme="@style/MyMaterialTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".activity.ChatWithUsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="nosensor"
+            android:theme="@style/MyMaterialTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
