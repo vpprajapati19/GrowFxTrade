@@ -163,12 +163,7 @@ public interface RequestInterface {
     Call<ResponseBody> getsell(
             @Field("id") String id,
             @Field("qty") String qty
-
     );
-
-
-
-
     @POST("trade_api/buy_sell.php")
     @FormUrlEncoded
     Call<ResponseBody> getBuySell(

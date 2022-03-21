@@ -271,7 +271,7 @@
                         android:drawablePadding="@dimen/_15sdp"
                         android:hint="Bank Name"
                         android:background="@null"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:textSize="@dimen/_13sdp"
                         android:padding="@dimen/_16sdp"

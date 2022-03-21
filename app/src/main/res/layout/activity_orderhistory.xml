@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background">
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,8 +22,8 @@
                 android:id="@+id/toolbar"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/toolbar"
-                android:theme="@style/ToolbarColoredBackArrow">
+                android:elevation="0dp"
+                android:background="@color/colorBgHeader">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -32,28 +32,28 @@
 
                     <ImageView
                         android:id="@+id/ivicon"
-                        android:layout_width="@dimen/_35sdp"
-                        android:layout_height="@dimen/_35sdp"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:padding="@dimen/_3sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="10.0dip"
-                        android:src="@drawable/left_arrow"
-                        android:visibility="visible" />
+                        android:src="@drawable/ic_back_arrow_new"
+                        android:visibility="visible"  />
 
                     <TextView
                         android:id="@+id/tvtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/ivicon"
-                        android:fontFamily="@font/cabin"
+                        android:fontFamily="@font/lato_bold"
                         android:gravity="center"
                         android:maxLines="1"
+                        android:layout_marginLeft="@dimen/_55sdp"
                         android:text="@string/orderhistory"
-                        android:textColor="#ffffffff"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorTitle"
                         android:textSize="@dimen/_20sdp"
                         android:textStyle="bold"
                         android:visibility="visible" />
-
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
 

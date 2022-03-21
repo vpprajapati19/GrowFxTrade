@@ -125,6 +125,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     mono=jsonObject1.getString("mono");
                     amount=jsonObject1.getString("amount");
                     profit=jsonObject1.getString("profit");
+                    Log.e("profit128=","=="+profit);
                     bank_account_no=jsonObject1.getString("bank_account_no");
                     ifsc=jsonObject1.getString("ifsc");
                     doc_no=jsonObject1.getString("doc_no");
@@ -190,18 +191,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     available = jsonObject.getString("available");
                     total_buy = jsonObject.getString("total_buy");
                     total_portfolio = jsonObject.getString("total_portfolio");
+                    Log.e("portfolio",""+total_portfolio);
                     withdraw = jsonObject.getString("withdraw");
                 } catch (Exception e) {
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
                 }
-
-
-
-
                 tv_available.setText("$ "+total_portfolio);
-
             }
-
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
 

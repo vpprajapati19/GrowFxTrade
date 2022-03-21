@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -34,7 +35,7 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
     private Dialog dialog;
     private String TAG = "WithdrawMoneyActivity";
     JSONObject jsonObject;
-
+    TextView tv_amount;
     private ImageView ivicon;
     private Spinner spinner_payment;
 
@@ -69,12 +70,12 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_withdrawal);
         initComponent();
 
-       /* if (!CommonMethods.getInternetStatus(this)) {
+        if (!CommonMethods.getInternetStatus(this)) {
             CommonMethods.showInternetDialog(this);
         } else {
             getProfileInfo();
 
-        }*/
+        }
 
 
     }
@@ -84,6 +85,7 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
         btn_submit = findViewById(R.id.btn_submit);
         et_investmoney = findViewById(R.id.et_investmoney);
         spinner_payment = findViewById(R.id.spinner_payment_withdraw);
+        tv_amount = findViewById(R.id.tv_amount);
 
         spinner_payment.setAdapter(new CustomAdapterPayment(this,paymentValue));
         spinner_payment.setSelection(0);
@@ -213,16 +215,15 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
 //                    email=jsonObject1.getString("email");
 //                    mono=jsonObject1.getString("mono");
                     amount = jsonObject1.getString("amount");
+                    tv_amount.setText("$ "+amount);
 //                    profit=jsonObject1.getString("profit");
+                    Log.e("ammount217","=="+amount);
 
                 } catch (Exception e) {
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
                 }
                 //et_wallet.setText("$ " + amount);
-
-
             }
-
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 dialog.dismiss();

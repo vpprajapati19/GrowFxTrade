@@ -57,6 +57,14 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
                         dialog1.setContentView(R.layout.dialog_watchlist);
                         dialog1.setCancelable(true);
                         dialog1.setCanceledOnTouchOutside(true);
+                        TextView currencyvalue=(TextView)dialog1.findViewById(R.id.tv_currencyvalue);
+                        TextView askvalue=(TextView)dialog1.findViewById(R.id.tv_askvalue);
+                        TextView bidvalue=(TextView)dialog1.findViewById(R.id.tv_bidvalue);
+                        TextView balance=(TextView)dialog1.findViewById(R.id.tv_balance_value);
+                        currencyvalue.setText(analogDashboardModel.getSymbol());
+                        askvalue.setText(analogDashboardModel.getAsk());
+                        bidvalue.setText(analogDashboardModel.getBid());
+                        balance.setText(analogDashboardModel.getPrice());
                        /* dialog1.findViewById(R.id.btnSpinAndWinRedeem).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

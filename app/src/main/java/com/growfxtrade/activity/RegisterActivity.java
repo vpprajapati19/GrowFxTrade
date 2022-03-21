@@ -45,6 +45,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -57,7 +59,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private String TAG = "RegisterActivity";
     private ImageView iv_back;
     LinearLayout iv_reg;
-    private EditText et_usernmae, et_useremail, et_password, et_usermobile, et_usercity,et_accno,et_ifsccode,et_doc_no,et_pancard;
+    private EditText et_usernmae, et_useremail,et_state, et_password, et_usermobile, et_usercity,et_accno,et_ifsccode,et_doc_no,et_pancard;
     private Dialog dialog;
     private CheckBox cb_privacy;
     private Spinner spinner_country;
@@ -98,6 +100,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                iv_reg = findViewById(R.id.iv_reg);
         et_usernmae = findViewById(R.id.et_usernmae);
         et_useremail = findViewById(R.id.et_useremail);
+        et_state = findViewById(R.id.et_state);
         et_password = findViewById(R.id.et_password);
         et_usermobile = findViewById(R.id.et_usermobile);
         et_usercity = findViewById(R.id.et_usercity);
@@ -178,22 +181,19 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             selectImage();
         }
         if (view == iv_reg) {
+            final String pan_pattern = "(([A-Za-z]{5})([0-9]{4})([a-zA-Z]))";
+            Pattern r = Pattern.compile(pan_pattern);
             if (et_usernmae.getText().length() <= 0) {
                 et_usernmae.setError("Enter Valid User Name");
                 return;
             }
-            if (et_useremail.getText().length() <= 0) {
+            else if (et_useremail.getText().length() <= 0) {
                 et_useremail.setError("Enter Valid Email");
                 return;
             }else if ((isValidEmailAddress(et_useremail.getText().toString()) == false)) {
                 et_useremail.setError("Please enter a valid Email address");
                 et_useremail.requestFocus();
-            }
-            if (et_password.getText().length() <= 0) {
-                et_password.setError("Enter Valid Password");
-                return;
-            }
-            if (et_usermobile.getText().length() <= 0) {
+            }else if (et_usermobile.getText().length() <= 0) {
                 et_usermobile.setError("Enter Valid Number");
                 return;
             } else if (et_usermobile.length() <10 || et_usermobile.length() > 13) {
@@ -201,9 +201,19 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 et_usermobile.setError("Phone number length should be 10 digits");
                 et_usermobile.requestFocus();
             }
-            if (et_usercity.getText().length() <= 0) {
+            else if (et_usercity.getText().length() <= 0) {
                 et_usercity.setError("Enter Valid City");
                 return;
+            }else if (et_state.getText().length() <= 0) {
+                et_usercity.setError("Enter Valid state");
+                return;
+            }
+            if (et_pancard.getText().length() <= 0) {
+                Toast.makeText(this, "Enter Valid PanCard Number", Toast.LENGTH_SHORT).show();
+                return;
+            }else  if (!regex_matcher(r, et_pancard.getText().toString())) {
+                //error = "Invalid PAN number";
+                Toast.makeText(this, "Invalid PAN number", Toast.LENGTH_SHORT).show();
             }
             if (et_accno.getText().length() <= 0) {
                 et_accno.setError("Enter Valid Account Number");
@@ -211,6 +221,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             }
             if (et_ifsccode.getText().length() <= 0) {
                 et_ifsccode.setError("Enter Valid IFSC CODE");
+                return;
+            }else if (et_password.getText().length() <= 0) {
+                et_password.setError("Enter Valid Password");
                 return;
             }
             if (et_doc_no.getText().length() <= 0) {
@@ -221,10 +234,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 Toast.makeText(this, "Please Select Document", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (et_pancard.getText().length() <= 0) {
-                Toast.makeText(this, "Enter Valid PanCard Number", Toast.LENGTH_SHORT).show();
-                return;
-            }
+
            /* if (txtimgetwo.getText().length() <= 0) {
                 Toast.makeText(this, "Please Upload Image Two", Toast.LENGTH_SHORT).show();
                 return;
@@ -259,6 +269,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 */
 
         }
+    }
+    private boolean regex_matcher(Pattern pattern, String string) {
+        Matcher m = pattern.matcher(string);
+        return m.find() && (m.group(0) != null);
     }
     public boolean isValidEmailAddress(String email) {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
