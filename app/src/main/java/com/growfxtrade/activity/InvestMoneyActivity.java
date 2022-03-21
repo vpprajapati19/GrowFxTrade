@@ -180,7 +180,6 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
                     startActivity(intent);
                 }
 
-
               //  addMoney(money);
             }
 
