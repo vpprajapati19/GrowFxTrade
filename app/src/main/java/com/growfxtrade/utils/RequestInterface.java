@@ -1,11 +1,14 @@
 package com.growfxtrade.utils;
 
+import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface RequestInterface {
@@ -92,21 +95,27 @@ public interface RequestInterface {
 
     );*/
 
+    @Multipart
     @POST("trade_api/registers.php")
-    @FormUrlEncoded
     Call<ResponseBody> getREgDetails(
-            @Field("mono") String mono,
-            @Field("email") String email,
-            @Field("gender") String gender,
-            @Field("password") String password,
-            @Field("user_name") String user_name,
-            @Field("city") String city,
-            @Field("country") String country,
-            @Field("bank_account") String bank_account,
-            @Field("ifsc") String ifsc,
-            @Field("doc_id") String doc_id,
-            @Field("doc_no") String doc_no,
-            @Field("pancard_no") String pancard_no
+            @Part MultipartBody.Part image1,
+            @Part MultipartBody.Part image2,
+            @Query("mono") String mono,
+            @Query("email") String email,
+            @Query("gender") String gender,
+            @Query("password") String password,
+            @Query("user_name") String user_name,
+            @Query("state") String state,
+            @Query("city") String city,
+            @Query("country") String country,
+            @Query("doc_type") String doc_type,
+            @Query("bank_name") String bank_name,
+            @Query("bank_account") String bank_account,
+            @Query("ifsc") String ifsc,
+            @Query("upi_id") String upi_id,
+            @Query("doc_id") String doc_id,
+            @Query("doc_no") String doc_no,
+            @Query("pancard_no") String pancard_no
 
 
     );

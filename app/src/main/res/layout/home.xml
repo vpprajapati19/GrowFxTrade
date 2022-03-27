@@ -19,7 +19,20 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="com.docx.reader.sudhirimagetextandvideo.vidstatus.docx.reader.sudhirimagetextandvideo.SingleTextStatusView">
-
+        <LinearLayout
+                android:id="@+id/lv_nodatafound"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No data Found"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="fill_parent"

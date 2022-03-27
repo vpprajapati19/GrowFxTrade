@@ -42,6 +42,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
 
     private String TAG = "AddCurrencyActivity";
     private ImageView ivicon;
+    LinearLayout lv_nodatafound;
     private Dialog dialog;
     private RecyclerView recyclerView;
     private LinearLayoutManager mLayoutManager;
@@ -68,6 +69,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
         ivicon = findViewById(R.id.ivicon);
         ivicon.setOnClickListener(this);
         recyclerView = findViewById(R.id.recyclerView);
+        lv_nodatafound = findViewById(R.id.lv_nodatafound);
 
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -84,6 +86,8 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.e("response--87","--"+response.toString());
+                Log.e("response--88","--"+response);
                 dialog.dismiss();
                 CommonMethods.PrintLog(TAG, "url  " + response.raw().request().url());
                 try {
@@ -91,22 +95,30 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
                     CommonMethods.PrintLog(TAG, "url res " + res);
                     JSONObject jsonObject = new JSONObject(res);
                     JSONArray jsonArray = jsonObject.getJSONArray("buy_sell_data");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                        OrderHIstoryModel orderHIstoryModel = new OrderHIstoryModel();
-                        orderHIstoryModel.setBuy_sell_id(jsonObject1.getString("buy_sell_id"));
-                        orderHIstoryModel.setCurrency_id(jsonObject1.getString("currency_id"));
-                        orderHIstoryModel.setUser_id(jsonObject1.getString("user_id"));
-                        orderHIstoryModel.setDate(jsonObject1.getString("date"));
-                        orderHIstoryModel.setAmount(jsonObject1.getString("amount"));
-                        orderHIstoryModel.setQty(jsonObject1.getString("qty"));
-                        orderHIstoryModel.setTotal(jsonObject1.getString("total"));
-                        orderHIstoryModel.setBuy_sell(jsonObject1.getString("buy_sell"));
-                        orderHIstoryModel.setSell(jsonObject1.getString("sell"));
-                        orderHIstoryModel.setCurrency_name(jsonObject1.getString("currency_name"));
-                        orderHIstoryModel.setOrder_id(jsonObject1.getString("order_id"));
-                        orderHIstoryModelArrayList.add(orderHIstoryModel);
+                    Log.e("jsonarray96","=="+jsonArray);
+                    if(jsonArray.length()==0){
+                        lv_nodatafound.setVisibility(View.VISIBLE);
+                      Log.e("No data found==","98"+jsonArray.length());
+                    }else {
+                        lv_nodatafound.setVisibility(View.GONE);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            OrderHIstoryModel orderHIstoryModel = new OrderHIstoryModel();
+                            orderHIstoryModel.setBuy_sell_id(jsonObject1.getString("buy_sell_id"));
+                            orderHIstoryModel.setCurrency_id(jsonObject1.getString("currency_id"));
+                            orderHIstoryModel.setUser_id(jsonObject1.getString("user_id"));
+                            orderHIstoryModel.setDate(jsonObject1.getString("date"));
+                            orderHIstoryModel.setAmount(jsonObject1.getString("amount"));
+                            orderHIstoryModel.setQty(jsonObject1.getString("qty"));
+                            orderHIstoryModel.setTotal(jsonObject1.getString("total"));
+                            orderHIstoryModel.setBuy_sell(jsonObject1.getString("buy_sell"));
+                            orderHIstoryModel.setSell(jsonObject1.getString("sell"));
+                            orderHIstoryModel.setCurrency_name(jsonObject1.getString("currency_name"));
+                            orderHIstoryModel.setOrder_id(jsonObject1.getString("order_id"));
+                            orderHIstoryModelArrayList.add(orderHIstoryModel);
+                        }
                     }
+
                 } catch (Exception e) {
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
 

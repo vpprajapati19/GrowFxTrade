@@ -48,6 +48,9 @@ import java.io.FileOutputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,7 +62,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private String TAG = "RegisterActivity";
     private ImageView iv_back;
     LinearLayout iv_reg;
-    private EditText et_usernmae, et_useremail,et_state, et_password, et_usermobile, et_usercity,et_accno,et_ifsccode,et_doc_no,et_pancard;
+    private EditText et_usernmae, et_useremail,et_state, et_password, et_usermobile, et_usercity,et_accno,et_ifsccode,et_doc_no,et_pancard,et_confirmaccno,et_bankName,et_ConfirmPassword;
     private Dialog dialog;
     private CheckBox cb_privacy;
     private Spinner spinner_country;
@@ -69,6 +72,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public static final int RequestPermissionCode = 7;
     String flag="0";
     Bitmap bitmap = null;
+    File imagefile1,imagefile2;
     String path, filename;
     String screentype;
 
@@ -101,7 +105,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         et_usernmae = findViewById(R.id.et_usernmae);
         et_useremail = findViewById(R.id.et_useremail);
         et_state = findViewById(R.id.et_state);
+        et_confirmaccno = findViewById(R.id.et_confirmaccno);
         et_password = findViewById(R.id.et_password);
+        et_ConfirmPassword = findViewById(R.id.et_ConfirmPassword);
+        et_bankName = findViewById(R.id.et_bankName);
         et_usermobile = findViewById(R.id.et_usermobile);
         et_usercity = findViewById(R.id.et_usercity);
         et_accno = findViewById(R.id.et_accno);
@@ -205,18 +212,33 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 et_usercity.setError("Enter Valid City");
                 return;
             }else if (et_state.getText().length() <= 0) {
-                et_usercity.setError("Enter Valid state");
+                et_state.setError("Enter Valid state");
                 return;
             }
             if (et_pancard.getText().length() <= 0) {
-                Toast.makeText(this, "Enter Valid PanCard Number", Toast.LENGTH_SHORT).show();
+                et_pancard.setError("Enter Valid PanCard Number");
                 return;
+               // Toast.makeText(this, "Enter Valid PanCard Number", Toast.LENGTH_SHORT).show();
+               // return;
             }else  if (!regex_matcher(r, et_pancard.getText().toString())) {
                 //error = "Invalid PAN number";
-                Toast.makeText(this, "Invalid PAN number", Toast.LENGTH_SHORT).show();
+                et_pancard.setError("Invalid PAN number");
+                return;
+               // Toast.makeText(this, "Invalid PAN number", Toast.LENGTH_SHORT).show();
+            }
+            if (et_bankName.getText().toString().length() <= 0){
+                et_bankName.setError("Enter Bank Name Number");
+                return;
             }
             if (et_accno.getText().length() <= 0) {
                 et_accno.setError("Enter Valid Account Number");
+                return;
+            }
+            if(et_confirmaccno.getText().toString().length() <= 0){
+                et_confirmaccno.setError("Enter confirm Account Number");
+                return;
+            }else if(et_accno.getText().toString().equalsIgnoreCase(et_confirmaccno.getText().toString())== false){
+                et_confirmaccno.setError("Account number does not match expected format.");
                 return;
             }
             if (et_ifsccode.getText().length() <= 0) {
@@ -226,7 +248,15 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 et_password.setError("Enter Valid Password");
                 return;
             }
-            if (et_doc_no.getText().length() <= 0) {
+            if (et_ConfirmPassword.getText().toString().length() <= 0){
+
+                et_ConfirmPassword.setError("Enter confirm password");
+                return;
+            }else if(et_password.getText().toString().equalsIgnoreCase(et_ConfirmPassword.getText().toString())== false){
+                et_ConfirmPassword.setError("Password does not match expected format.");
+                return;
+            }
+         /*   if (et_doc_no.getText().length() <= 0) {
                 Toast.makeText(this, "Enter Valid Documnet Number", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -234,7 +264,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 Toast.makeText(this, "Please Select Document", Toast.LENGTH_SHORT).show();
                 return;
             }
-
+*/
            /* if (txtimgetwo.getText().length() <= 0) {
                 Toast.makeText(this, "Please Upload Image Two", Toast.LENGTH_SHORT).show();
                 return;
@@ -359,7 +389,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 filename = path.substring(path.lastIndexOf("/") + 1);
                 if(screentype.equalsIgnoreCase("second")){
                    tv_adharcard_back.setText(filename);
+                    imagefile2= new File(imagePath);
                 }else{
+                    imagefile1= new File(imagePath);
                     tv_adharcard_front.setText(filename);
                 }
                 Log.e("pat_gallery_filenm", "" + filename);
@@ -482,12 +514,22 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         dialog = CommonMethods.showDialogProgressBarNew(this);
         //  RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
         RequestInterface req = RetrofitClient.getClientone().create(RequestInterface.class);
-        Call<ResponseBody> call = req.getREgDetails(mobile, email, "male", pwd, uname, ci, co,accno,ifsccode,docposition,docno,docpancard);
+      //  RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), getRealPathFromURI(data.getData()));
+
+        MultipartBody.Part multipartBody1 =MultipartBody.Part.createFormData("doc_front_img",imagefile1.getName());
+        MultipartBody.Part multipartBody2 =MultipartBody.Part.createFormData("doc_back_img",imagefile2.getName());
+
+        Log.e("imagefile1",""+imagefile1);
+        Log.e("imagefile2",""+imagefile2);
+        Call<ResponseBody> call = req.getREgDetails(multipartBody1,multipartBody2,mobile, email, "male", pwd, uname,et_state.getText().toString(), ci, co,"Aadhar Card",et_bankName.getText().toString(),accno,ifsccode,"testtW@okaxov.on","1","1",docpancard);
 
         call.enqueue(new Callback<ResponseBody>() {
             @SuppressLint("NewApi")
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.e("response526","=="+response);
+                Log.e("response527","=="+response.toString());
+                Log.e("response528","=="+response.body());
                 dialog.dismiss();
                 String staus = "";
                 String msg = "";

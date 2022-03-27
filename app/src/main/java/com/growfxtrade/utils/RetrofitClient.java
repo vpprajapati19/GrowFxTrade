@@ -24,6 +24,7 @@ public class RetrofitClient {
 
 //    public static String service_url = "http://acutetech.in";
     public static String service_url = "https://orionfxrobo.com";
+    public static String service_urll = "https://growfxtrade.com";
     public static String service_url1 = "https://api.1forge.com";
 
 
@@ -47,7 +48,7 @@ public class RetrofitClient {
             Picasso.setSingletonInstance(picasso);*/
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl(service_url)
+                    .baseUrl(service_urll)
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
@@ -71,7 +72,7 @@ public class RetrofitClient {
 
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl(service_url)
+                    .baseUrl(service_urll)
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();

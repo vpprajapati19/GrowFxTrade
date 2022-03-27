@@ -171,9 +171,16 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
                     b.putString("price",money);
                     intent.putExtras(b);
                     startActivity(intent);
-                } else if(selectPaymentValue.equals("NET BANKING")) {
+                } else if(selectPaymentValue.equals("CRYPTO")) {
                     Bundle b=new Bundle();
                     Intent intent = new Intent(getApplicationContext(), InvestMoneyQrCodeActivity.class);
+                    Log.e("price176","=="+money);
+                    b.putString("price",money);
+                    intent.putExtras(b);
+                    startActivity(intent);
+                }else if(selectPaymentValue.equals("NET BANKING")) {
+                    Bundle b=new Bundle();
+                    Intent intent = new Intent(getApplicationContext(), InvestMoneyNetbankingActivity.class);
                     Log.e("price176","=="+money);
                     b.putString("price",money);
                     intent.putExtras(b);

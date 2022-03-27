@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,6 +39,7 @@ public class FragmentHome extends BaseFragment {
 
     private String TAG = "FragmentHome";
     private View rootView;
+    LinearLayout lv_nodatafound;
     private Dialog dialog;
     private RecyclerView recyclerView_category;
     private ArrayList<CurrencyModel> modelCategoryListList = new ArrayList<>();
@@ -150,6 +152,7 @@ public class FragmentHome extends BaseFragment {
 
     private void initComponent() {
         recyclerView_category = rootView.findViewById(R.id.rv);
+        lv_nodatafound = rootView.findViewById(R.id.lv_nodatafound);
 
         MainActivity.img_search_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,26 +201,27 @@ public class FragmentHome extends BaseFragment {
                     String jsonst = response.body().string();
                     CommonMethods.PrintLog(TAG, "url jsonst " + jsonst);
                     JSONArray jsonArray = new JSONArray(jsonst);
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        CurrencyModel currencyModel = new CurrencyModel();
-                        currencyModel.setSymbol(jsonObject.getString("s"));
-                        currencyModel.setBid(jsonObject.getString("b"));
-                        currencyModel.setAsk(jsonObject.getString("a"));
-                        currencyModel.setPrice(jsonObject.getString("p"));
-                        currencyModel.setTimestamp(jsonObject.getString("t"));
-                        modelCategoryListList.add(currencyModel);
+                    if(jsonArray.length()==0){
+                        lv_nodatafound.setVisibility(View.VISIBLE);
+                    }else{
+                        lv_nodatafound.setVisibility(View.GONE);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            CurrencyModel currencyModel = new CurrencyModel();
+                            currencyModel.setSymbol(jsonObject.getString("s"));
+                            currencyModel.setBid(jsonObject.getString("b"));
+                            currencyModel.setAsk(jsonObject.getString("a"));
+                            currencyModel.setPrice(jsonObject.getString("p"));
+                            currencyModel.setTimestamp(jsonObject.getString("t"));
+                            modelCategoryListList.add(currencyModel);
+                        }
                     }
-
                 } catch (Exception e) {
                     CommonMethods.PrintLog("Error catch ", e.toString());
                     e.printStackTrace();
                 }
-
                 deviceDataAdapter.notifyDataSetChanged();
-
             }
-
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 dialog.dismiss();
