@@ -31,7 +31,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private String TAG = "AddCurrencyActivity";
     private ImageView ivicon;
     private Dialog dialog;
-    private EditText et_name, et_email, et_contactno,et_accno,et_ifscno,et_pancardno,et_docno;
+    private EditText et_name, et_email,et_adharcard, et_contactno,et_accno,et_ifscno,et_pancardno,et_docno;
     JSONObject jsonObject;
     private TextView tv_profit, tv_available;
 
@@ -60,6 +60,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         et_ifscno = findViewById(R.id.et_ifscno);
         et_pancardno = findViewById(R.id.et_pancardno);
         et_docno = findViewById(R.id.et_docno);
+        et_adharcard = findViewById(R.id.et_adharcard);
 
 //        et_name.setText(PrefrenceManager.getString(this, PrefrenceManager.USERID));
 //        et_email.setText(PrefrenceManager.getString(this, PrefrenceManager.EMAIL));
@@ -142,6 +143,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 et_ifscno.setText(ifsc);
                 et_pancardno.setText(pan_no);
                 et_docno.setText(doc_no);
+                et_adharcard.setText(doc_no);
 
                 if(doc_id.equalsIgnoreCase("1")){
                     et_docno.setHint("Aadhar Card Number");

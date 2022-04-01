@@ -296,8 +296,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
               //  drawer_item_chatwithus.setBackgroundColor(getResources().getColor(R.color.gray_333));
                 drawer_item_chatwithus.setSelected(true);
             }
-          //  Intent intent = new Intent(this, ChatWithUsActivity.class);
-          //  startActivity(intent);
+           Intent intent = new Intent(this, ChatWithUsActivity.class);
+            startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
         if (view == drawer_item_resetpwd) {

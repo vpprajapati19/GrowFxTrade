@@ -147,8 +147,8 @@ public interface RequestInterface {
     Call<ResponseBody> addContact(
             @Field("name") String name,
             @Field("email") String email,
-            @Field("phone") String phone,
-            @Field("reason") String reason,
+           // @Field("phone") String phone,
+           // @Field("reason") String reason,
             @Field("message") String message
 
     );

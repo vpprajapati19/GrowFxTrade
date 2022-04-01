@@ -100,7 +100,7 @@
                                 android:backgroundTint="@color/colorLine"
                                 android:drawableLeft="@drawable/ic_user_new"
                                 android:cursorVisible="true"
-                                android:editable="false"
+
                                 android:fontFamily="@font/lato_regular"
                                 android:drawablePadding="@dimen/_15sdp"
                                 android:paddingTop="@dimen/_15sdp"

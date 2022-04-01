@@ -70,23 +70,23 @@ public class ChatWithUsActivity extends AppCompatActivity implements View.OnClic
         if (view == this.btn_submit) {
             String obj = this.et_name.getText().toString();
             String obj2 = this.et_email.getText().toString();
-            String obj3 = this.et_contactno.getText().toString();
-            String obj4 = this.et_reason.getText().toString();
+         //   String obj3 = this.et_contactno.getText().toString();
+           // String obj4 = this.et_reason.getText().toString();
             String obj5 = this.et_message.getText().toString();
             if (obj.length() <= 0) {
                 this.et_name.setError("Enter Valid Name");
             } else if (obj2.length() <= 0) {
                 this.et_email.setError("Enter Valid Email");
-            } else if (obj3.length() <= 0) {
+            } /*else if (obj3.length() <= 0) {
                 this.et_contactno.setError("Enter Valid Contact Number");
             } else if (obj4.length() <= 0) {
                 this.et_reason.setError("Enter Valid Reason");
-            } else if (obj5.length() <= 0) {
+            }*/ else if (obj5.length() <= 0) {
                 this.et_message.setError("Enter Valid Message");
             } else if (!CommonMethods.getInternetStatus(this)) {
                 CommonMethods.showInternetDialog(this);
             } else {
-                addContactInfo(obj, obj2, obj3, obj4, obj5);
+                addContactInfo(obj, obj2,obj5);
             }
         }
     }
@@ -108,11 +108,11 @@ public class ChatWithUsActivity extends AppCompatActivity implements View.OnClic
         overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_right);
     }
 
-    public void addContactInfo(String str, String str2, String str3, String str4, String str5) {
+    public void addContactInfo(String str, String str2, String str5) {
         String str6 = this.TAG;
         Log.e(str6, "money1  " + PrefrenceManager.getString(this, PrefrenceManager.USERID));
         this.dialog = CommonMethods.showDialogProgressBarNew(this);
-        ((RequestInterface) RetrofitClient.getClient(this).create(RequestInterface.class)).addContact(str, str2, str3, str4, str5).enqueue(new Callback<ResponseBody>() {
+        ((RequestInterface) RetrofitClient.getClient(this).create(RequestInterface.class)).addContact(str, str2, str5).enqueue(new Callback<ResponseBody>() {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 String str;
                 ChatWithUsActivity.this.dialog.dismiss();

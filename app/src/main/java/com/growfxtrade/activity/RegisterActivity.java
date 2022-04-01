@@ -62,7 +62,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private String TAG = "RegisterActivity";
     private ImageView iv_back;
     LinearLayout iv_reg;
-    private EditText et_usernmae, et_useremail,et_state, et_password, et_usermobile, et_usercity,et_accno,et_ifsccode,et_doc_no,et_pancard,et_confirmaccno,et_bankName,et_ConfirmPassword;
+    private EditText et_usernmae, et_useremail,et_state,et_adharcaredno, et_password, et_usermobile, et_usercity,et_accno,et_ifsccode,et_doc_no,et_pancard,et_confirmaccno,et_bankName,et_ConfirmPassword,et_UpiId;
     private Dialog dialog;
     private CheckBox cb_privacy;
     private Spinner spinner_country;
@@ -102,6 +102,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private void initComponent() {
         cb_privacy = findViewById(R.id.cb_privacy);
                iv_reg = findViewById(R.id.iv_reg);
+        et_adharcaredno = findViewById(R.id.et_adharcaredno);
         et_usernmae = findViewById(R.id.et_usernmae);
         et_useremail = findViewById(R.id.et_useremail);
         et_state = findViewById(R.id.et_state);
@@ -119,6 +120,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         moveLogin = findViewById(R.id.iv_login_move);
         tv_adharcard_front = findViewById(R.id.tv_adharcard_front);
         tv_adharcard_back = findViewById(R.id.tv_adharcard_back);
+        et_UpiId = findViewById(R.id.et_UpiId);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, proff);
 
@@ -215,6 +217,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 et_state.setError("Enter Valid state");
                 return;
             }
+            if (et_adharcaredno.getText().length() <= 0) {
+                et_pancard.setError("Enter Valid Adhar card Number");
+                return;
+                // Toast.makeText(this, "Enter Valid PanCard Number", Toast.LENGTH_SHORT).show();
+                // return;
+            }
             if (et_pancard.getText().length() <= 0) {
                 et_pancard.setError("Enter Valid PanCard Number");
                 return;
@@ -244,7 +252,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             if (et_ifsccode.getText().length() <= 0) {
                 et_ifsccode.setError("Enter Valid IFSC CODE");
                 return;
-            }else if (et_password.getText().length() <= 0) {
+            }if (et_UpiId.getText().toString().length() <= 0){
+                et_UpiId.setError("Enter UpiID");
+                return;
+            }
+            else if (et_password.getText().length() <= 0) {
                 et_password.setError("Enter Valid Password");
                 return;
             }
@@ -521,7 +533,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
         Log.e("imagefile1",""+imagefile1);
         Log.e("imagefile2",""+imagefile2);
-        Call<ResponseBody> call = req.getREgDetails(multipartBody1,multipartBody2,mobile, email, "male", pwd, uname,et_state.getText().toString(), ci, co,"Aadhar Card",et_bankName.getText().toString(),accno,ifsccode,"testtW@okaxov.on","1","1",docpancard);
+        Call<ResponseBody> call = req.getREgDetails(multipartBody1,multipartBody2,mobile, email, "male", pwd, uname,et_state.getText().toString(), ci, co,"Aadhar Card",et_bankName.getText().toString(),accno,ifsccode,et_UpiId.getText().toString(),"1",et_adharcaredno.getText().toString(),docpancard);
 
         call.enqueue(new Callback<ResponseBody>() {
             @SuppressLint("NewApi")
