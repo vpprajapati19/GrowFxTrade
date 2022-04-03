@@ -45,6 +45,7 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
     private String TAG = "AddCurrencyActivity";
     private ImageView ivicon;
     private Dialog dialog;
+    String screentype="";
     private EditText et_name, et_email, et_contactno, et_coundtrycode, et_investmoney;
     private Spinner spinner_country, spinner_payment;
     private LinearLayout btn_submit;
@@ -70,6 +71,11 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_investmoney);
         initComponent();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            screentype = bundle.getString("screntype");
+        }
+
 
     }
 
@@ -143,13 +149,17 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View view) {
         if (view == ivicon) {
-            finish();
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.enter_from_left,
-                    R.anim.exit_to_right);
-
-
+            if(screentype.equalsIgnoreCase("portfolio")){
+                finish();
+                Intent intent = new Intent(this, MyPortfolioActivity.class);
+                startActivity(intent);
+            }else{
+                finish();
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.enter_from_left,
+                        R.anim.exit_to_right);
+            }
         }
 
         if (view == btn_submit) {

@@ -18,6 +18,10 @@ public class PrefrenceManager {
     public static String STATUS = "status";
     public static String COUNTRY = "country";
     public static String LOGIN_STATUS = "loginstatus";
+    public static String Accountno = "accountno";
+    public static String Bankname = "bankname";
+    public static String IFCI = "ifci";
+    public static String UPI = "upi";
 
 
     public static void setString(Context activity, String key, String value) {

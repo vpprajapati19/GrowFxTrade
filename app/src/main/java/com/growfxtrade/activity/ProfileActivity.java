@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -30,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private String TAG = "AddCurrencyActivity";
     private ImageView ivicon;
+    LinearLayout lv_pf;
     private Dialog dialog;
     private EditText et_name, et_email,et_adharcard, et_contactno,et_accno,et_ifscno,et_pancardno,et_docno;
     JSONObject jsonObject;
@@ -47,6 +49,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             getProfileInfo();
             getPortfolio();
         }
+
+        lv_pf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ProfileActivity.this,demo_popup.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initComponent() {
@@ -61,6 +71,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         et_pancardno = findViewById(R.id.et_pancardno);
         et_docno = findViewById(R.id.et_docno);
         et_adharcard = findViewById(R.id.et_adharcard);
+        lv_pf = findViewById(R.id.lv_pf);
 
 //        et_name.setText(PrefrenceManager.getString(this, PrefrenceManager.USERID));
 //        et_email.setText(PrefrenceManager.getString(this, PrefrenceManager.EMAIL));

@@ -1,43 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
-
-
-    <TextView
-        android:id="@+id/txtt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Thanks for Contact US. You will get solution as soon as possible"
-        android:textSize="@dimen/_15sdp"
-        android:textColor="@color/colorPrimary"
-        android:gravity="center"
-        android:paddingTop="@dimen/_10sdp"
-        android:paddingBottom="@dimen/_10sdp"/>
-
+    style="@style/df_dialog_layout"
+    android:id="@+id/dialogParent">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="5dp"
-        android:elevation="@dimen/_10sdp"
+        app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true"
         app:cardPreventCornerOverlap="true"
-        app:cardBackgroundColor="@color/light_blue"
-        android:layout_marginBottom="@dimen/_20sdp">
-
-        <TextView
+        android:elevation="@dimen/_10sdp"
+        android:orientation="vertical">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Close"
-            android:textSize="@dimen/_15sdp"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"/>
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thanks for Contact US. You will get solution as soon as possible"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_5sdp"/>
+
+            <LinearLayout
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/_10sdp"
+                android:background="@drawable/bg_button_red_new"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginBottom="@dimen/_20sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Close"
+                    android:textSize="@dimen/_15sdp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
+
+
 </LinearLayout>

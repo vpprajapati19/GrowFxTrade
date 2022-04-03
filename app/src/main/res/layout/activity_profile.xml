@@ -37,7 +37,6 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/_20sdp"
                             android:gravity="center_vertical">
 
                             <ImageView
@@ -75,8 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/mainc"
-                    android:background="@drawable/bg_profile_rounded"
-                    android:layout_marginTop="10dp">
+                    android:background="@drawable/bg_profile_rounded">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -100,7 +98,6 @@
                                 android:backgroundTint="@color/colorLine"
                                 android:drawableLeft="@drawable/ic_user_new"
                                 android:cursorVisible="true"
-
                                 android:fontFamily="@font/lato_regular"
                                 android:drawablePadding="@dimen/_15sdp"
                                 android:paddingTop="@dimen/_15sdp"
@@ -311,6 +308,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <LinearLayout
+                            android:id="@+id/lv_pf"
                             android:layout_marginTop="@dimen/_45sdp"
                             android:background="@drawable/bg_button_red_new"
                             android:layout_width="match_parent"
@@ -420,7 +418,6 @@
                     android:layout_below="@+id/mainc"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:orientation="vertical"
-                    android:layout_marginTop="@dimen/_10sdp"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                     <RelativeLayout
@@ -442,8 +439,8 @@
 
                             <com.growfxtrade.customviews.CircleImageView
                                 android:id="@+id/ivuser"
-                                android:layout_width="@dimen/_65sdp"
-                                android:layout_height="@dimen/_65sdp"
+                                android:layout_width="@dimen/_50sdp"
+                                android:layout_height="@dimen/_50sdp"
                                 android:layout_alignParentBottom="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginLeft="10dp"

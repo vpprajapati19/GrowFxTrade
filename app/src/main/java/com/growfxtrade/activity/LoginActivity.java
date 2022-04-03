@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -141,25 +142,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (staus.equalsIgnoreCase("0")) {
                     try {
                         JSONObject jsonObject1 = jsonObject.getJSONObject("user");
+                        Log.e("jsonloginapp",""+jsonObject1);
                         user_id = jsonObject1.getString("user_id");
+                        Log.e("user_id--147","=="+user_id);
                         email = jsonObject1.getString("email");
                         mono = jsonObject1.getString("mono");
                         status = jsonObject1.getString("status");
                         country = jsonObject1.getString("country");
                         country = jsonObject1.getString("country");
                         user_name = jsonObject1.getString("user_name");
+
+                        Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.USERID, user_id);
+                        PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.EMAIL, email);
+                        PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.MOBILE, mono);
+                        PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.STATUS, status);
+                        PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.COUNTRY, country);
+                        PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.USERNAME, user_name);
+                        PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.LOGIN_STATUS, "true");
+                        getwirthdraw();
+
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
-                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.USERID, user_id);
-                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.EMAIL, email);
-                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.MOBILE, mono);
-                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.STATUS, status);
-                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.COUNTRY, country);
-                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.USERNAME, user_name);
-                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.LOGIN_STATUS, "true");
+
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.item_animation_from_bottom,
@@ -176,6 +184,57 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 dialog.dismiss();
                 CommonMethods.simpleSnackbar(LoginActivity.this, AppUtils.SERVER_ERROR);
                 CommonMethods.PrintLog(TAG, "onFailure " + t.toString());
+            }
+        });
+    }
+
+    public void getwirthdraw() {
+
+        RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
+        Call<ResponseBody> call = req.get_pending_withdraw(PrefrenceManager.getString(LoginActivity.this, PrefrenceManager.USERID));
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                CommonMethods.PrintLog(TAG, "url  " + response.raw().request().url());
+                String withdrawamount = "";
+                String Accountno="";
+                String IFCI="";
+                String UPI="";
+
+                try {
+                    String res = response.body().string();
+                    CommonMethods.PrintLog(TAG, "url res " + res);
+                    JSONObject jsonObject = new JSONObject(res);
+                    JSONObject jsonObject1 = jsonObject.getJSONObject("withdraw_data");
+                    Accountno = jsonObject1.getString("bank_account_no");
+                    IFCI = jsonObject1.getString("ifsc");
+                    UPI = jsonObject1.getString("upi_id");
+                    Log.e("bank_account_no--204","--"+Accountno);
+                    Log.e("ifsc--204","--"+IFCI);
+                    Log.e("upi_id--204","--"+UPI);
+                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.Accountno, Accountno);
+                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.IFCI, IFCI);
+                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.UPI, UPI);
+
+                   // withdrawamount = jsonObject1.getString("req_amount");
+
+                } catch (Exception e) {
+                   // tv_show_wirthdawmoney.setVisibility(View.GONE);
+                    CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
+                }
+
+              //  tv_show_wirthdawmoney.setText("Withdrawal : " + withdrawamount+"$ Pending");
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                CommonMethods.simpleSnackbar(LoginActivity.this, AppUtils.SERVER_ERROR);
+//                CommonMethods.PrintLog(TAG, t.toString());
+
             }
         });
     }

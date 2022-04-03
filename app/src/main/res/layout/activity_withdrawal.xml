@@ -12,29 +12,27 @@
         android:layout_height="match_parent">
         <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
             android:id="@+id/mainc"
-            android:layout_height="80dp"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/_60sdp"
             app:layout_scrollFlags="enterAlways|scroll">
-
             <androidx.appcompat.widget.Toolbar
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/toolbar"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="@dimen/_60sdp"
                 android:elevation="0dp"
                 android:background="@color/colorBgHeader">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center_vertical">
 
                     <ImageView
                         android:id="@+id/ivicon"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_20sdp"
-                        android:padding="@dimen/_3sdp"
+                        android:layout_width="35dp"
+                        android:layout_height="15dp"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="10.0dip"
                         android:src="@drawable/ic_back_arrow_new"
@@ -48,7 +46,6 @@
                         android:fontFamily="@font/lato_bold"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:layout_marginLeft="@dimen/_10sdp"
                         android:text="@string/withdrawal"
                         android:textAllCaps="true"
                         android:textColor="@color/colorTitle"
@@ -61,7 +58,6 @@
             </androidx.appcompat.widget.Toolbar>
 
         </RelativeLayout>
-
         <RelativeLayout
             android:id="@+id/rel_bgRounded"
             android:layout_width="match_parent"
@@ -114,7 +110,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:textSize="@dimen/_20sdp"
+                                    android:textSize="@dimen/_16sdp"
                                     android:fontFamily="@font/lato_bold"
                                     android:textColor="@color/colorTextAddCurrency"
                                     android:textStyle="bold"
@@ -184,12 +180,48 @@
                             android:text="Choose Deposit Option"
                             android:textSize="@dimen/_10sdp" />
 
-                        <androidx.appcompat.widget.AppCompatSpinner
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/spinner_payment_withdraw"
+                                android:scrollIndicators="none"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30sdp"
+                                android:dropDownVerticalOffset="38dp"
+                                android:dropDownWidth="match_parent"
+                                android:spinnerMode="dropdown"
+                                android:popupBackground="@drawable/spinner_corner"
+                                android:background="@null"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:textSize="@dimen/_14sdp"/>
+                            <LinearLayout
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:gravity="right"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_alignParentLeft="true"
+                                android:background="@drawable/ic_deposit_new"/>
+                            <LinearLayout
+                                android:layout_width="@dimen/_25sdp"
+                                android:layout_height="@dimen/_25sdp"
+                                android:gravity="right"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/ic_baseline_expand_more_24"/>
+                        </RelativeLayout>
+
+                       <!-- <androidx.appcompat.widget.AppCompatSpinner
                             android:id="@+id/spinner_payment_withdraw"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_30sdp"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:textSize="@dimen/_14sdp"/>
+                            android:dropDownWidth="match_parent"
+                            android:spinnerMode="dropdown"
+                            android:textSize="@dimen/_14sdp"/>-->
 
                         <View
                             android:layout_marginTop="@dimen/_4sdp"

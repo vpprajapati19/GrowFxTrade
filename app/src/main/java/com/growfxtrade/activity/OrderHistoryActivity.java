@@ -81,6 +81,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
     public void getCurrencyList() {
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
+        Log.e("userid","=="+PrefrenceManager.USERID);
         Call<ResponseBody> call = req.getOrderHistory(PrefrenceManager.getString(this, PrefrenceManager.USERID));
 
         call.enqueue(new Callback<ResponseBody>() {

@@ -238,16 +238,22 @@ public class MyPortfolioActivity extends AppCompatActivity implements View.OnCli
 
         }
         if (view == btnInvestMoney) {
-            finish();
+            String screen="portfolio";
+            Bundle b =new Bundle();
+            b.putString("screntype", "" +screen);
             Intent intent = new Intent(this, InvestMoneyActivity.class);
+            intent.putExtras(b);
             startActivity(intent);
             overridePendingTransition(R.anim.enter_from_left,
                     R.anim.exit_to_right);
 
 
         } if (view == btnWithdrowMoney) {
-            finish();
+            String screen="portfolio";
+            Bundle b =new Bundle();
+            b.putString("screntype", "" +screen);
             Intent intent = new Intent(this, WithdrawMoneyActivity.class);
+            intent.putExtras(b);
             startActivity(intent);
             overridePendingTransition(R.anim.enter_from_left,
                     R.anim.exit_to_right);

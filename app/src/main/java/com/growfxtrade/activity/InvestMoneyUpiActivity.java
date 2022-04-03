@@ -50,6 +50,7 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
             Log.e("price255555","=="+price);
             tv_price.setText(price);
         }
+        tv_copy.setText(PrefrenceManager.UPI);
         iv_copybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,13 +114,13 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
                 }
                 if (staus.equalsIgnoreCase("0")) {
 
-                    final Dialog dialog = new Dialog(InvestMoneyUpiActivity.this);
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.setCancelable(false);
-                    dialog.setContentView(R.layout.dialog);
+                    final Dialog dialog1 = new Dialog(InvestMoneyUpiActivity.this, R.style.df_dialog);
+                    dialog1.setContentView(R.layout.dialog);
+                    dialog1.setCancelable(true);
+                    dialog1.setCanceledOnTouchOutside(true);
 
-                    CardView dialogButton = dialog.findViewById(R.id.btn_submit);
-                    TextView txtt = dialog.findViewById(R.id.txtt);
+                   LinearLayout dialogButton = dialog1.findViewById(R.id.btn_submit);
+                   TextView txtt = dialog1.findViewById(R.id.txtt);
                     txtt.setText("Request has been Updated. You will get a mail within few time");
                     dialogButton.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -130,7 +131,7 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
                         }
                     });
 
-                    dialog.show();
+                    dialog1.show();
                     //getInfoDialog("Request has been Updated. You will get a mail within few time");
 //                    Toast.makeText(InvestMoneyActivity.this, msg, Toast.LENGTH_SHORT).show();
 

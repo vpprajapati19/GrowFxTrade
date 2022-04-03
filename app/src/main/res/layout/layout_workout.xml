@@ -41,7 +41,7 @@
                     android:src="@drawable/thiqah_souq_white"
                     android:text="Watchlist"
                     android:textColor="@color/colorTitle"
-                    android:textSize="30dp"
+                    android:textSize="25dp"
                     android:layout_marginLeft="@dimen/_70sdp"
                     android:textStyle="bold"
                     android:fontFamily="@font/lato_bold"

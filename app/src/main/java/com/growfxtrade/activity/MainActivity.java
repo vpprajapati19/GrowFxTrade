@@ -206,7 +206,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 drawer_item_refundpolicy.setSelected(true);
             }
             Intent intent = new Intent(this, RefundPolicyActivity.class);
-            intent.putExtra("url", "http://orionfxrobo.com/refund_policy.php");
+            intent.putExtra("url", "http://growfxtrade.com/");
             intent.putExtra("title", "Refund Policy");
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -219,7 +219,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 drawer_item_termsandcondition.setSelected(true);
             }
             Intent intent = new Intent(this, RefundPolicyActivity.class);
-            intent.putExtra("url", "http://orionfxrobo.com/term_condition.php");
+            intent.putExtra("url", "http://growfxtrade.com/");
             intent.putExtra("title", "Terms & Policy");
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right,
@@ -233,7 +233,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 drawer_item_aboutus.setSelected(true);
             }
             Intent intent = new Intent(this, RefundPolicyActivity.class);
-            intent.putExtra("url", "http://orionfxrobo.com/about.php");
+            intent.putExtra("url", "http://growfxtrade.com/about.html");
             intent.putExtra("title", "About Us");
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -246,7 +246,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 drawer_item_privacypolicy.setSelected(true);
             }
             Intent intent = new Intent(this, RefundPolicyActivity.class);
-            intent.putExtra("url", "http://orionfxrobo.com/privacy_policy.php");
+            intent.putExtra("url", "http://growfxtrade.com/");
             intent.putExtra("title", "Privacy & Policy");
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -259,7 +259,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 drawer_item_calaneder.setSelected(true);
             }
             Intent intent = new Intent(this, RefundPolicyActivity.class);
-            intent.putExtra("url", "https://orionfxrobo.com/economic_calender.php");
+            intent.putExtra("url", "http://growfxtrade.com/");
             intent.putExtra("title", "Economic Calender");
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

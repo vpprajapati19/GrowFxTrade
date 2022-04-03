@@ -1,15 +1,22 @@
 package com.growfxtrade.activity;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 import com.facebook.appevents.AppEventsConstants;
 import com.growfxtrade.R;
@@ -28,7 +35,8 @@ import retrofit2.Response;
 public class ChatWithUsActivity extends AppCompatActivity implements View.OnClickListener {
     /* access modifiers changed from: private */
     public String TAG = "AddCurrencyActivity";
-    private CardView btn_submit;
+    private LinearLayout btn_submit;
+    ConstraintLayout lv_main;
     /* access modifiers changed from: private */
     public Dialog dialog;
     private EditText et_contactno;
@@ -44,11 +52,13 @@ public class ChatWithUsActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(bundle);
         setContentView((int) R.layout.activity_chatwithus);
         initComponent();
+        setupUI(lv_main);
     }
 
     private void initComponent() {
         this.ivicon = (ImageView) findViewById(R.id.ivicon);
-        this.btn_submit = (CardView) findViewById(R.id.btn_submit);
+        this.btn_submit = findViewById(R.id.btn_submit);
+        this.lv_main = findViewById(R.id.lv_main);
         this.et_name = (EditText) findViewById(R.id.et_name);
         this.et_email = (EditText) findViewById(R.id.et_email);
         this.et_contactno = (EditText) findViewById(R.id.et_contactno);
@@ -61,6 +71,35 @@ public class ChatWithUsActivity extends AppCompatActivity implements View.OnClic
         this.btn_submit.setOnClickListener(this);
     }
 
+    private void setupUI(View v) {
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (!(v instanceof EditText)) {
+            v.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    hideKeyboard(ChatWithUsActivity.this);
+                    return false;
+                }
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (v instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) v).getChildCount(); i++) {
+                View innerView = ((ViewGroup) v).getChildAt(i);
+                setupUI(innerView);
+            }
+        }
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager inputManager = (InputMethodManager) activity
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        // check if no view has focus:
+        View currentFocusedView = activity.getCurrentFocus();
+        if (currentFocusedView != null) {
+            inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
     public void onClick(View view) {
         if (view == this.ivicon) {
             finish();

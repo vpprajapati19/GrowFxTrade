@@ -515,7 +515,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="@dimen/_25sdp"
-                    android:background="@drawable/bg_button_orange"
+                    android:background="@drawable/bg_button_red_new"
                     android:padding="@dimen/_13sdp">
 
                     <TextView

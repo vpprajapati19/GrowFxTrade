@@ -34,6 +34,7 @@ import retrofit2.Response;
 public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnClickListener {
     private Dialog dialog;
     private String TAG = "WithdrawMoneyActivity";
+    String screentype="";
     JSONObject jsonObject;
     TextView tv_amount;
     private ImageView ivicon;
@@ -70,6 +71,10 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_withdrawal);
         initComponent();
 
+        Bundle bundle= getIntent().getExtras();
+        if(bundle != null){
+            screentype = bundle.getString("screntype");
+        }
         if (!CommonMethods.getInternetStatus(this)) {
             CommonMethods.showInternetDialog(this);
         } else {
@@ -154,11 +159,19 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         if (view == ivicon) {
-            finish();
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.enter_from_left,
-                    R.anim.exit_to_right);
+
+            if(screentype.equalsIgnoreCase("portfolio")){
+                finish();
+                Intent intent = new Intent(this, MyPortfolioActivity.class);
+                startActivity(intent);
+            }else{
+                finish();
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.enter_from_left,
+                        R.anim.exit_to_right);
+            }
+
         }
 
         if (view == btn_submit) {

@@ -64,7 +64,7 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
     private void initComponent() {
-        ivicon = findViewById(R.id.ivicon);
+        ivicon = findViewById(R.id.ivicon_tran);
 
         tv_invest = findViewById(R.id.tv_invest);
         tv_withdrawal = findViewById(R.id.tv_withdrawal);

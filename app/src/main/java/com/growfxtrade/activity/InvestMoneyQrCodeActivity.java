@@ -92,13 +92,13 @@ public class InvestMoneyQrCodeActivity extends AppCompatActivity implements View
                 }
                 if (staus.equalsIgnoreCase("0")) {
 
-                    final Dialog dialog = new Dialog(InvestMoneyQrCodeActivity.this);
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.setCancelable(false);
-                    dialog.setContentView(R.layout.dialog);
+                    final Dialog dialog1 = new Dialog(InvestMoneyQrCodeActivity.this, R.style.df_dialog);
+                    dialog1.setContentView(R.layout.dialog);
+                    dialog1.setCancelable(true);
+                    dialog1.setCanceledOnTouchOutside(true);
 
-                    CardView dialogButton = dialog.findViewById(R.id.btn_submit);
-                    TextView txtt = dialog.findViewById(R.id.txtt);
+                    LinearLayout dialogButton = dialog1.findViewById(R.id.btn_submit);
+                    TextView txtt = dialog1.findViewById(R.id.txtt);
                     txtt.setText("Request has been Updated. You will get a mail within few time");
                     dialogButton.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -109,7 +109,7 @@ public class InvestMoneyQrCodeActivity extends AppCompatActivity implements View
                         }
                     });
 
-                    dialog.show();
+                    dialog1.show();
                     //getInfoDialog("Request has been Updated. You will get a mail within few time");
 //                    Toast.makeText(InvestMoneyActivity.this, msg, Toast.LENGTH_SHORT).show();
 

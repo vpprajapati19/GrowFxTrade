@@ -6,69 +6,71 @@
     android:layout_height="match_parent"
     android:background="@color/colorBgHeader">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@+id/abc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <RelativeLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
                 android:id="@+id/mainc"
-                android:layout_height="100dp">
-
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/_60sdp"
+                app:layout_scrollFlags="enterAlways|scroll">
                 <androidx.appcompat.widget.Toolbar
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/toolbar"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="@dimen/_60sdp"
                     android:elevation="0dp"
                     android:background="@color/colorBgHeader">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:gravity="center_vertical">
 
                         <ImageView
-                            android:id="@+id/ivicon"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:padding="@dimen/_3sdp"
+                            android:id="@+id/ivicon_tran"
+                            android:layout_width="35dp"
+                            android:layout_height="15dp"
                             android:layout_centerVertical="true"
+                            android:layout_marginRight="10.0dip"
                             android:src="@drawable/ic_back_arrow_new"
-                            android:visibility="visible"  />
+                            android:visibility="visible" />
 
                         <TextView
                             android:id="@+id/tvtitle"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:fontFamily="@font/lato_bold"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:layout_marginLeft="@dimen/_55sdp"
                             android:text="Your Transaction"
                             android:textAllCaps="true"
                             android:textColor="@color/colorTitle"
-                            android:textSize="@dimen/_20sdp"
+                            android:textSize="@dimen/_18sdp"
                             android:textStyle="bold"
                             android:visibility="visible" />
+
                     </RelativeLayout>
+
                 </androidx.appcompat.widget.Toolbar>
 
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/rel_bgRounded"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/mainc"
                 android:background="@drawable/bg_profile_rounded"
-                android:layout_marginTop="15dp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <LinearLayout
@@ -335,7 +337,9 @@
                 </LinearLayout>
             </RelativeLayout>
         </RelativeLayout>
-    </ScrollView>
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

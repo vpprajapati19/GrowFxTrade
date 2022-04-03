@@ -1,6 +1,7 @@
 package com.growfxtrade.utils;
 
 import android.app.Activity;
+import android.content.Context;
 
 import com.jakewharton.picasso.OkHttp3Downloader;
 
@@ -24,11 +25,11 @@ public class RetrofitClient {
 
 //    public static String service_url = "http://acutetech.in";
     public static String service_url = "https://orionfxrobo.com";
-    public static String service_urll = "https://growfxtrade.com";
+    public static String service_urll = "https://growfxtrade.com/";
     public static String service_url1 = "https://api.1forge.com";
 
 
-    public static Retrofit getClient(Activity activity) {
+    public static Retrofit getClient(Context activity) {
 
         if (retrofit == null) {
             OkHttpClient okHttpClient = new OkHttpClient().newBuilder()

@@ -30,7 +30,7 @@ import retrofit2.Response;
 
 public class InvestMoneyNetbankingActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView ivicon;
-    TextView tv_price;
+    TextView tv_price,tv_bankname,tv_bank_accountno,tv_ifsccode;
     private String TAG = "InvestMoneyQrCodeActivity";
     LinearLayout btn_sent_money_netbank;
     private Dialog dialog;
@@ -52,9 +52,16 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
     private void initComponent() {
         ivicon = findViewById(R.id.ivicon);
         tv_price = findViewById(R.id.tv_price);
+        tv_bank_accountno = findViewById(R.id.tv_bank_accountno);
+        tv_ifsccode= findViewById(R.id.tv_ifsccode);
+        tv_bankname= findViewById(R.id.tv_bankname);
         btn_sent_money_netbank = findViewById(R.id.btn_sent_money_netbank);
         ivicon.setOnClickListener(this);
         btn_sent_money_netbank.setOnClickListener(this);
+
+        tv_bank_accountno.setText(PrefrenceManager.Accountno);
+        tv_ifsccode.setText(PrefrenceManager.IFCI);
+        tv_bankname.setText(PrefrenceManager.Bankname);
     }
 
     @Override
@@ -92,14 +99,13 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
                 }
                 if (staus.equalsIgnoreCase("0")) {
+                    final Dialog dialog1 = new Dialog(InvestMoneyNetbankingActivity.this, R.style.df_dialog);
+                    dialog1.setContentView(R.layout.dialog);
+                    dialog1.setCancelable(true);
+                    dialog1.setCanceledOnTouchOutside(true);
 
-                    final Dialog dialog = new Dialog(InvestMoneyNetbankingActivity.this);
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.setCancelable(false);
-                    dialog.setContentView(R.layout.dialog);
-
-                    CardView dialogButton = dialog.findViewById(R.id.btn_submit);
-                    TextView txtt = dialog.findViewById(R.id.txtt);
+                    LinearLayout dialogButton = dialog1.findViewById(R.id.btn_submit);
+                    TextView txtt = dialog1.findViewById(R.id.txtt);
                     txtt.setText("Request has been Updated. You will get a mail within few time");
                     dialogButton.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -110,7 +116,7 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
                         }
                     });
 
-                    dialog.show();
+                    dialog1.show();
                     //getInfoDialog("Request has been Updated. You will get a mail within few time");
 //                    Toast.makeText(InvestMoneyActivity.this, msg, Toast.LENGTH_SHORT).show();
 

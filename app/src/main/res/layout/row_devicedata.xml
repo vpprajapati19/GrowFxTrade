@@ -18,26 +18,30 @@
         <!--app:cardUseCompatPadding="true"-->
         <!--android:background="@drawable/rounded_layout_blue"-->
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/maincard"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/_8sdp">
+            android:weightSum="3"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:padding="5dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_2sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/symbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="udo/usd"
                     android:textColor="@color/colorDrawerMenu"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/_14sdp"
                     android:fontFamily="@font/lato_bold"
                     android:textStyle="bold" />
 
@@ -46,7 +50,6 @@
                     android:id="@+id/type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:text="Timestamp"
                     android:fontFamily="@font/lato_regular"
                     android:textColor="@color/colorTitle"
@@ -58,37 +61,46 @@
                     android:id="@+id/timestamp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text=""
+                    android:text="1648889522375"
                     android:textColor="@color/colorTitle"
-                    android:textSize="14dp"
+                    android:textSize="12dp"
                     android:fontFamily="@font/lato_regular"
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <ImageView
-                android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_graph_new"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content">
-            </ImageView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_weight="1.1">
+                <ImageView
+                    android:src="@drawable/ic_graph_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </ImageView>
+            </LinearLayout>
+
 
             <LinearLayout
-                android:padding="5dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_weight="0.9"
+                android:gravity="right"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="0.1234567899"
                     android:fontFamily="@font/lato_bold"
                     android:textColor="@color/colorDrawerMenu"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/_14sdp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -110,9 +122,9 @@
                         android:id="@+id/bid"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="140.256"
                         android:textColor="@color/colorTitle"
-                        android:textSize="14dp"
+                        android:textSize="12dp"
                         android:fontFamily="@font/lato_regular"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -135,15 +147,15 @@
                         android:id="@+id/ask"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="0.15478"
                         android:textColor="@color/colorTitle"
-                        android:textSize="14dp"
+                        android:textSize="12dp"
                         android:fontFamily="@font/lato_regular"
                         android:textStyle="bold" />
 
                 </LinearLayout>
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
 
         <!--<RelativeLayout
