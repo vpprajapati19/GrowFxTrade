@@ -184,10 +184,10 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
     }
     public void Buyapi(String amoun, String cur_name, String cur_id, final AlertDialog alertDialog) {
      //   Log.e("list236","=="+clist);
-        Log.e("userid187","=="+PrefrenceManager.USERID);
+        Log.e("userid187","=="+PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(mContext);
         RequestInterface req = RetrofitClient.getClient(mContext).create(RequestInterface.class);
-        Call<ResponseBody> call = req.getBuySell("buy","123",amoun,"1","1000", PrefrenceManager.USERID,cur_name);
+        Call<ResponseBody> call = req.getBuySell("buy","123",amoun,"1",amoun, PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID),cur_name);
 
         call.enqueue(new Callback<ResponseBody>() {
             @SuppressLint("NewApi")

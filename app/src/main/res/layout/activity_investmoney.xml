@@ -273,18 +273,19 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
+
                                 <androidx.appcompat.widget.AppCompatSpinner
                                     android:id="@+id/spinner_payment"
-                                    android:scrollIndicators="none"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_30sdp"
-                                    android:dropDownVerticalOffset="38dp"
-                                    android:dropDownWidth="match_parent"
-                                    android:spinnerMode="dropdown"
-                                    android:popupBackground="@drawable/spinner_corner"
-                                    android:background="@null"
                                     android:layout_marginTop="@dimen/_5sdp"
-                                    android:textSize="@dimen/_14sdp"/>
+                                    android:background="@null"
+                                    android:dropDownWidth="match_parent"
+                                    android:dropDownVerticalOffset="38dp"
+                                    android:popupBackground="@drawable/spinner_corner"
+                                    android:scrollIndicators="none"
+                                    android:spinnerMode="dropdown"
+                                    android:textSize="@dimen/_14sdp" />
                                 <LinearLayout
                                     android:layout_width="@dimen/_16sdp"
                                     android:layout_height="@dimen/_16sdp"

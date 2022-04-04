@@ -64,11 +64,8 @@ public class AddCurrencyActivity extends AppCompatActivity implements View.OnCli
             CommonMethods.showInternetDialog(this);
         } else {
             getCurrencyList();
-
         }
-
     }
-
     private void initComponent() {
         ivicon = findViewById(R.id.ivicon);
         recyclerView = findViewById(R.id.recyclerView);

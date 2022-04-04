@@ -65,7 +65,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private EditText et_usernmae, et_useremail,et_state,et_adharcaredno, et_password, et_usermobile, et_usercity,et_accno,et_ifsccode,et_doc_no,et_pancard,et_confirmaccno,et_bankName,et_ConfirmPassword,et_UpiId;
     private Dialog dialog;
     private CheckBox cb_privacy;
-    private Spinner spinner_country;
+    private Spinner spinner_country,spinner_documenttype;
     TextView tv_adharcard_front,tv_adharcard_back;
     LinearLayout moveLogin;
     String docposition="";
