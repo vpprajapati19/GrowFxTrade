@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:facebook="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorBgHeader">
+    android:background="@color/white">
 
     <androidx.core.widget.NestedScrollView
         android:layout_below="@+id/abc"
@@ -22,7 +22,8 @@
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/mainc"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBgHeader"
                 app:layout_scrollFlags="enterAlways|scroll">
                 <androidx.appcompat.widget.Toolbar
                     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -64,231 +65,235 @@
                     </RelativeLayout>
 
                 </androidx.appcompat.widget.Toolbar>
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/rel_bgRounded"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/mainc"
-                android:background="@drawable/bg_profile_rounded">
-
-                <ScrollView
+                <RelativeLayout
+                    android:id="@+id/rel_bgRounded"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/toolbar"
+                    android:background="@drawable/bg_profile_rounded">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:layout_marginRight="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_25sdp"
-                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp">
-                            <ImageView
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_deposit_new">
-                            </ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="10dp"
-                                android:fontFamily="@font/lato_regular"
-                                android:textSize="@dimen/_16sdp"
-                                android:textColor="@color/colorLine"
-                                android:textStyle="normal"
-                                android:text="Deposit Via">
-                            </TextView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="5dp"
-                                android:textSize="@dimen/_16sdp"
-                                android:fontFamily="@font/lato_regular"
-                                android:textColor="@color/colorTitle"
-                                android:textStyle="bold"
-                                android:textAllCaps="true"
-                                android:text="Upi id">
-                            </TextView>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_marginRight="@dimen/_20sdp"
                             android:layout_marginTop="@dimen/_25sdp"
                             android:orientation="vertical">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="@dimen/_15sdp"
-                                android:background="@drawable/bg_invest_money_rounded_top">>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:textSize="@dimen/_16sdp"
-                                    android:fontFamily="@font/lato_bold"
-                                    android:textColor="@color/colorTextInvest"
-                                    android:textStyle="bold"
-                                    android:text="Invested  ">
-                                </TextView>
-                                <TextView
-                                    android:id="@+id/tv_price"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginLeft="@dimen/_15sdp"
-                                    android:textSize="@dimen/_16sdp"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textColor="@color/colorTitle"
-                                    android:textStyle="normal"
-                                    android:textAllCaps="true"
-                                    android:text="$ - 1000">
-                                </TextView>
-                            </LinearLayout>
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/colorLineInvest" />
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="@dimen/_15sdp"
-                                android:background="@drawable/bg_invest_money_rounded">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:fontFamily="@font/lato_bold"
-                                    android:textSize="@dimen/_16sdp"
-                                    android:textColor="@color/colorTextInvest"
-                                    android:textStyle="bold"
-                                    android:text="Total INR  ">
-                                </TextView>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:layout_marginLeft="@dimen/_15sdp"
-                                    android:textSize="@dimen/_16sdp"
-                                    android:textColor="@color/colorTitle"
-                                    android:textStyle="normal"
-                                    android:textAllCaps="true"
-                                    android:text="Rs - 72000">
-                                </TextView>
-                            </LinearLayout>
-                        </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_25sdp"
-                            android:orientation="vertical">
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:padding="@dimen/_15sdp"
-                                android:background="@drawable/bg_invest_money_rounded_top">>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:textSize="@dimen/_16sdp"
-                                    android:fontFamily="@font/lato_bold"
-                                    android:textColor="@color/colorTextInvest"
-                                    android:textStyle="bold"
-                                    android:textAllCaps="true"
-                                    android:text="Upi id  ">
-                                </TextView>
-                            </LinearLayout>
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/colorLineInvest" />
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="@dimen/_15sdp"
-                                android:background="@drawable/bg_invest_money_rounded_middel">>
-                                <TextView
-                                    android:id="@+id/tv_copy"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:textSize="@dimen/_15sdp"
-                                    android:fontFamily="@font/lato_bold"
-                                    android:textColor="@color/colorTextInvest"
-                                    android:textStyle="bold"
-                                    android:layout_weight="1.5"
-                                    android:text="growfx@oaxis ">
-                                </TextView>
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_10sdp">
                                 <ImageView
-                                    android:id="@+id/iv_copybutton"
                                     android:layout_width="@dimen/_20sdp"
                                     android:layout_height="@dimen/_20sdp"
-                                    android:layout_weight="0.5"
-                                    android:src="@drawable/ic_copy_new" />
-                            </LinearLayout>
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/colorLineInvest" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="@dimen/_15sdp"
-                                android:background="@drawable/bg_invest_money_rounded">
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_deposit_new">
+                                </ImageView>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:textSize="@dimen/_8sdp"
-                                    android:fontFamily="@font/lato_light"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:textSize="@dimen/_16sdp"
+                                    android:textColor="@color/colorLine"
+                                    android:textStyle="normal"
+                                    android:text="Deposit Via">
+                                </TextView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:textSize="@dimen/_16sdp"
+                                    android:fontFamily="@font/lato_regular"
                                     android:textColor="@color/colorTitle"
                                     android:textStyle="bold"
-                                    android:text="*IMPORTANT \nThis is BEP20 deposit address type. Please deposit \nonly USDT to this Address">
+                                    android:textAllCaps="true"
+                                    android:text="Upi id">
                                 </TextView>
                             </LinearLayout>
-                        </LinearLayout>
 
-                        <LinearLayout
-                            android:id="@+id/btn_sent_money_upi"
-                            android:layout_marginTop="@dimen/_45sdp"
-                            android:background="@drawable/bg_button_red_new"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_45sdp"
-                            android:layout_gravity="center"
-                            android:layout_weight="2"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="I HAVE SENT THE AMOUNT"
-                                android:textSize="@dimen/_14sdp"
-                                android:textColor="@color/white"
+                                android:layout_marginTop="@dimen/_25sdp"
+                                android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_15sdp"
+                                    android:background="@drawable/bg_invest_money_rounded_top">>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:textSize="@dimen/_16sdp"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:textColor="@color/colorTextInvest"
+                                        android:textStyle="bold"
+                                        android:text="Invested  ">
+                                    </TextView>
+                                    <TextView
+                                        android:id="@+id/tv_price"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/_15sdp"
+                                        android:textSize="@dimen/_16sdp"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:textColor="@color/colorTitle"
+                                        android:textStyle="normal"
+                                        android:textAllCaps="true"
+                                        android:text="$ - 1000">
+                                    </TextView>
+                                </LinearLayout>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/colorLineInvest" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_15sdp"
+                                    android:background="@drawable/bg_invest_money_rounded">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:textSize="@dimen/_16sdp"
+                                        android:textColor="@color/colorTextInvest"
+                                        android:textStyle="bold"
+                                        android:text="Total INR  ">
+                                    </TextView>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:layout_marginLeft="@dimen/_15sdp"
+                                        android:textSize="@dimen/_16sdp"
+                                        android:textColor="@color/colorTitle"
+                                        android:textStyle="normal"
+                                        android:textAllCaps="true"
+                                        android:text="Rs - 72000">
+                                    </TextView>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_25sdp"
+                                android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_15sdp"
+                                    android:background="@drawable/bg_invest_money_rounded_top">>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:textSize="@dimen/_16sdp"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:textColor="@color/colorTextInvest"
+                                        android:textStyle="bold"
+                                        android:textAllCaps="true"
+                                        android:text="Upi id  ">
+                                    </TextView>
+                                </LinearLayout>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/colorLineInvest" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_15sdp"
+                                    android:background="@drawable/bg_invest_money_rounded_middel">>
+                                    <TextView
+                                        android:id="@+id/tv_copy"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:textColor="@color/colorTextInvest"
+                                        android:textStyle="bold"
+                                        android:layout_weight="1.5"
+                                        android:text="growfx@oaxis ">
+                                    </TextView>
+                                    <ImageView
+                                        android:id="@+id/iv_copybutton"
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:layout_weight="0.5"
+                                        android:src="@drawable/ic_copy_new" />
+                                </LinearLayout>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/colorLineInvest" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_15sdp"
+                                    android:background="@drawable/bg_invest_money_rounded">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:textSize="@dimen/_8sdp"
+                                        android:fontFamily="@font/lato_light"
+                                        android:textColor="@color/colorTitle"
+                                        android:textStyle="bold"
+                                        android:text="*IMPORTANT \nThis is BEP20 deposit address type. Please deposit \nonly USDT to this Address">
+                                    </TextView>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/btn_sent_money_upi"
+                                android:layout_marginTop="@dimen/_45sdp"
+                                android:background="@drawable/bg_button_red_new"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_gravity="center"
+                                android:layout_weight="2"
                                 android:gravity="center"
-                                android:textStyle="bold"
-                                android:fontFamily="@font/lato_regular"
-                                android:paddingTop="@dimen/_10sdp"
-                                android:paddingBottom="@dimen/_11sdp"/>
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="I HAVE SENT THE AMOUNT"
+                                    android:textSize="@dimen/_14sdp"
+                                    android:textColor="@color/white"
+                                    android:gravity="center"
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:paddingTop="@dimen/_10sdp"
+                                    android:paddingBottom="@dimen/_11sdp"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_below="@+id/rec_home"
+                                android:layout_width="match_parent"
+                                android:layout_alignParentBottom="true"
+                                android:layout_height="@dimen/_20sdp">
+                            </LinearLayout>
+
                         </LinearLayout>
 
-                    </LinearLayout>
 
-                </ScrollView>
+                </RelativeLayout>
+
             </RelativeLayout>
+
         </RelativeLayout>
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>

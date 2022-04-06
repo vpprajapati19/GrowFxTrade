@@ -4,7 +4,7 @@
     xmlns:facebook="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/colorBgHeader">
+    android:background="@color/white">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -23,7 +23,8 @@
                 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/mainc"
                     android:layout_width="fill_parent"
-                    android:layout_height="@dimen/_60sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBgHeader"
                     app:layout_scrollFlags="enterAlways|scroll">
 
                     <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
@@ -65,239 +66,55 @@
                         </RelativeLayout>
 
                     </androidx.appcompat.widget.Toolbar>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rel_bgRounded"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/mainc"
-                    android:background="@drawable/bg_profile_rounded">
-
-                    <LinearLayout
+                    <RelativeLayout
+                        android:id="@+id/rel_bgRounded"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_30sdp"
-                        android:layout_marginRight="@dimen/_20sdp"
-                        android:orientation="vertical">
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/toolbar"
+                        android:background="@drawable/bg_profile_rounded">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_20sdp"
-                            android:layout_marginRight="@dimen/_20sdp">
-
-                            <ImageView
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_deposit_new"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="10dp"
-                                android:fontFamily="@font/lato_regular"
-                                android:text="Deposit Via"
-                                android:textColor="@color/colorLine"
-                                android:textSize="@dimen/_16sdp"
-                                android:textStyle="normal"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="5dp"
-                                android:fontFamily="@font/lato_bold"
-                                android:text="CRYPTO"
-                                android:textAllCaps="true"
-                                android:textColor="@color/colorTitle"
-                                android:textSize="@dimen/_16sdp"
-                                android:textStyle="bold"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_25sdp"
+                            android:layout_marginTop="@dimen/_30sdp"
+                            android:layout_marginRight="@dimen/_20sdp"
                             android:orientation="vertical">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/bg_invest_money_rounded_top"
-                                android:padding="@dimen/_15sdp">>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:fontFamily="@font/lato_bold"
-                                    android:text="Invested  "
-                                    android:textColor="@color/colorTextInvest"
-                                    android:textSize="@dimen/_16sdp"
-                                    android:textStyle="bold"></TextView>
-
-                                <TextView
-                                    android:id="@+id/tv_price"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginLeft="@dimen/_10sdp"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:text="$ - 1000"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/colorTitle"
-                                    android:textSize="@dimen/_16sdp"
-                                    android:textStyle="normal"></TextView>
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/colorLineInvest" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/bg_invest_money_rounded"
-                                android:padding="@dimen/_15sdp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:fontFamily="@font/lato_bold"
-                                    android:text="Total INR  "
-                                    android:textColor="@color/colorTextInvest"
-                                    android:textSize="@dimen/_16sdp"
-                                    android:textStyle="bold"></TextView>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginLeft="@dimen/_10sdp"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:text="Rs - 72000"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/colorTitle"
-                                    android:textSize="@dimen/_16sdp"
-                                    android:textStyle="normal"></TextView>
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_25sdp"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/bg_invest_money_rounded_top"
-                                android:padding="@dimen/_15sdp">>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:gravity="center"
-                                    android:text="Deposit USDT (Tether) by Scanning this OR Code"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/colorTextAddCurrency"
-                                    android:textSize="@dimen/_14sdp"
-                                    android:textStyle="normal"></TextView>
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/colorLineInvest" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:background="@drawable/bg_invest_money_rounded_middel"
-                                android:gravity="center"
-                                android:padding="@dimen/_15sdp">>
+                                android:layout_marginLeft="@dimen/_20sdp"
+                                android:layout_marginRight="@dimen/_20sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_100sdp"
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/ic_qrcode" />
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/colorLineInvest" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:background="@drawable/bg_invest_money_rounded_middel"
-                                android:gravity="center"
-                                android:padding="@dimen/_15sdp">>
+                                    android:src="@drawable/ic_deposit_new"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/lato_regular"
-                                    android:gravity="center"
-                                    android:text="or use the Below Address"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/colorTextAddCurrency"
-                                    android:textSize="@dimen/_14sdp"
-                                    android:textStyle="normal"></TextView>
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/colorLineInvest" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:background="@drawable/bg_invest_money_rounded"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:padding="@dimen/_15sdp">
+                                    android:text="Deposit Via"
+                                    android:textColor="@color/colorLine"
+                                    android:textSize="@dimen/_16sdp"
+                                    android:textStyle="normal"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:gravity="center"
-                                    android:text="Network ID"
+                                    android:layout_marginLeft="5dp"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:text="CRYPTO"
                                     android:textAllCaps="true"
-                                    android:textColor="@color/colorTextAddCurrency"
-                                    android:textSize="@dimen/_15sdp"
-                                    android:textStyle="bold"></TextView>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:gravity="center"
-                                    android:text="123456789"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/colorTextAddCurrency"
-                                    android:textSize="@dimen/_18sdp"
-                                    android:textStyle="bold"></TextView>
+                                    android:textColor="@color/colorTitle"
+                                    android:textSize="@dimen/_16sdp"
+                                    android:textStyle="bold"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -310,41 +127,30 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@drawable/bg_invest_money_rounded_top"
-                                    android:gravity="center"
                                     android:padding="@dimen/_15sdp">>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
-                                        android:fontFamily="@font/lato_regular"
-                                        android:text="Wallet Address"
-                                        android:textColor="@color/colorTextAddCurrency"
-                                        android:textSize="@dimen/_18sdp"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:text="Invested  "
+                                        android:textColor="@color/colorTextInvest"
+                                        android:textSize="@dimen/_16sdp"
                                         android:textStyle="bold"></TextView>
-                                </LinearLayout>
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="@color/colorLineInvest" />
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/bg_invest_money_rounded_middel"
-                                    android:gravity="center"
-                                    android:padding="@dimen/_15sdp">>
 
                                     <TextView
+                                        android:id="@+id/tv_price"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/_10sdp"
                                         android:fontFamily="@font/lato_regular"
-                                        android:text="123456789153"
-                                        android:textColor="@color/colorTextAddCurrency"
-                                        android:textSize="@dimen/_18sdp"
-                                        android:textStyle="bold"></TextView>
+                                        android:text="$ - 1000"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/colorTitle"
+                                        android:textSize="@dimen/_16sdp"
+                                        android:textStyle="normal"></TextView>
                                 </LinearLayout>
 
                                 <View
@@ -362,45 +168,240 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
-                                        android:fontFamily="@font/lato_light"
-                                        android:text="*IMPORTANT \nThis is BEP20 deposit address type. Please deposit \nonly USDT to this Address"
-                                        android:textColor="@color/colorTextAddCurrency"
-                                        android:textSize="@dimen/_8sdp"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:text="Total INR  "
+                                        android:textColor="@color/colorTextInvest"
+                                        android:textSize="@dimen/_16sdp"
                                         android:textStyle="bold"></TextView>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:text="Rs - 72000"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/colorTitle"
+                                        android:textSize="@dimen/_16sdp"
+                                        android:textStyle="normal"></TextView>
                                 </LinearLayout>
                             </LinearLayout>
-                        </LinearLayout>
 
-                        <LinearLayout
-                            android:id="@+id/btn_sent_money_QrCode"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_45sdp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="@dimen/_45sdp"
-                            android:layout_weight="2"
-                            android:background="@drawable/bg_button_red_new"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_regular"
+                                android:layout_marginTop="@dimen/_25sdp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/bg_invest_money_rounded_top"
+                                    android:padding="@dimen/_15sdp">>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:gravity="center"
+                                        android:text="Deposit USDT (Tether) by Scanning this OR Code"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/colorTextAddCurrency"
+                                        android:textSize="@dimen/_14sdp"
+                                        android:textStyle="normal"></TextView>
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/colorLineInvest" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/bg_invest_money_rounded_middel"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_15sdp">>
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_100sdp"
+                                        android:layout_height="@dimen/_100sdp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_qrcode" />
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/colorLineInvest" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/bg_invest_money_rounded_middel"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_15sdp">>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:gravity="center"
+                                        android:text="or use the Below Address"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/colorTextAddCurrency"
+                                        android:textSize="@dimen/_14sdp"
+                                        android:textStyle="normal"></TextView>
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/colorLineInvest" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/bg_invest_money_rounded"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/_15sdp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:gravity="center"
+                                        android:text="Network ID"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/colorTextAddCurrency"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:textStyle="bold"></TextView>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:gravity="center"
+                                        android:text="123456789"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/colorTextAddCurrency"
+                                        android:textSize="@dimen/_18sdp"
+                                        android:textStyle="bold"></TextView>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_25sdp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/bg_invest_money_rounded_top"
+                                        android:gravity="center"
+                                        android:padding="@dimen/_15sdp">>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/lato_regular"
+                                            android:text="Wallet Address"
+                                            android:textColor="@color/colorTextAddCurrency"
+                                            android:textSize="@dimen/_18sdp"
+                                            android:textStyle="bold"></TextView>
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/colorLineInvest" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/bg_invest_money_rounded_middel"
+                                        android:gravity="center"
+                                        android:padding="@dimen/_15sdp">>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/lato_regular"
+                                            android:text="123456789153"
+                                            android:textColor="@color/colorTextAddCurrency"
+                                            android:textSize="@dimen/_18sdp"
+                                            android:textStyle="bold"></TextView>
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/colorLineInvest" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/bg_invest_money_rounded"
+                                        android:padding="@dimen/_15sdp">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/lato_light"
+                                            android:text="*IMPORTANT \nThis is BEP20 deposit address type. Please deposit \nonly USDT to this Address"
+                                            android:textColor="@color/colorTextAddCurrency"
+                                            android:textSize="@dimen/_8sdp"
+                                            android:textStyle="bold"></TextView>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/btn_sent_money_QrCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_45sdp"
+                                android:layout_weight="2"
+                                android:background="@drawable/bg_button_red_new"
                                 android:gravity="center"
-                                android:paddingTop="@dimen/_10sdp"
-                                android:paddingBottom="@dimen/_11sdp"
-                                android:text="I HAVE SENT THE AMOUNT"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp"
-                                android:textStyle="bold" />
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:gravity="center"
+                                    android:paddingTop="@dimen/_10sdp"
+                                    android:paddingBottom="@dimen/_11sdp"
+                                    android:text="I HAVE SENT THE AMOUNT"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_14sdp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:layout_alignParentBottom="true"></LinearLayout>
+
                         </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_100sdp"></LinearLayout>
-
-                    </LinearLayout>
+                    </RelativeLayout>
                 </RelativeLayout>
+
+
             </RelativeLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

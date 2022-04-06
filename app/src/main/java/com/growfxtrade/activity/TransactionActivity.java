@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +40,7 @@ public class TransactionActivity extends AppCompatActivity {
     private String TAG = "AddCurrencyActivity";
     private ImageView ivicon;
     private Dialog dialog;
+    NestedScrollView ne_abc;
     private TextView tv_invest, tv_withdrawal, tv_profit, tv_loss;
     RecyclerView rec_home;
     ViewServiceAdapter viewServiceAdapter;
@@ -50,6 +52,7 @@ public class TransactionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
         rec_home=findViewById(R.id.rec_home);
+        ne_abc=findViewById(R.id.ne_abc);
         rec_home.setLayoutManager(new LinearLayoutManager(TransactionActivity.this));
         initComponent();
 

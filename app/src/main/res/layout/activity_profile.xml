@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@color/colorBgHeader">
+    android:background="@color/white">
 
     <androidx.core.widget.NestedScrollView
         android:layout_below="@+id/abc"
@@ -14,9 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -24,7 +22,8 @@
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/mainc"
                     android:layout_width="fill_parent"
-                    android:layout_height="@dimen/_60sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBgHeader"
                     app:layout_scrollFlags="enterAlways|scroll">
                     <androidx.appcompat.widget.Toolbar
                         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -66,395 +65,389 @@
                         </RelativeLayout>
 
                     </androidx.appcompat.widget.Toolbar>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rel_bgRounded"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/mainc"
-                    android:background="@drawable/bg_profile_rounded">
-
-                    <LinearLayout
+                    <RelativeLayout
+                        android:id="@+id/rel_bgRounded"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/_15sdp"
-                        android:layout_marginTop="@dimen/_60sdp"
-                        android:layout_marginRight="@dimen/_15sdp"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/input_name"
+                        android:layout_below="@+id/toolbar"
+                        android:background="@drawable/bg_profile_rounded">
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColorHint="@color/colorLine">
+                            android:gravity="top"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:orientation="vertical"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_name"
+                            <RelativeLayout
+                                android:id="@+id/abc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:backgroundTint="@color/colorLine"
-                                android:drawableLeft="@drawable/ic_user_new"
-                                android:cursorVisible="true"
-                                android:fontFamily="@font/lato_regular"
-                                android:drawablePadding="@dimen/_15sdp"
-                                android:paddingTop="@dimen/_15sdp"
-                                android:paddingBottom="@dimen/_15sdp"
-                                android:hint="Name"
-                                android:inputType="text"
-                                android:textColorHint="@color/colorLine"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_16sdp" />
+                                android:layout_alignParentTop="true"
+                                android:orientation="vertical"
+                                android:weightSum="8">
 
-                        </com.google.android.material.textfield.TextInputLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_marginRight="30dp"
+                                    android:orientation="vertical">
 
+                                    <com.growfxtrade.customviews.CircleImageView
+                                        android:id="@+id/ivuser"
+                                        android:layout_width="@dimen/_50sdp"
+                                        android:layout_height="@dimen/_50sdp"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_centerInParent="true"
+                                        android:layout_marginLeft="10dp"
+                                        android:src="@drawable/user_two"
+                                        app:civ_border_color="@color/white"
+                                        app:civ_border_width="1dp" />
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/input_email"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:textColorHint="@color/colorLine">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_email"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:backgroundTint="@color/colorLine"
-                                android:drawableLeft="@drawable/ic_email_new"
-                                android:cursorVisible="true"
-                                android:editable="false"
-                                android:fontFamily="@font/lato_regular"
-                                android:drawablePadding="@dimen/_15sdp"
-                                android:paddingTop="@dimen/_15sdp"
-                                android:paddingBottom="@dimen/_15sdp"
-                                android:hint="@string/email"
-                                android:inputType="text"
-                                android:textColorHint="@color/colorLine"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_16sdp" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/input_contactno"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:textColorHint="@color/colorLine">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_contactno"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:backgroundTint="@color/colorLine"
-                                android:drawableLeft="@drawable/ic_phone_new"
-                                android:cursorVisible="true"
-                                android:editable="false"
-                                android:fontFamily="@font/lato_regular"
-                                android:drawablePadding="@dimen/_15sdp"
-                                android:paddingTop="@dimen/_15sdp"
-                                android:paddingBottom="@dimen/_15sdp"
-                                android:hint="@string/contactno"
-                                android:inputType="text"
-                                android:textColorHint="@color/colorLine"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_16sdp" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:textColorHint="@color/colorLine">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_accno"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:backgroundTint="@color/colorLine"
-                                android:drawableLeft="@drawable/ic_account_new"
-                                android:cursorVisible="true"
-                                android:editable="false"
-                                android:fontFamily="@font/lato_regular"
-                                android:drawablePadding="@dimen/_15sdp"
-                                android:paddingTop="@dimen/_15sdp"
-                                android:paddingBottom="@dimen/_15sdp"
-                                android:hint="Account Number"
-                                android:inputType="text"
-                                android:textColorHint="@color/colorLine"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_16sdp" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:textColorHint="@color/colorLine">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_ifscno"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:backgroundTint="@color/colorLine"
-                                android:drawableLeft="@drawable/ic_pancard_new"
-                                android:cursorVisible="true"
-                                android:editable="false"
-                                android:fontFamily="@font/lato_regular"
-                                android:drawablePadding="@dimen/_15sdp"
-                                android:paddingTop="@dimen/_15sdp"
-                                android:paddingBottom="@dimen/_15sdp"
-                                android:hint="IFSC Code"
-                                android:inputType="text"
-                                android:textColorHint="@color/colorLine"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_16sdp" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:textColorHint="@color/colorLine">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_pancardno"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:backgroundTint="@color/colorLine"
-                                android:drawableLeft="@drawable/ic_pancard_new"
-                                android:cursorVisible="true"
-                                android:editable="false"
-                                android:fontFamily="@font/lato_regular"
-                                android:drawablePadding="@dimen/_15sdp"
-                                android:paddingTop="@dimen/_15sdp"
-                                android:paddingBottom="@dimen/_15sdp"
-                                android:hint="Pan Card Number"
-                                android:inputType="text"
-                                android:textColorHint="@color/colorLine"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_16sdp" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:textColorHint="@color/colorLine">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_adharcard"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:backgroundTint="@color/colorLine"
-                                android:drawableLeft="@drawable/ic_adharcard_new"
-                                android:cursorVisible="true"
-                                android:editable="false"
-                                android:fontFamily="@font/lato_regular"
-                                android:drawablePadding="@dimen/_15sdp"
-                                android:paddingTop="@dimen/_15sdp"
-                                android:paddingBottom="@dimen/_15sdp"
-                                android:hint="Adhar Card Number"
-                                android:inputType="text"
-                                android:textColorHint="@color/colorLine"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_16sdp" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            android:textColorHint="@color/colorLine">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:clickable="false"
-                                android:id="@+id/et_docno"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:backgroundTint="@color/colorLine"
-                                android:drawableLeft="@drawable/ic_user_new"
-                                android:cursorVisible="true"
-                                android:fontFamily="@font/lato_regular"
-                                android:drawablePadding="@dimen/_15sdp"
-                                android:paddingTop="@dimen/_15sdp"
-                                android:paddingBottom="@dimen/_15sdp"
-                                android:hint="Document Number"
-                                android:inputType="text"
-                                android:textColorHint="@color/colorLine"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_16sdp" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <LinearLayout
-                            android:id="@+id/lv_pf"
-                            android:layout_marginTop="@dimen/_45sdp"
-                            android:background="@drawable/bg_button_red_new"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_45sdp"
-                            android:layout_gravity="center"
-                            android:layout_weight="2"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:paddingTop="5.0dip"
-                                android:text="@string/totalportfolio"
-                                android:fontFamily="@font/lato_regular"
-                                android:textAllCaps="true"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="left"
-                                android:fontFamily="@font/lato_regular"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:text="-"
-                                android:paddingTop="5.0dip"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <TextView
-                                android:id="@+id/tv_available"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="left"
-                                android:fontFamily="@font/lato_regular"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:paddingTop="5.0dip"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_marginTop="@dimen/_20sdp"
-                            android:background="@drawable/bg_button_red_new"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_45sdp"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="left"
-                                android:paddingTop="5.0dip"
-                                android:text="@string/profit"
-                                android:fontFamily="@font/lato_regular"
-                                android:textAllCaps="true"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="150dp"
-                                android:layout_height="wrap_content"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="left"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:text="-"
-                                android:fontFamily="@font/lato_regular"
-                                android:paddingTop="5.0dip"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <TextView
-                                android:id="@+id/tv_profit"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="left"
-                                android:fontFamily="@font/lato_regular"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:paddingTop="5.0dip"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
-                        </LinearLayout>
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </RelativeLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_100sdp">
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/mainc"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:orientation="vertical"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-                    <RelativeLayout
-                        android:id="@+id/abc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:orientation="vertical"
-                        android:weightSum="8">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginRight="30dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_60sdp"
+                            android:layout_marginRight="@dimen/_15sdp"
                             android:orientation="vertical">
 
-                            <com.growfxtrade.customviews.CircleImageView
-                                android:id="@+id/ivuser"
-                                android:layout_width="@dimen/_50sdp"
-                                android:layout_height="@dimen/_50sdp"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerInParent="true"
-                                android:layout_marginLeft="10dp"
-                                android:src="@drawable/user_two"
-                                app:civ_border_color="@color/white"
-                                app:civ_border_width="1dp" />
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/input_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColorHint="@color/colorLine">
 
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:backgroundTint="@color/colorLine"
+                                    android:drawableLeft="@drawable/ic_user_new"
+                                    android:cursorVisible="true"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:drawablePadding="@dimen/_15sdp"
+                                    android:paddingTop="@dimen/_15sdp"
+                                    android:paddingBottom="@dimen/_15sdp"
+                                    android:hint="Name"
+                                    android:inputType="text"
+                                    android:textColorHint="@color/colorLine"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16sdp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/input_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColorHint="@color/colorLine">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_email"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:backgroundTint="@color/colorLine"
+                                    android:drawableLeft="@drawable/ic_email_new"
+                                    android:cursorVisible="true"
+                                    android:editable="false"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:drawablePadding="@dimen/_15sdp"
+                                    android:paddingTop="@dimen/_15sdp"
+                                    android:paddingBottom="@dimen/_15sdp"
+                                    android:hint="@string/email"
+                                    android:inputType="text"
+                                    android:textColorHint="@color/colorLine"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16sdp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/input_contactno"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColorHint="@color/colorLine">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_contactno"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:backgroundTint="@color/colorLine"
+                                    android:drawableLeft="@drawable/ic_phone_new"
+                                    android:cursorVisible="true"
+                                    android:editable="false"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:drawablePadding="@dimen/_15sdp"
+                                    android:paddingTop="@dimen/_15sdp"
+                                    android:paddingBottom="@dimen/_15sdp"
+                                    android:hint="@string/contactno"
+                                    android:inputType="text"
+                                    android:textColorHint="@color/colorLine"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16sdp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColorHint="@color/colorLine">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_accno"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:backgroundTint="@color/colorLine"
+                                    android:drawableLeft="@drawable/ic_account_new"
+                                    android:cursorVisible="true"
+                                    android:editable="false"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:drawablePadding="@dimen/_15sdp"
+                                    android:paddingTop="@dimen/_15sdp"
+                                    android:paddingBottom="@dimen/_15sdp"
+                                    android:hint="Account Number"
+                                    android:inputType="text"
+                                    android:textColorHint="@color/colorLine"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16sdp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColorHint="@color/colorLine">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_ifscno"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:backgroundTint="@color/colorLine"
+                                    android:drawableLeft="@drawable/ic_pancard_new"
+                                    android:cursorVisible="true"
+                                    android:editable="false"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:drawablePadding="@dimen/_15sdp"
+                                    android:paddingTop="@dimen/_15sdp"
+                                    android:paddingBottom="@dimen/_15sdp"
+                                    android:hint="IFSC Code"
+                                    android:inputType="text"
+                                    android:textColorHint="@color/colorLine"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16sdp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColorHint="@color/colorLine">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_pancardno"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:backgroundTint="@color/colorLine"
+                                    android:drawableLeft="@drawable/ic_pancard_new"
+                                    android:cursorVisible="true"
+                                    android:editable="false"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:drawablePadding="@dimen/_15sdp"
+                                    android:paddingTop="@dimen/_15sdp"
+                                    android:paddingBottom="@dimen/_15sdp"
+                                    android:hint="Pan Card Number"
+                                    android:inputType="text"
+                                    android:textColorHint="@color/colorLine"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16sdp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColorHint="@color/colorLine">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_adharcard"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:backgroundTint="@color/colorLine"
+                                    android:drawableLeft="@drawable/ic_adharcard_new"
+                                    android:cursorVisible="true"
+                                    android:editable="false"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:drawablePadding="@dimen/_15sdp"
+                                    android:paddingTop="@dimen/_15sdp"
+                                    android:paddingBottom="@dimen/_15sdp"
+                                    android:hint="Adhar Card Number"
+                                    android:inputType="text"
+                                    android:textColorHint="@color/colorLine"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16sdp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:textColorHint="@color/colorLine">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:clickable="false"
+                                    android:id="@+id/et_docno"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:backgroundTint="@color/colorLine"
+                                    android:drawableLeft="@drawable/ic_user_new"
+                                    android:cursorVisible="true"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:drawablePadding="@dimen/_15sdp"
+                                    android:paddingTop="@dimen/_15sdp"
+                                    android:paddingBottom="@dimen/_15sdp"
+                                    android:hint="Document Number"
+                                    android:inputType="text"
+                                    android:textColorHint="@color/colorLine"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_16sdp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lv_pf"
+                                android:layout_marginTop="@dimen/_45sdp"
+                                android:background="@drawable/bg_button_red_new"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_gravity="center"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:paddingTop="5.0dip"
+                                    android:text="@string/totalportfolio"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_14sdp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="left"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:text="-"
+                                    android:paddingTop="5.0dip"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <TextView
+                                    android:id="@+id/tv_available"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="left"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:paddingTop="5.0dip"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_12sdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:background="@drawable/bg_button_red_new"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="left"
+                                    android:paddingTop="5.0dip"
+                                    android:text="@string/profit"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_14sdp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="left"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:text="-"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:paddingTop="5.0dip"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <TextView
+                                    android:id="@+id/tv_profit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="left"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:paddingTop="5.0dip"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_12sdp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_20sdp">
+                            </LinearLayout>
                         </LinearLayout>
+
                     </RelativeLayout>
                 </RelativeLayout>
-
             </RelativeLayout>
-
-        </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

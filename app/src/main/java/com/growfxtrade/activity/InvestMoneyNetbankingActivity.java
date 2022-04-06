@@ -78,7 +78,7 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID), "add", money);
+        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID), "NET BANKING", money);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

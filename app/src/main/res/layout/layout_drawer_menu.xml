@@ -517,10 +517,6 @@
                     android:id="@+id/drawer_item_resetpwd"
                     style="@style/DrawerItemStyle2"
                     android:text="Reset Password" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_50sdp">
-                </LinearLayout>
 
             </LinearLayout>
 

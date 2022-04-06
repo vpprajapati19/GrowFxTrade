@@ -14,7 +14,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/mainc"
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="match_parent"
             app:layout_scrollFlags="enterAlways|scroll">
             <androidx.appcompat.widget.Toolbar
                 xmlns:android="http://schemas.android.com/apk/res/android"
@@ -56,91 +56,89 @@
                 </RelativeLayout>
 
             </androidx.appcompat.widget.Toolbar>
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/rel_bgRounded"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/mainc"
-            android:background="@drawable/bg_profile_rounded">
-
-            <ScrollView
+            <RelativeLayout
+                android:id="@+id/rel_bgRounded"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar"
+                android:background="@drawable/bg_profile_rounded">
 
-                <LinearLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/_15sdp"
-                            android:orientation="vertical"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:background="@drawable/bg_withdraw">>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:textSize="@dimen/_16sdp"
-                                android:fontFamily="@font/lato_regular"
-                                android:textColor="@color/colorTextAddCurrency"
-                                android:textStyle="normal"
-                                android:text="Available Balance">
-                            </TextView>
+                            android:orientation="vertical">
                             <LinearLayout
-                                android:layout_width="@dimen/_130sdp"
-                                android:layout_height="@dimen/_40sdp"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="@dimen/_8sdp"
-                                android:background="@drawable/rounded_layout_blue">
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_15sdp"
+                                android:orientation="vertical"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:background="@drawable/bg_withdraw">>
                                 <TextView
-                                    android:id="@+id/tv_amount"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:gravity="center"
                                     android:textSize="@dimen/_16sdp"
-                                    android:fontFamily="@font/lato_bold"
+                                    android:fontFamily="@font/lato_regular"
                                     android:textColor="@color/colorTextAddCurrency"
-                                    android:textStyle="bold"
-                                    android:textAllCaps="true"
-                                    android:text="$ 12000">
+                                    android:textStyle="normal"
+                                    android:text="Available Balance">
                                 </TextView>
+                                <LinearLayout
+                                    android:layout_width="@dimen/_130sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:background="@drawable/rounded_layout_blue">
+                                    <TextView
+                                        android:id="@+id/tv_amount"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:textSize="@dimen/_16sdp"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:textColor="@color/colorTextAddCurrency"
+                                        android:textStyle="bold"
+                                        android:textAllCaps="true"
+                                        android:text="$ 12000">
+                                    </TextView>
+                                </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:orientation="vertical">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/_15sdp"
-                            android:orientation="vertical"
-                            android:background="@drawable/bg_withdraw">>
-                            <TextView
-                                android:layout_width="wrap_content"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_16sdp"
-                                android:textColor="@color/colorTextAddCurrency"
-                                android:textStyle="normal"
-                                android:fontFamily="@font/lato_regular"
-                                android:text="Withdraw Amount">
-                            </TextView>
+                                android:padding="@dimen/_15sdp"
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_withdraw">>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_16sdp"
+                                    android:textColor="@color/colorTextAddCurrency"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/lato_regular"
+                                    android:text="Withdraw Amount">
+                                </TextView>
 
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -152,121 +150,128 @@
                                     android:cursorVisible="true"
                                     android:drawablePadding="@dimen/dp_10"
                                     android:fontFamily="@font/lato_bold"
-                                    android:hint="- $ 5000"
                                     android:inputType="numberDecimal"
                                     android:textColorHint="@color/colorLine"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_16sdp" />
 
+                            </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/input_payment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_15sdp"
-                        android:hint="CRYPTO"
-                        android:textColorHint="@color/colorLine">
-
-                        <TextView
-                            xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:id="@android:id/text1"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/input_payment"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorLine"
-                            android:fontFamily="@font/lato_regular"
-                            android:layout_marginLeft="@dimen/_2sdp"
-                            android:text="Choose Deposit Option"
-                            android:textSize="@dimen/_10sdp" />
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:hint="CRYPTO"
+                            android:textColorHint="@color/colorLine">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <androidx.appcompat.widget.AppCompatSpinner
-                                android:id="@+id/spinner_payment_withdraw"
-                                android:scrollIndicators="none"
+                            <TextView
+                                xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:id="@android:id/text1"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/_30sdp"
-                                android:dropDownVerticalOffset="38dp"
-                                android:dropDownWidth="match_parent"
-                                android:spinnerMode="dropdown"
-                                android:popupBackground="@drawable/spinner_corner"
-                                android:background="@null"
-                                android:layout_marginTop="@dimen/_5sdp"
-                                android:textSize="@dimen/_14sdp"/>
-                            <LinearLayout
-                                android:layout_width="@dimen/_16sdp"
-                                android:layout_height="@dimen/_16sdp"
-                                android:gravity="right"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:layout_alignParentLeft="true"
-                                android:background="@drawable/ic_deposit_new"/>
-                            <LinearLayout
-                                android:layout_width="@dimen/_25sdp"
-                                android:layout_height="@dimen/_25sdp"
-                                android:gravity="right"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:layout_alignParentRight="true"
-                                android:background="@drawable/ic_baseline_expand_more_24"/>
-                        </RelativeLayout>
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorLine"
+                                android:fontFamily="@font/lato_regular"
+                                android:layout_marginLeft="@dimen/_2sdp"
+                                android:text="Choose Deposit Option"
+                                android:textSize="@dimen/_10sdp" />
 
-                       <!-- <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/spinner_payment_withdraw"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_30sdp"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:dropDownWidth="match_parent"
-                            android:spinnerMode="dropdown"
-                            android:textSize="@dimen/_14sdp"/>-->
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <androidx.appcompat.widget.AppCompatSpinner
+                                    android:id="@+id/spinner_payment_withdraw"
+                                    android:scrollIndicators="none"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_30sdp"
+                                    android:dropDownVerticalOffset="38dp"
+                                    android:dropDownWidth="match_parent"
+                                    android:spinnerMode="dropdown"
+                                    android:popupBackground="@drawable/spinner_corner"
+                                    android:background="@null"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:textSize="@dimen/_14sdp"/>
+                                <LinearLayout
+                                    android:layout_width="@dimen/_16sdp"
+                                    android:layout_height="@dimen/_16sdp"
+                                    android:gravity="right"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_marginRight="@dimen/_5sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_alignParentLeft="true"
+                                    android:background="@drawable/ic_deposit_new"/>
+                                <LinearLayout
+                                    android:layout_width="@dimen/_25sdp"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:gravity="right"
+                                    android:layout_marginRight="@dimen/_5sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_alignParentRight="true"
+                                    android:background="@drawable/ic_baseline_expand_more_24"/>
+                            </RelativeLayout>
 
-                        <View
-                            android:layout_marginTop="@dimen/_4sdp"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/colorLine"/>
+                            <!-- <androidx.appcompat.widget.AppCompatSpinner
+                                 android:id="@+id/spinner_payment_withdraw"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="@dimen/_30sdp"
+                                 android:layout_marginTop="@dimen/_5sdp"
+                                 android:dropDownWidth="match_parent"
+                                 android:spinnerMode="dropdown"
+                                 android:textSize="@dimen/_14sdp"/>-->
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <View
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorLine"/>
 
-                    <LinearLayout
-                        android:id="@+id/btn_submit"
-                        android:layout_marginTop="@dimen/_45sdp"
-                        android:background="@drawable/bg_button_red_new"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_gravity="center"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-                        <TextView
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/btn_submit"
+                            android:layout_marginTop="@dimen/_45sdp"
+                            android:background="@drawable/bg_button_red_new"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="WITHDRAW"
-                            android:layout_weight="0.6"
-                            android:textSize="@dimen/_16sdp"
-                            android:textColor="@color/white"
-                            android:gravity="left"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="@dimen/_25sdp"
-                            android:fontFamily="@font/lato_bold"
-                            android:paddingTop="@dimen/_10sdp"
-                            android:paddingBottom="@dimen/_11sdp"/>
-                        <ImageView
+                            android:layout_height="@dimen/_45sdp"
+                            android:layout_gravity="center"
+                            android:layout_weight="2"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="WITHDRAW"
+                                android:layout_weight="0.6"
+                                android:textSize="@dimen/_16sdp"
+                                android:textColor="@color/white"
+                                android:gravity="left"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="@dimen/_25sdp"
+                                android:fontFamily="@font/lato_bold"
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_11sdp"/>
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_24sdp"
+                                facebook:tint="#FFFFFF"
+                                android:layout_weight="1.4"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_icon_button_new" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_below="@+id/rec_home"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_24sdp"
-                            facebook:tint="#FFFFFF"
-                            android:layout_weight="1.4"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_icon_button_new" />
+                            android:layout_height="@dimen/_20sdp">
+                        </LinearLayout>
+
                     </LinearLayout>
 
-                </LinearLayout>
-
-            </ScrollView>
+                </ScrollView>
+            </RelativeLayout>
         </RelativeLayout>
+
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

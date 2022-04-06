@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/tools"
     android:id="@+id/lv_main"
-    android:background="@color/colorBgHeader">
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +16,8 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/mainc"
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="match_parent"
+            android:background="@color/colorBgHeader"
             app:layout_scrollFlags="enterAlways|scroll">
             <androidx.appcompat.widget.Toolbar
                 xmlns:android="http://schemas.android.com/apk/res/android"
@@ -58,276 +59,278 @@
                 </RelativeLayout>
 
             </androidx.appcompat.widget.Toolbar>
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_profile_rounded"
-            android:layout_below="@+id/mainc"
-            android:orientation="vertical">
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_30sdp"
-                    android:background="@drawable/bg_edit_round_cornner2">
-                    <EditText
-                        android:textCursorDrawable="@null"
-                        android:textColor="@color/black"
-                        android:layout_gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/et_name"
-                        android:fontFamily="@font/lato_bold"
-                        android:hint="User Name"
-                        android:background="@null"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:textSize="@dimen/_13sdp"
-                        android:padding="@dimen/_16sdp"
-                        android:layout_marginLeft="@dimen/_15sdp"
-                        android:textColorHint="@color/colorTextHintEditText" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/bg_edit_round_cornner2">
-                    <EditText
-                        android:textCursorDrawable="@null"
-                        android:textColor="@color/black"
-                        android:layout_gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/et_email"
-                        android:fontFamily="@font/lato_bold"
-                        android:hint="Email Address"
-                        android:background="@null"
-                        android:inputType="textEmailAddress"
-                        android:maxLines="1"
-                        android:textSize="@dimen/_13sdp"
-                        android:padding="@dimen/_16sdp"
-                        android:layout_marginLeft="@dimen/_15sdp"
-                        android:textColorHint="@color/colorTextHintEditText" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_90sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/bg_edit_round_cornner2">
-                    <EditText
-                        android:textCursorDrawable="@null"
-                        android:textColor="@color/black"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/et_message"
-                        android:fontFamily="@font/lato_bold"
-                        android:hint="@string/message"
-                        android:inputType="textMultiLine"
-                        android:maxLines="10"
-                        android:text=""
-                        android:background="@null"
-                        android:textSize="@dimen/_13sdp"
-                        android:padding="@dimen/_16sdp"
-                        android:layout_marginLeft="@dimen/_15sdp"
-                        android:textColorHint="@color/colorTextHintEditText" />
-                </LinearLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_name"
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/white">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:backgroundTint="@color/colorLine"
-                        android:drawablePadding="@dimen/dp_10"
-                        android:hint="Name"
-                        android:inputType="none"
-                        android:textColorHint="@color/colorLine"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_16sdp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:visibility="gone"
-                    android:textColorHint="@color/white">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:backgroundTint="@color/white"
-                        android:drawablePadding="@dimen/dp_10"
-                        android:hint="@string/email"
-                        android:inputType="none"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_contactno"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:visibility="gone"
-                    android:textColorHint="@color/white">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_contactno"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:backgroundTint="@color/white"
-                        android:drawablePadding="@dimen/dp_10"
-                        android:hint="@string/contactno"
-                        android:inputType="none"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_coundtrycode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:textColorHint="@color/white"
-                    android:visibility="gone">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_coundtrycode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:backgroundTint="@color/white"
-                        android:drawablePadding="@dimen/dp_10"
-                        android:hint="@string/coundtrycode"
-                        android:inputType="none"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_coundtry"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:visibility="gone"
-                    android:textColorHint="@color/white">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_reason"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:backgroundTint="@color/white"
-                        android:drawablePadding="@dimen/dp_10"
-                        android:hint="@string/reason"
-                        android:inputType="text"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_investmoney"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:visibility="gone"
-                    android:textColorHint="@color/white">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:backgroundTint="@color/white"
-                        android:drawablePadding="@dimen/dp_10"
-                        android:hint="@string/message"
-                        android:inputType="text"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/btn_submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bg_button_red_new"
-                android:padding="@dimen/_13sdp"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_marginRight="@dimen/_15sdp"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_25sdp"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_weight="0.5"
-                    android:fontFamily="@font/lato_regular"
-                    android:gravity="left|center"
-                    android:layout_gravity="center"
-                    android:text="SUBMIT"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14sdp"
-                    android:textStyle="normal" />
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_22sdp"
-                    facebook:tint="#FFFFFF"
-                    android:layout_weight="1.5"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_icon_button_new"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:visibility="gone"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_profile_rounded"
+                android:layout_below="@+id/toolbar"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_20sdp"
-                    android:elevation="@dimen/_10sdp"
-                    sweet:cardBackgroundColor="@color/colorSignupButton"
-                    sweet:cardCornerRadius="5dp"
-                    sweet:cardPreventCornerOverlap="true"
-                    sweet:cardUseCompatPadding="true">
-
-                    <TextView
+                    android:layout_margin="@dimen/_10sdp"
+                    android:orientation="vertical">
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:background="@drawable/bg_edit_round_cornner2">
+                        <EditText
+                            android:textCursorDrawable="@null"
+                            android:textColor="@color/black"
+                            android:layout_gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/et_name"
+                            android:fontFamily="@font/lato_bold"
+                            android:hint="User Name"
+                            android:background="@null"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textSize="@dimen/_13sdp"
+                            android:padding="@dimen/_16sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:textColorHint="@color/colorTextHintEditText" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/bg_edit_round_cornner2">
+                        <EditText
+                            android:textCursorDrawable="@null"
+                            android:textColor="@color/black"
+                            android:layout_gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/et_email"
+                            android:fontFamily="@font/lato_bold"
+                            android:hint="Email Address"
+                            android:background="@null"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:textSize="@dimen/_13sdp"
+                            android:padding="@dimen/_16sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:textColorHint="@color/colorTextHintEditText" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/lv_mess"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_90sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/bg_edit_round_cornner2">
+                        <EditText
+                            android:textCursorDrawable="@null"
+                            android:textColor="@color/black"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/et_message"
+                            android:fontFamily="@font/lato_bold"
+                            android:hint="@string/message"
+                            android:inputType="textMultiLine"
+                            android:maxLines="10"
+                            android:text=""
+                            android:background="@null"
+                            android:textSize="@dimen/_13sdp"
+                            android:padding="@dimen/_16sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:textColorHint="@color/colorTextHintEditText" />
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_name"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/colorLine"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:hint="Name"
+                            android:inputType="none"
+                            android:textColorHint="@color/colorLine"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:visibility="gone"
+                        android:textColorHint="@color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/white"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:hint="@string/email"
+                            android:inputType="none"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_contactno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:visibility="gone"
+                        android:textColorHint="@color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_contactno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/white"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:hint="@string/contactno"
+                            android:inputType="none"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_coundtrycode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColorHint="@color/white"
+                        android:visibility="gone">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_coundtrycode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/white"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:hint="@string/coundtrycode"
+                            android:inputType="none"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_coundtry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:visibility="gone"
+                        android:textColorHint="@color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_reason"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/white"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:hint="@string/reason"
+                            android:inputType="text"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_investmoney"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:visibility="gone"
+                        android:textColorHint="@color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/white"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:hint="@string/message"
+                            android:inputType="text"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_submit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/bg_button_red_new"
+                        android:padding="@dimen/_13sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginRight="@dimen/_15sdp"
                         android:gravity="center"
-                        android:paddingTop="@dimen/_10sdp"
-                        android:paddingBottom="@dimen/_10sdp"
-                        android:text="SUBMIT"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp" />
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_45sdp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/lato_regular"
+                            android:gravity="left|center"
+                            android:layout_gravity="center"
+                            android:text="SUBMIT"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="normal" />
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_22sdp"
+                            facebook:tint="#FFFFFF"
+                            android:layout_weight="1.5"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_icon_button_new"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:elevation="@dimen/_10sdp"
+                        sweet:cardBackgroundColor="@color/colorSignupButton"
+                        sweet:cardCornerRadius="5dp"
+                        sweet:cardPreventCornerOverlap="true"
+                        sweet:cardUseCompatPadding="true">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingBottom="@dimen/_10sdp"
+                            android:text="SUBMIT"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_15sdp" />
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </RelativeLayout>
         </RelativeLayout>
+
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

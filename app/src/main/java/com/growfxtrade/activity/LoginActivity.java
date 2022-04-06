@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText et_usernmae, et_password;
     private LinearLayout btnsignup;
-    private TextView tv_forgot;
+    private TextView tv_forgot,lv_signup;
     private LinearLayout iv_login;
     private Dialog dialog;
     private String TAG = "LoginActivity";
@@ -49,17 +49,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnsignup = findViewById(R.id.btnsignup);
         tv_forgot = findViewById(R.id.tv_forgot);
         iv_login = findViewById(R.id.ivlogin);
+        lv_signup = findViewById(R.id.lv_signup);
         et_usernmae = findViewById(R.id.et_usernmae);
         et_password = findViewById(R.id.et_password);
         iv_login.setOnClickListener(this);
         btnsignup.setOnClickListener(this);
         tv_forgot.setOnClickListener(this);
+        lv_signup.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
         if (view == btnsignup) {
+//            Intent intent = new Intent(LoginActivity.this, SignupOtpActivity.class);
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right,
+                    R.anim.slide_out_left);
+        }
+        if (view == lv_signup) {
 //            Intent intent = new Intent(LoginActivity.this, SignupOtpActivity.class);
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);

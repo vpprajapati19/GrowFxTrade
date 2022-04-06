@@ -49,7 +49,7 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
     private EditText et_name, et_email, et_contactno, et_coundtrycode, et_investmoney;
     private Spinner spinner_country, spinner_payment;
     private LinearLayout btn_submit;
-    String selectPaymentValue ="";
+    public static String selectPaymentValue ="";
     JSONObject jsonObject;
     private final Integer[] countryflag = {
             R.drawable.afghanistan, R.drawable.australia, R.drawable.bangladesh, R.drawable.england,
@@ -96,6 +96,7 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
                 String selectedItem = parent.getItemAtPosition(position).toString();
+                Log.e("logitrm999",""+selectedItem);
                 selectPaymentValue = selectedItem;
             } // to close the onItemSelected
             public void onNothingSelected(AdapterView<?> parent)

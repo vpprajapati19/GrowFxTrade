@@ -92,7 +92,7 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyUpiActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(InvestMoneyUpiActivity.this, PrefrenceManager.USERID), "add", money);
+        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(this, PrefrenceManager.USERID), "UPI", money);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

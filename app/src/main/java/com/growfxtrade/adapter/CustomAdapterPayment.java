@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.growfxtrade.R;
+import com.growfxtrade.activity.InvestMoneyActivity;
 
 public class CustomAdapterPayment extends BaseAdapter {
 
@@ -44,8 +46,14 @@ public class CustomAdapterPayment extends BaseAdapter {
         String tempValues = data[i];
 
         TextView label = (TextView) view.findViewById(R.id.spinnerTarget1);
+        LinearLayout linlay = (LinearLayout) view.findViewById(R.id.linlay);
         ImageView imageView11 = (ImageView) view.findViewById(R.id.imageView11);
         View viewe = (View) view.findViewById(R.id.viewe);
+        /*if(InvestMoneyActivity.selectPaymentValue.equalsIgnoreCase(tempValues)){
+            linlay.setVisibility(View.GONE);
+        }else{
+            linlay.setVisibility(View.VISIBLE);
+        }*/
         if (tempValues.equalsIgnoreCase("CRYPTO")){
             imageView11.setVisibility(View.INVISIBLE);
 
