@@ -77,7 +77,7 @@
                     android:id="@+id/img_search"
                     android:layout_width="22.0dip"
                     android:layout_height="22.0dip"
-                    android:src="@drawable/ic_search_new"
+                    android:src="@drawable/ic_srch_sv"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="15.0dip"/>

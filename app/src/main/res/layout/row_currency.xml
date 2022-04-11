@@ -52,7 +52,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/_5sdp"
                     android:layout_toLeftOf="@+id/type1111"
-                    android:src="@drawable/ic_close_new"
+                    android:src="@drawable/ic_add_sv"
                     android:visibility="gone" />
 
                 <ImageView
@@ -63,7 +63,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/_5sdp"
                     android:layout_toLeftOf="@+id/type1111"
-                    android:src="@drawable/ic_add_currency"
+                    android:src="@drawable/ic_plush_sv"
                     android:visibility="visible" />
 
             </RelativeLayout>

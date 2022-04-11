@@ -93,7 +93,7 @@
                                     android:layout_width="@dimen/_20sdp"
                                     android:layout_height="@dimen/_20sdp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/ic_deposit_new">
+                                    android:src="@drawable/ic_dolar_sv">
                                 </ImageView>
                                 <TextView
                                     android:layout_width="wrap_content"

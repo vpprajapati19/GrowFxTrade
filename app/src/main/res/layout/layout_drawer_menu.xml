@@ -160,12 +160,12 @@
                     android:layout_marginLeft="@dimen/_14sdp"
                     android:orientation="horizontal">
                     <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_profile_new" />
+                        android:src="@drawable/ic_profile_sv" />
 
                     <TextView
                         style="@style/DrawerItemStyle"
@@ -211,11 +211,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_chart_new" />
+                        android:src="@drawable/ic_chart_sv" />
                     <TextView
                         style="@style/DrawerItemStyle"
                         android:text="Chart" />
@@ -238,11 +238,11 @@
                     android:layout_marginLeft="@dimen/_14sdp"
                     android:orientation="horizontal">
                     <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_economic" />
+                        android:src="@drawable/ic_economic_sv" />
                     <TextView
                         style="@style/DrawerItemStyle"
                         android:text="Economic Calender" />
@@ -266,11 +266,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_invest_money" />
+                        android:src="@drawable/ic_invest_sv" />
 
                     <TextView
                         style="@style/DrawerItemStyle"
@@ -296,11 +296,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_widhdrow_money" />
+                        android:src="@drawable/ic_withdraw_sv" />
 
                     <TextView
                         style="@style/DrawerItemStyle"
@@ -325,11 +325,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_portfolio_new" />
+                        android:src="@drawable/ic_youtportfolio_sv" />
 
                     <TextView
                         style="@style/DrawerItemStyle"
@@ -355,11 +355,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_10sdp"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_transaction_new" />
+                        android:src="@drawable/ic_yourtransaction_sv" />
 
                     <TextView
                         style="@style/DrawerItemStyle"
@@ -384,11 +384,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_order_history_new" />
+                        android:src="@drawable/ic_orderhistory_sv" />
 
                     <TextView
                         style="@style/DrawerItemStyle"
@@ -414,11 +414,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_contact_us_new" />
+                        android:src="@drawable/ic_contactus" />
 
                     <TextView
                         style="@style/DrawerItemStyle"
@@ -476,11 +476,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/_12sdp"
-                        android:layout_height="@dimen/_12sdp"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_logout_new" />
+                        android:src="@drawable/ic_logout_sv" />
 
                     <TextView
                         style="@style/DrawerItemStyle"

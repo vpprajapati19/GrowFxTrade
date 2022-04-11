@@ -31,7 +31,7 @@
                     android:layout_height="@dimen/_35sdp"
                     android:padding="@dimen/_8sdp"
                     app:tint="@color/colorTitle"
-                    android:src="@drawable/ic_menu_drawer_new"
+                    android:src="@drawable/ic_menu_drawer_sv"
                     android:layout_centerVertical="true"/>
                 <TextView
                     android:id="@+id/iv_icon"
@@ -76,12 +76,12 @@
                     android:padding="8dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_plus_new"/>
+                    android:src="@drawable/ic_plus_new_sv"/>
                 <ImageView
                     android:id="@+id/img_search"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_28sdp"
-                    android:src="@drawable/ic_delete_new"
+                    android:src="@drawable/ic_delete_new_sv"
                     android:layout_toLeftOf="@+id/iv_main_filter"
                     android:layout_centerVertical="true"
                     android:padding="8dp"/>
