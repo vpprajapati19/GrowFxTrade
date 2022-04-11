@@ -72,7 +72,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public static final int RequestPermissionCode = 7;
     String flag="0";
     Bitmap bitmap = null;
-    File imagefile1,imagefile2;
+    File imagefile1=null;
+    File imagefile2=null;
+
     String path, filename;
     String screentype;
 
@@ -101,7 +103,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     private void initComponent() {
         cb_privacy = findViewById(R.id.cb_privacy);
-               iv_reg = findViewById(R.id.iv_reg);
+        iv_reg = findViewById(R.id.iv_reg);
         et_adharcaredno = findViewById(R.id.et_adharcaredno);
         et_usernmae = findViewById(R.id.et_usernmae);
         et_useremail = findViewById(R.id.et_useremail);
@@ -199,17 +201,17 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             else if (et_useremail.getText().length() <= 0) {
                 et_useremail.setError("Enter Valid Email");
                 return;
-            }else if ((isValidEmailAddress(et_useremail.getText().toString()) == false)) {
+            }/*else if ((isValidEmailAddress(et_useremail.getText().toString()) == false)) {
                 et_useremail.setError("Please enter a valid Email address");
                 et_useremail.requestFocus();
-            }else if (et_usermobile.getText().length() <= 0) {
+            }*/else if (et_usermobile.getText().length() <= 0) {
                 et_usermobile.setError("Enter Valid Number");
                 return;
-            } else if (et_usermobile.length() <10 || et_usermobile.length() > 13) {
+            } /*else if (et_usermobile.length() <10 || et_usermobile.length() > 13) {
 
                 et_usermobile.setError("Phone number length should be 10 digits");
                 et_usermobile.requestFocus();
-            }
+            }*/
             else if (et_usercity.getText().length() <= 0) {
                 et_usercity.setError("Enter Valid City");
                 return;
@@ -228,12 +230,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 return;
                // Toast.makeText(this, "Enter Valid PanCard Number", Toast.LENGTH_SHORT).show();
                // return;
-            }else  if (!regex_matcher(r, et_pancard.getText().toString())) {
+            }/*else  if (!regex_matcher(r, et_pancard.getText().toString())) {
                 //error = "Invalid PAN number";
                 et_pancard.setError("Invalid PAN number");
                 return;
                // Toast.makeText(this, "Invalid PAN number", Toast.LENGTH_SHORT).show();
-            }
+            }*/
             if (et_bankName.getText().toString().length() <= 0){
                 et_bankName.setError("Enter Bank Name Number");
                 return;
@@ -245,10 +247,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             if(et_confirmaccno.getText().toString().length() <= 0){
                 et_confirmaccno.setError("Enter confirm Account Number");
                 return;
-            }else if(et_accno.getText().toString().equalsIgnoreCase(et_confirmaccno.getText().toString())== false){
+            }/*else if(et_accno.getText().toString().equalsIgnoreCase(et_confirmaccno.getText().toString())== false){
                 et_confirmaccno.setError("Account number does not match expected format.");
                 return;
-            }
+            }*/
             if (et_ifsccode.getText().length() <= 0) {
                 et_ifsccode.setError("Enter Valid IFSC CODE");
                 return;
@@ -264,10 +266,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                 et_ConfirmPassword.setError("Enter confirm password");
                 return;
-            }else if(et_password.getText().toString().equalsIgnoreCase(et_ConfirmPassword.getText().toString())== false){
+            }/*else if(et_password.getText().toString().equalsIgnoreCase(et_ConfirmPassword.getText().toString())== false){
                 et_ConfirmPassword.setError("Password does not match expected format.");
                 return;
-            }
+            }*/
+
          /*   if (et_doc_no.getText().length() <= 0) {
                 Toast.makeText(this, "Enter Valid Documnet Number", Toast.LENGTH_SHORT).show();
                 return;
@@ -527,10 +530,19 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         //  RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
         RequestInterface req = RetrofitClient.getClientone().create(RequestInterface.class);
       //  RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), getRealPathFromURI(data.getData()));
-
-        MultipartBody.Part multipartBody1 =MultipartBody.Part.createFormData("doc_front_img",imagefile1.getName());
-        MultipartBody.Part multipartBody2 =MultipartBody.Part.createFormData("doc_back_img",imagefile2.getName());
-
+        MultipartBody.Part multipartBody1;
+        MultipartBody.Part multipartBody2;
+        //  RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), getRealPathFromURI(data.getData()));
+        if (imagefile1==null){
+            multipartBody1 =MultipartBody.Part.createFormData("doc_front_img","");
+        }else{
+            multipartBody1 =MultipartBody.Part.createFormData("doc_front_img",imagefile1.getName());
+        }
+        if (imagefile2==null){
+            multipartBody2  =MultipartBody.Part.createFormData("doc_back_img","");
+        }else{
+            multipartBody2  =MultipartBody.Part.createFormData("doc_back_img",imagefile2.getName());
+        }
         Log.e("imagefile1",""+imagefile1);
         Log.e("imagefile2",""+imagefile2);
         Call<ResponseBody> call = req.getREgDetails(multipartBody1,multipartBody2,mobile, email, "male", pwd, uname,et_state.getText().toString(), ci, co,"Aadhar Card",et_bankName.getText().toString(),accno,ifsccode,et_UpiId.getText().toString(),"1",et_adharcaredno.getText().toString(),docpancard);

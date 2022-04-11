@@ -171,11 +171,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.LOGIN_STATUS, "true");
                         getwirthdraw();
 
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
