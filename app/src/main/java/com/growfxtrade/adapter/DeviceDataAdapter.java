@@ -7,6 +7,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -54,6 +56,7 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
     private final int VIEW_PROG = 0;
     private Dialog dialog;
     AlertDialog alertDialog;
+    String qty,amount;
     private Filter fRecords;
 
 
@@ -96,21 +99,51 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
                     TextView bidvalue=(TextView)promptsView.findViewById(R.id.tv_bidvalue);
                     TextView balance=(TextView)promptsView.findViewById(R.id.tv_balance_value);
                     Button btn_buy=(Button)promptsView.findViewById(R.id.btn_buy);
-                    final EditText et_amount=(EditText) promptsView.findViewById(R.id.et_amount);
+                    final TextView et_amount=(TextView) promptsView.findViewById(R.id.et_amount);
+                    final EditText et_qty=(EditText) promptsView.findViewById(R.id.et_qty);
                     currencyvalue.setText(analogDashboardModel.getSymbol());
                     askvalue.setText(analogDashboardModel.getAsk());
                     bidvalue.setText(analogDashboardModel.getBid());
                     balance.setText(analogDashboardModel.getPrice());
+                    et_qty.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            Log.e("text_111",""+s);
+                        }
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start,
+                                                      int count, int after) {
+                            Log.e("text_115",""+s);
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start,
+                                                  int before, int count) {
+                            if(s.length() != 0){
+                                qty=s.toString();
+                                Log.e("text_122",""+s);
+                                String t2 = String.valueOf(Float.valueOf(analogDashboardModel.getBid()) * Float.valueOf(s.toString()));
+                                Log.e("text_result",""+t2);
+                                et_amount.setText(t2);
+
+                            }else {
+                                et_amount.setText("");
+                            }
+
+                               // field2.setText("");
+                        }
+                    });
+
                     btn_buy.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             String amount=et_amount.getText().toString();
                             String cur_name=analogDashboardModel.getSymbol();
                             String cur_id=analogDashboardModel.getTimestamp();
-                            if(et_amount.getText().length()==0){
-                                Toast.makeText(mContext, "Please Enter Amount", Toast.LENGTH_SHORT).show();
+                            if(et_qty.getText().length()==0){
+                                Toast.makeText(mContext, "Please Enter QTY", Toast.LENGTH_SHORT).show();
                             }else{
-                                Buyapi(amount,cur_name,cur_id,alertDialog);
+                                Buyapi(amount,cur_name,cur_id,alertDialog,qty);
                             }
 
                         }
@@ -182,12 +215,12 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
             });
         }
     }
-    public void Buyapi(String amoun, String cur_name, String cur_id, final AlertDialog alertDialog) {
+    public void Buyapi(String amoun, String cur_name, String cur_id, final AlertDialog alertDialog,String qty) {
      //   Log.e("list236","=="+clist);
         Log.e("userid187","=="+PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(mContext);
         RequestInterface req = RetrofitClient.getClient(mContext).create(RequestInterface.class);
-        Call<ResponseBody> call = req.getBuySell("buy","123",amoun,"1",amoun, PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID),cur_name);
+        Call<ResponseBody> call = req.getBuySell("buy",cur_name,amoun,qty,amoun, PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID),cur_name);
 
         call.enqueue(new Callback<ResponseBody>() {
             @SuppressLint("NewApi")

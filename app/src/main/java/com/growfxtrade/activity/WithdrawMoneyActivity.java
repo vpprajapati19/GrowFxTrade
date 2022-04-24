@@ -39,11 +39,12 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
     TextView tv_amount;
     private ImageView ivicon;
     private Spinner spinner_payment;
+    String selectPaymentValue ="";
 
     LinearLayout btn_submit;
     TextInputEditText et_investmoney;
     private final Integer[] paymentFlg = {R.drawable.ic_deposit_new};
-    private final String[] paymentValue = {"CRYPTO", "UPI", "NET BANKING"};
+    private final String[] paymentValue = {"Crypto", "Upi", "Net-Banking"};
 
 
    /* private String TAG = "WithdrawMoneyActivity";
@@ -100,6 +101,7 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
             {
                 String selectedItem = parent.getItemAtPosition(position).toString();
                 //selectPaymentValue = selectedItem;
+                selectPaymentValue = selectedItem;
             } // to close the onItemSelected
             public void onNothingSelected(AdapterView<?> parent)
             { }
@@ -227,7 +229,7 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
 //                    usernm=jsonObject1.getString("user_id");
 //                    email=jsonObject1.getString("email");
 //                    mono=jsonObject1.getString("mono");
-                    amount = jsonObject1.getString("amount");
+                    amount = jsonObject1.getString("amountt");
                     tv_amount.setText("$ "+amount);
 //                    profit=jsonObject1.getString("profit");
                     Log.e("ammount217","=="+amount);
@@ -246,13 +248,12 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
             }
         });
     }
-
     public void addMoney(String money) {
         Log.e(TAG, "money  " + money);
         Log.e(TAG, "money1  " + PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.getWithdraw(PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.USERID), money);
+        Call<ResponseBody> call = req.getWithdraw(PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.USERID),selectPaymentValue, money);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

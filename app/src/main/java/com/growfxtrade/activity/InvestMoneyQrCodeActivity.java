@@ -70,7 +70,7 @@ public class InvestMoneyQrCodeActivity extends AppCompatActivity implements View
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyQrCodeActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(InvestMoneyQrCodeActivity.this, PrefrenceManager.USERID), "CRYPTO", money);
+        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(InvestMoneyQrCodeActivity.this, PrefrenceManager.USERID), "Crypto", money);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

@@ -75,7 +75,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     File imagefile1=null;
     File imagefile2=null;
 
-    String path, filename;
+    String path,path1,path2, filename;
     String screentype;
 
     String[] proff = { "Select Document","Aadhar Card",  "Voter Id", "Other"};
@@ -380,8 +380,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 filename = path.substring(path.lastIndexOf("/") + 1);
                 if(screentype.equalsIgnoreCase("second")){
                     tv_adharcard_back.setText(filename);
+                    path2=path;
                 }else{
                     tv_adharcard_front.setText(filename);
+                    path1=path;
                 }
                 //iv_upload_image.setImageBitmap(bitmap);
                 setImage(bitmap,tempUri,path);
@@ -403,9 +405,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 Log.e("pathhhhhhh_profilepic", "" + path);
                 filename = path.substring(path.lastIndexOf("/") + 1);
                 if(screentype.equalsIgnoreCase("second")){
+                    path2=path;
                    tv_adharcard_back.setText(filename);
                     imagefile2= new File(imagePath);
                 }else{
+                    path1=path;
                     imagefile1= new File(imagePath);
                     tv_adharcard_front.setText(filename);
                 }
@@ -527,25 +531,54 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     }
     public void getRegister(String uname, String email, String pwd, String mobile, String ci, String co,String accno,String ifsccode,String docno,String docpancard) {
         dialog = CommonMethods.showDialogProgressBarNew(this);
+
+        /////
+       // RequestBody orderstatus_idd = RequestBody.create(MediaType.parse("text/plain"), orderstatus_id);
+      //  RequestBody useridd = RequestBody.create(MediaType.parse("text/plain"), userid);
+
+//        Log.e("urllshow",""+wsu);
+        MultipartBody.Part document_back_image;
+        MultipartBody.Part document_front_image;
+        if (path2==null){
+            document_back_image =MultipartBody.Part.createFormData("document_back_image","");
+        }else{
+            Log.e("debug_800",""+path2);
+            File file2 = new File(path2);
+            RequestBody fileReqBody1 = RequestBody.create(MediaType.parse("image/*"), file2);
+            document_back_image = MultipartBody.Part.createFormData("document_back_image", file2.getName(), fileReqBody1);
+        }
+        if (path1==null){
+            document_front_image  =MultipartBody.Part.createFormData("document_front_image","");
+        }else{
+            Log.e("debug_800",""+path1);
+            File file1 = new File(path1);
+            RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file1);
+            document_front_image = MultipartBody.Part.createFormData("document_front_image", file1.getName(), fileReqBody);
+
+
+        }
+
+        ///
+
+
         //  RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
         RequestInterface req = RetrofitClient.getClientone().create(RequestInterface.class);
       //  RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), getRealPathFromURI(data.getData()));
-        MultipartBody.Part multipartBody1;
-        MultipartBody.Part multipartBody2;
+
         //  RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), getRealPathFromURI(data.getData()));
-        if (imagefile1==null){
-            multipartBody1 =MultipartBody.Part.createFormData("doc_front_img","");
+    /*    if (imagefile1==null){
+            multipartBody1 =MultipartBody.Part.createFormData("document_front_image","");
         }else{
-            multipartBody1 =MultipartBody.Part.createFormData("doc_front_img",imagefile1.getName());
+            multipartBody1 =MultipartBody.Part.createFormData("document_front_image",imagefile1.getName());
         }
         if (imagefile2==null){
-            multipartBody2  =MultipartBody.Part.createFormData("doc_back_img","");
+            multipartBody2  =MultipartBody.Part.createFormData("document_back_image","");
         }else{
-            multipartBody2  =MultipartBody.Part.createFormData("doc_back_img",imagefile2.getName());
-        }
+            multipartBody2  =MultipartBody.Part.createFormData("document_back_image",imagefile2.getName());
+        }*/
         Log.e("imagefile1",""+imagefile1);
         Log.e("imagefile2",""+imagefile2);
-        Call<ResponseBody> call = req.getREgDetails(multipartBody1,multipartBody2,mobile, email, "male", pwd, uname,et_state.getText().toString(), ci, co,"Aadhar Card",et_bankName.getText().toString(),accno,ifsccode,et_UpiId.getText().toString(),"1",et_adharcaredno.getText().toString(),docpancard);
+        Call<ResponseBody> call = req.getREgDetails(document_front_image,document_back_image,mobile, email, "male", pwd, uname,et_state.getText().toString(), ci, co,"Aadhar Card",et_bankName.getText().toString(),accno,ifsccode,et_UpiId.getText().toString(),"1",et_adharcaredno.getText().toString(),docpancard);
 
         call.enqueue(new Callback<ResponseBody>() {
             @SuppressLint("NewApi")
@@ -579,15 +612,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 } else {
                     Toast.makeText(RegisterActivity.this, msg, Toast.LENGTH_SHORT).show();
                 }
-
-
             }
-
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 dialog.dismiss();
-
-
             }
 
         });

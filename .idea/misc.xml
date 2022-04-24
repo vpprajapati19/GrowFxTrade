@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_invest_money_netbanking.xml" value="0.1" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_invest_money_qr_code.xml" value="0.12312703583061889" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_invest_money_upi.xml" value="0.12312703583061889" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_login.xml" value="0.11907894736842105" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_main.xml" value="0.12" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_myportfolio.xml" value="0.11907894736842105" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_orderhistory.xml" value="0.11907894736842105" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_transaction.xml" value="0.11907894736842105" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_withdrawal.xml" value="0.1" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/dialog_watchlist.xml" value="0.11907894736842105" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/item_row_find_match.xml" value="0.11907894736842105" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/row_currency.xml" value="0.11907894736842105" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/row_orderhistory.xml" value="0.22" />
         <entry key="..\:/Users/PC-155/Downloads/GrowFxTrade/GrowFxTrade/app/src/main/res/drawable/bg_edit_round_cornner2.xml" value="0.19" />
         <entry key="..\:/Users/PC-155/Downloads/GrowFxTrade/GrowFxTrade/app/src/main/res/drawable/bg_profile_rounded.xml" value="0.19" />
         <entry key="..\:/Users/PC-155/Downloads/GrowFxTrade/GrowFxTrade/app/src/main/res/layout/activity_chatwithus.xml" value="0.25" />
@@ -21,7 +34,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

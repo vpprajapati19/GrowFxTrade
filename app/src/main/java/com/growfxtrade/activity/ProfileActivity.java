@@ -127,6 +127,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 String doc_id = "";
                 String doc_no = "";
                 String pan_no = "";
+                String upi = "";
+                String bank_name = "";
                 try {
                     String res = response.body().string();
 
@@ -135,7 +137,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     usernm=jsonObject1.getString("user_name");
                     email=jsonObject1.getString("email");
                     mono=jsonObject1.getString("mono");
-                    amount=jsonObject1.getString("amount");
+                    amount=jsonObject1.getString("amountt");
                     profit=jsonObject1.getString("profit");
                     Log.e("profit128=","=="+profit);
                     bank_account_no=jsonObject1.getString("bank_account_no");
@@ -143,6 +145,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     doc_no=jsonObject1.getString("doc_no");
                     pan_no=jsonObject1.getString("pan_no");
                     doc_id=jsonObject1.getString("doc_id");
+                    doc_id=jsonObject1.getString("doc_id");
+                    upi=jsonObject1.getString("upi_id");
+                    bank_name = jsonObject1.getString("bank_name");
+
+                    PrefrenceManager.setString(ProfileActivity.this, PrefrenceManager.Bankname, bank_name);
+                    PrefrenceManager.setString(ProfileActivity.this, PrefrenceManager.Accountno, bank_account_no);
+                    PrefrenceManager.setString(ProfileActivity.this, PrefrenceManager.IFCI, ifsc);
+                    PrefrenceManager.setString(ProfileActivity.this, PrefrenceManager.UPI, upi);
+
 
                 } catch (Exception e) {
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());

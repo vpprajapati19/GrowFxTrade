@@ -58,10 +58,13 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
         btn_sent_money_netbank = findViewById(R.id.btn_sent_money_netbank);
         ivicon.setOnClickListener(this);
         btn_sent_money_netbank.setOnClickListener(this);
+        Log.e("Account_No","==="+PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.Accountno));
+        Log.e("IFSC","==="+PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.IFCI));
+        Log.e("Account_name","==="+PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.Bankname));
+        tv_bank_accountno.setText(PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.Accountno));
+        tv_ifsccode.setText(PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.IFCI));
+        tv_bankname.setText(PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.Bankname));
 
-        tv_bank_accountno.setText(PrefrenceManager.Accountno);
-        tv_ifsccode.setText(PrefrenceManager.IFCI);
-        tv_bankname.setText(PrefrenceManager.Bankname);
     }
 
     @Override
@@ -78,7 +81,7 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID), "NET BANKING", money);
+        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID), "Net-Banking", money);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

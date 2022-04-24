@@ -126,13 +126,13 @@ public class MyPortfolioActivity extends AppCompatActivity implements View.OnCli
                 }
 
                 if(profit_loss.equalsIgnoreCase("null")|| profit_loss.equalsIgnoreCase("0.00")){
-                    tv_available.setText("$ " + "0");
+                  // tv_available.setText("$ " + "0");
+                    tv_totalportfolio.setText("$ " + "0");
                 }else {
-                    tv_available.setText("$ " + available);
+                    tv_totalportfolio.setText("$ " + total_portfolio);
+                   // tv_available.setText("$ " + available);
                 }
-
-
-                tv_totalportfolio.setText("$ " + total_portfolio);
+                tv_available.setText("$ " + available);
                 tv_withdrawl.setText("$ " + withdraw);
                 tv_totalorex.setText("$ " + new DecimalFormat("##.###").format(Double.parseDouble(total_buy)));
             }

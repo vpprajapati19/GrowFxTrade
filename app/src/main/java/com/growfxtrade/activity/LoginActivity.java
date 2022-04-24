@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView tv_forgot,lv_signup;
     private LinearLayout iv_login;
     private Dialog dialog;
+    Handler handler;
     private String TAG = "LoginActivity";
     JSONObject jsonObject;
 
@@ -171,16 +173,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.LOGIN_STATUS, "true");
                         getwirthdraw();
 
+                        handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Do something after 100ms
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.item_animation_from_bottom,
+                                        R.anim.item_animation_from_bottom);
+                                finish();
+                              //  handler.postDelayed(this, 3000);
+                            }
+                        }, 1000);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.item_animation_from_bottom,
-                            R.anim.item_animation_from_bottom);
-                    finish();
-
                 } else {
                     Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                 }
@@ -209,6 +218,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String Accountno="";
                 String IFCI="";
                 String UPI="";
+                String Accountname="";
 
                 try {
                     String res = response.body().string();
@@ -218,13 +228,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Accountno = jsonObject1.getString("bank_account_no");
                     IFCI = jsonObject1.getString("ifsc");
                     UPI = jsonObject1.getString("upi_id");
+                    Accountname = jsonObject1.getString("bank_name");
                     Log.e("bank_account_no--204","--"+Accountno);
                     Log.e("ifsc--204","--"+IFCI);
                     Log.e("upi_id--204","--"+UPI);
+                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.Bankname, Accountname);
                     PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.Accountno, Accountno);
                     PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.IFCI, IFCI);
                     PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.UPI, UPI);
+                    Log.e("Account_No","==="+PrefrenceManager.getString(LoginActivity.this, PrefrenceManager.Accountno));
+                    Log.e("IFSC","==="+PrefrenceManager.getString(LoginActivity.this, PrefrenceManager.IFCI));
+                    Log.e("Account_name","==="+PrefrenceManager.getString(LoginActivity.this, PrefrenceManager.Bankname));
 
+                    Log.e("ifsc--204","--"+IFCI);
+                    Log.e("upi_id--204","--"+UPI);
                    // withdrawamount = jsonObject1.getString("req_amount");
 
                 } catch (Exception e) {

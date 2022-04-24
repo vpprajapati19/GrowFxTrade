@@ -63,7 +63,7 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
             "Pakistan", "South Africa", "Sri Lanka", "West Indies"};
 
     private final Integer[] paymentFlg = {R.drawable.ic_deposit_new};
-    private final String[] paymentValue = {"CRYPTO", "UPI", "NET BANKING"};
+    private final String[] paymentValue = {"Crypto", "Upi", "Net-Banking"};
 
 
     @Override
@@ -145,8 +145,6 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
     }
 
 //
-
-
     @Override
     public void onClick(View view) {
         if (view == ivicon) {
@@ -175,21 +173,21 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
             if (!CommonMethods.getInternetStatus(this)) {
                 CommonMethods.showInternetDialog(this);
             } else {
-                if(selectPaymentValue.equals("UPI")) {
+                if(selectPaymentValue.equals("Upi")) {
                     Bundle b=new Bundle();
                     Intent intent = new Intent(getApplicationContext(), InvestMoneyUpiActivity.class);
                     Log.e("price170","=="+money);
                     b.putString("price",money);
                     intent.putExtras(b);
                     startActivity(intent);
-                } else if(selectPaymentValue.equals("CRYPTO")) {
+                } else if(selectPaymentValue.equals("Crypto")) {
                     Bundle b=new Bundle();
                     Intent intent = new Intent(getApplicationContext(), InvestMoneyQrCodeActivity.class);
                     Log.e("price176","=="+money);
                     b.putString("price",money);
                     intent.putExtras(b);
                     startActivity(intent);
-                }else if(selectPaymentValue.equals("NET BANKING")) {
+                }else if(selectPaymentValue.equals("Net-Banking")) {
                     Bundle b=new Bundle();
                     Intent intent = new Intent(getApplicationContext(), InvestMoneyNetbankingActivity.class);
                     Log.e("price176","=="+money);

@@ -148,7 +148,7 @@
                                         android:textColor="@color/colorTitle"
                                         android:textStyle="normal"
                                         android:textAllCaps="true"
-                                        android:text="$ - 1000">
+                                        android:text="$ -">
                                     </TextView>
                                 </LinearLayout>
                                 <View
@@ -180,7 +180,7 @@
                                         android:textColor="@color/colorTitle"
                                         android:textStyle="normal"
                                         android:textAllCaps="true"
-                                        android:text="Rs - 72000">
+                                        android:text="Rs -">
                                     </TextView>
                                 </LinearLayout>
                             </LinearLayout>

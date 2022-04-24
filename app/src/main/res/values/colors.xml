@@ -12,6 +12,7 @@
     <color name="cTextColor">#00CFDF</color>
     <color name="grey">#d0cecd</color>
     <color name="white">#ffffff</color>
+    <color name="bg_new">#323030</color>
     <color name="black">#000000</color>
     <color name="light_black">#333333</color>
     <color name="pink">#ff009a</color>

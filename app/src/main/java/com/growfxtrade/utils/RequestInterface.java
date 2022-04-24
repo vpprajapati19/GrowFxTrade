@@ -24,6 +24,7 @@ public interface RequestInterface {
     @GET("trade_api/withdraw.php")
     Call<ResponseBody> getWithdraw(
             @Query("id") String id,
+            @Query("type") String type,
             @Query("amount") String amount
     );
 
@@ -39,9 +40,6 @@ public interface RequestInterface {
     Call<ResponseBody> getPortfolio(
             @Query("id") String id
     );
-
-
-
     @POST("trade_api/get_pending_wallet.php")
     @FormUrlEncoded
     Call<ResponseBody> get_pending_wallet(
@@ -108,14 +106,14 @@ public interface RequestInterface {
             @Query("state") String state,
             @Query("city") String city,
             @Query("country") String country,
-            @Query("doc_type") String doc_type,
+            @Query("document_type") String doc_type,
             @Query("bank_name") String bank_name,
-            @Query("bank_account") String bank_account,
+            @Query("bank_account_no") String bank_account,
             @Query("ifsc") String ifsc,
             @Query("upi_id") String upi_id,
             @Query("doc_id") String doc_id,
             @Query("doc_no") String doc_no,
-            @Query("pancard_no") String pancard_no
+            @Query("pan_no") String pancard_no
 
 
     );
@@ -157,9 +155,7 @@ public interface RequestInterface {
     @FormUrlEncoded
     Call<ResponseBody> getOrderHistory(
             @Field("id") String id
-
     );
-
     @POST("trade_api/get_wallet.php")
     @FormUrlEncoded
     Call<ResponseBody> getPrfile(
@@ -173,10 +169,10 @@ public interface RequestInterface {
             @Field("id") String id,
             @Field("qty") String qty
     );
-    @POST("trade_api/buy_sell.php")
+    @POST("trade_api/buy-sell.php")
     @FormUrlEncoded
     Call<ResponseBody> getBuySell(
-            @Field("type") String type,
+            @Field("buy_sell") String type,
             @Field("currency_id") String currency_id,
             @Field("amount") String amount,
             @Field("qty") String qty,

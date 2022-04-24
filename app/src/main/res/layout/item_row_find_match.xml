@@ -7,20 +7,18 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     app:cardCornerRadius="5dp"
-    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardBackgroundColor="@color/white"
     app:cardElevation="0dp">
 
     <LinearLayout
-        android:padding="10dp"
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <TextView
             android:layout_weight="1"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,7 +30,7 @@
 
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +41,7 @@
         <TextView
             android:gravity="right"
             android:layout_weight="1"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text="amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -50,7 +50,7 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
             Log.e("price255555","=="+price);
             tv_price.setText(price);
         }
-        tv_copy.setText(PrefrenceManager.UPI);
+        tv_copy.setText(PrefrenceManager.getString(InvestMoneyUpiActivity.this, PrefrenceManager.UPI));
         iv_copybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,7 +92,7 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyUpiActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(this, PrefrenceManager.USERID), "UPI", money);
+        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(this, PrefrenceManager.USERID), "Upi", money);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

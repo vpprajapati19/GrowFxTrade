@@ -116,6 +116,8 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
                             orderHIstoryModel.setSell(jsonObject1.getString("sell"));
                             orderHIstoryModel.setCurrency_name(jsonObject1.getString("currency_name"));
                             orderHIstoryModel.setOrder_id(jsonObject1.getString("order_id"));
+                            orderHIstoryModel.setProfit(jsonObject1.getString("profit"));
+                            orderHIstoryModel.setLoss(jsonObject1.getString("loss"));
                             orderHIstoryModelArrayList.add(orderHIstoryModel);
                         }
                     }
@@ -183,10 +185,14 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
 
                 final OrderHIstoryModel orderHIstoryModel = currencyModelArrayList.get(position);
                 final ItemViewHeader mholder = (ItemViewHeader) holder;
+                mholder.tv_amount.setText(orderHIstoryModel.getTotal());
+                mholder.tv_currency_price.setText(orderHIstoryModel.getAmount());
                 mholder.tv_currencyname.setText(orderHIstoryModel.getCurrency_name());
                 mholder.tv_orderid.setText(orderHIstoryModel.getOrder_id());
                 mholder.tv_currencyprice.setText(orderHIstoryModel.getAmount());
                 mholder.tv_date.setText(orderHIstoryModel.getDate());
+                mholder.tv_profit.setText(orderHIstoryModel.getProfit());
+                mholder.tv_loss.setText(orderHIstoryModel.getLoss());
 
                 String buy_sell = orderHIstoryModel.getBuy_sell().trim();
                 String qty = orderHIstoryModel.getQty().trim();
@@ -194,7 +200,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
                 String sell_qty = orderHIstoryModel.getSell().trim();
 
 
-                mholder.tv_sellqty.setText(qty);
+             //   mholder.tv_sellqty.setText(qty);
 
                 if(buy_qty.equalsIgnoreCase(sell_qty)){
                     mholder.tv_status.setText("Closed");
@@ -218,12 +224,12 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
 
                 Log.e(TAG, "sell_qty   " + sell_qty);
 
-                mholder.tv_sellqty.setOnClickListener(new View.OnClickListener() {
+              /*  mholder.tv_sellqty.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         final OrderHIstoryModel orderHIstoryModel = currencyModelArrayList.get(position);
                     }
-                });
+                });*/
 
 
             }
@@ -253,18 +259,22 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
 
 
         public class ItemViewHeader extends MainViewHolder {
-            private TextView tv_currencyname, tv_orderid, tv_currencyprice, tv_date, tv_buy, tv_sell, tv_sellqty,tv_status;
+            private TextView tv_loss,tv_profit,tv_amount,tv_currency_price,tv_currencyname, tv_orderid, tv_currencyprice, tv_date, tv_buy, tv_sell, tv_sellqty,tv_status;
             LinearLayout maincard, linemore,listatus;
 
             public ItemViewHeader(View view) {
                 super(view);
+                tv_loss = view.findViewById(R.id.tv_loss);
+                tv_profit = view.findViewById(R.id.tv_profit);
+                tv_amount = view.findViewById(R.id.tv_amount);
+                tv_currency_price = view.findViewById(R.id.tv_currency_price);
                 tv_currencyname = view.findViewById(R.id.tv_currencyname);
                 tv_orderid = view.findViewById(R.id.tv_orderid);
                 tv_currencyprice = view.findViewById(R.id.tv_currencyprice);
                 tv_date = view.findViewById(R.id.tv_date);
                 tv_buy = view.findViewById(R.id.tv_buy);
                 tv_sell = view.findViewById(R.id.tv_sell);
-                tv_sellqty = view.findViewById(R.id.tv_sellqty);
+             //   tv_sellqty = view.findViewById(R.id.tv_sellqty);
                 tv_status = view.findViewById(R.id.tv_status);
                 listatus = view.findViewById(R.id.listatus);
             }

@@ -11,6 +11,8 @@ public class OrderHIstoryModel {
     private String buy_sell;
     private String currency_name;
     private String sell;
+    private String loss;
+    private String profit;
     private String order_id;
 
     public String getOrder_id() {
@@ -99,5 +101,20 @@ public class OrderHIstoryModel {
 
     public void setCurrency_name(String currency_name) {
         this.currency_name = currency_name;
+    }
+    public String getLoss() {
+        return loss;
+    }
+
+    public void setLoss(String loss) {
+        this.loss = loss;
+    }
+
+    public String getProfit() {
+        return profit;
+    }
+
+    public void setProfit(String profit) {
+        this.profit = profit;
     }
 }
