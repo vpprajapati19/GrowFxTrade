@@ -17,15 +17,15 @@
             android:id="@+id/mainc"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorBgHeader"
+            android:background="@color/bg_new"
             app:layout_scrollFlags="enterAlways|scroll">
-            <androidx.appcompat.widget.Toolbar
-                xmlns:android="http://schemas.android.com/apk/res/android"
+
+            <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/toolbar"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/_60sdp"
-                android:elevation="0dp"
-                android:background="@color/colorBgHeader">
+                android:background="@color/bg_new"
+                android:elevation="0dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -39,6 +39,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="10.0dip"
                         android:src="@drawable/ic_back_arrow_new"
+                        android:tint="@color/white"
                         android:visibility="visible" />
 
                     <TextView
@@ -51,7 +52,7 @@
                         android:maxLines="1"
                         android:text="@string/contactus"
                         android:textAllCaps="true"
-                        android:textColor="@color/colorTitle"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/_18sdp"
                         android:textStyle="bold"
                         android:visibility="visible" />

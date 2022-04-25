@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/bg_new"
     app:ignore="NamespaceTypo">
 
     <LinearLayout
@@ -33,7 +33,7 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:text="@string/signup"
-                    android:textColor="@color/colorTextLogin"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_30sdp" />
 
                 <TextView
@@ -44,7 +44,7 @@
                     android:text="@string/text_signup"
                     android:gravity="center"
                     android:textSize="@dimen/_14sdp"
-                    android:textColor="@color/colorTextLogin2" />
+                    android:textColor="@color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -505,8 +505,8 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/lato_regular"
                     android:text="@string/accept"
-                    android:textColor="@color/colorTextLogin2"
-                    android:buttonTint="@color/colorTextLogin2"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/white"
                     android:textSize="@dimen/_12sdp" />
 
 
@@ -544,7 +544,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lato_regular"
                         android:text="@string/text_signup1"
-                        android:textColor="@color/colorTextLogin2"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/_13sdp" />
                     <TextView
                         android:layout_width="wrap_content"

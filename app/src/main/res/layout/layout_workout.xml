@@ -24,13 +24,13 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white">
+                android:background="@color/bg_new">
                 <ImageView
                     android:id="@+id/iv_main_drawer"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
                     android:padding="@dimen/_8sdp"
-                    app:tint="@color/colorTitle"
+                    app:tint="@color/white"
                     android:src="@drawable/ic_menu_drawer_sv"
                     android:layout_centerVertical="true"/>
                 <TextView
@@ -40,7 +40,7 @@
                     android:gravity="center"
                     android:src="@drawable/thiqah_souq_white"
                     android:text="Watchlist"
-                    android:textColor="@color/colorTitle"
+                    android:textColor="@color/white"
                     android:textSize="25dp"
                     android:layout_marginLeft="@dimen/_70sdp"
                     android:textStyle="bold"
@@ -74,6 +74,7 @@
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_28sdp"
                     android:padding="8dp"
+                    android:tint="@color/white"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_plus_new_sv"/>
@@ -81,6 +82,7 @@
                     android:id="@+id/img_search"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_28sdp"
+                    android:tint="@color/white"
                     android:src="@drawable/ic_delete_new_sv"
                     android:layout_toLeftOf="@+id/iv_main_filter"
                     android:layout_centerVertical="true"

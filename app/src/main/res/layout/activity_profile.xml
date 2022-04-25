@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/bg_new">
 
     <androidx.core.widget.NestedScrollView
         android:layout_below="@+id/abc"
@@ -23,7 +23,7 @@
                     android:id="@+id/mainc"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorBgHeader"
+                    android:background="@color/bg_new"
                     app:layout_scrollFlags="enterAlways|scroll">
                     <androidx.appcompat.widget.Toolbar
                         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,7 +31,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/_60sdp"
                         android:elevation="0dp"
-                        android:background="@color/colorBgHeader">
+                        android:background="@color/bg_new">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -42,6 +42,7 @@
                                 android:id="@+id/ivicon"
                                 android:layout_width="35dp"
                                 android:layout_height="15dp"
+                                android:tint="@color/white"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="10.0dip"
                                 android:src="@drawable/ic_back_arrow_new"
@@ -57,7 +58,7 @@
                                 android:maxLines="1"
                                 android:text="@string/profile"
                                 android:textAllCaps="true"
-                                android:textColor="@color/colorTitle"
+                                android:textColor="@color/white"
                                 android:textSize="@dimen/_18sdp"
                                 android:textStyle="bold"
                                 android:visibility="visible" />

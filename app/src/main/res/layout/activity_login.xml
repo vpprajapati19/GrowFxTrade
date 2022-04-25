@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/bg_new"
     app:ignore="NamespaceTypo">
 
     <LinearLayout
@@ -30,7 +30,7 @@
                 android:fontFamily="@font/lato_bold"
                 android:gravity="center"
                 android:text="@string/text_login"
-                android:textColor="@color/colorTextLogin"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_25sdp" />
             <TextView
                 android:layout_marginTop="@dimen/_8sdp"
@@ -40,7 +40,7 @@
                 android:text="@string/text_login2"
                 android:gravity="center"
                 android:textSize="@dimen/_13sdp"
-                android:textColor="@color/colorTextLogin2"
+                android:textColor="@color/white"
                 />
 
             <LinearLayout
@@ -132,7 +132,7 @@
                 android:gravity="end"
                 android:fontFamily="@font/lato_bold"
                 android:text="@string/text_forgot"
-                android:textColor="@color/colorTextLogin2"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 android:layout_marginRight="@dimen/_10sdp"/>
 
@@ -149,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="@string/donthaveaccount"
-                    android:textColor="@color/colorTextLogin2"
+                    android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="@dimen/_13sdp" />
                 <TextView
