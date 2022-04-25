@@ -221,9 +221,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
                 } else {
                     mholder.tv_sell.setText("SELL : " + "0");
                 }
-
                 Log.e(TAG, "sell_qty   " + sell_qty);
-
               /*  mholder.tv_sellqty.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -231,11 +229,8 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
                     }
                 });*/
 
-
             }
         }
-
-
         @Override
         public int getItemCount() {
             return currencyModelArrayList.size();
@@ -323,10 +318,8 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
 
                 } else {
                     Toast.makeText(OrderHistoryActivity.this, msg, Toast.LENGTH_SHORT).show();
-
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 dialog.dismiss();

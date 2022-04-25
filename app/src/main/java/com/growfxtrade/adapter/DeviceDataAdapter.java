@@ -133,19 +133,17 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
                                // field2.setText("");
                         }
                     });
-
                     btn_buy.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            String amount=et_amount.getText().toString();
+                            String total=et_amount.getText().toString();
                             String cur_name=analogDashboardModel.getSymbol();
                             String cur_id=analogDashboardModel.getTimestamp();
                             if(et_qty.getText().length()==0){
                                 Toast.makeText(mContext, "Please Enter QTY", Toast.LENGTH_SHORT).show();
                             }else{
-                                Buyapi(amount,cur_name,cur_id,alertDialog,qty);
+                                Buyapi(total,analogDashboardModel.getAsk(),cur_name,cur_id,alertDialog,qty);
                             }
-
                         }
                     });
                     dialogParent.setOnTouchListener(new View.OnTouchListener() {
@@ -215,12 +213,12 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
             });
         }
     }
-    public void Buyapi(String amoun, String cur_name, String cur_id, final AlertDialog alertDialog,String qty) {
+    public void Buyapi(String total,String amoun, String cur_name, String cur_id, final AlertDialog alertDialog,String qty) {
      //   Log.e("list236","=="+clist);
         Log.e("userid187","=="+PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(mContext);
         RequestInterface req = RetrofitClient.getClient(mContext).create(RequestInterface.class);
-        Call<ResponseBody> call = req.getBuySell("buy",cur_name,amoun,qty,amoun, PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID),cur_name);
+        Call<ResponseBody> call = req.getBuySell("buy",cur_name,amoun,qty,total, PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID),cur_name);
 
         call.enqueue(new Callback<ResponseBody>() {
             @SuppressLint("NewApi")
