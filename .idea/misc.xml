@@ -3,12 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/drawable/bg_button_asmani.xml" value="0.146" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/drawable/bg_button_corner_new.xml" value="0.139" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/drawable/bg_profile_rounded.xml" value="0.139" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_addcurrency.xml" value="0.11907894736842105" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_chatwithus.xml" value="0.11907894736842105" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_deletecurrency.xml" value="0.11907894736842105" />
-        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_invest_money_netbanking.xml" value="0.1" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_invest_money_netbanking.xml" value="0.4525" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_invest_money_qr_code.xml" value="0.12312703583061889" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_invest_money_upi.xml" value="0.12312703583061889" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_investmoney.xml" value="0.11907894736842105" />
@@ -16,16 +17,17 @@
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_main.xml" value="0.12" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_myportfolio.xml" value="0.11907894736842105" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_orderhistory.xml" value="0.11907894736842105" />
-        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_profile.xml" value="0.11907894736842105" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_profile.xml" value="0.5" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_register.xml" value="0.11907894736842105" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_transaction.xml" value="0.11907894736842105" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/activity_withdrawal.xml" value="0.1" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/dialog_watchlist.xml" value="0.11907894736842105" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/home.xml" value="0.11907894736842105" />
-        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/item_row_find_match.xml" value="0.11907894736842105" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/item_row_find_match.xml" value="0.18" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/layout_drawer_menu.xml" value="0.33" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/layout_workout.xml" value="0.11907894736842105" />
         <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/row_currency.xml" value="0.11907894736842105" />
-        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/row_orderhistory.xml" value="0.22" />
+        <entry key="..\:/Flutter/GrowFxTradegit/app/src/main/res/layout/row_orderhistory.xml" value="0.5" />
         <entry key="..\:/Users/PC-155/Downloads/GrowFxTrade/GrowFxTrade/app/src/main/res/drawable/bg_edit_round_cornner2.xml" value="0.19" />
         <entry key="..\:/Users/PC-155/Downloads/GrowFxTrade/GrowFxTrade/app/src/main/res/drawable/bg_profile_rounded.xml" value="0.19" />
         <entry key="..\:/Users/PC-155/Downloads/GrowFxTrade/GrowFxTrade/app/src/main/res/layout/activity_chatwithus.xml" value="0.25" />

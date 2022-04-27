@@ -51,14 +51,10 @@ public class ViewServiceAdapter extends RecyclerView.Adapter<ViewServiceAdapter.
                 .centerCrop()
                 .into(itemViewHolder.grid_item_image);*/
         itemViewHolder.txtdate.setText(list.get(pos).getDate());
-        itemViewHolder.txttype.setText(list.get(pos).getType());
+        itemViewHolder.txttype.setText(list.get(pos).getbuy_sell());
         itemViewHolder.txtamount.setText(list.get(pos).getAmount());
 
       //  Picasso.with(this.context).load((FilterdList.get(pos).getImgurl())).placeholder(R.drawable.default_image).into(itemViewHolder.grid_item_image);
-
-
-
-
     }
 
     public long getItemId(int i) {

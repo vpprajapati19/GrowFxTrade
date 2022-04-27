@@ -10,9 +10,18 @@ public class ViewServiceModel implements Serializable {
     String type="";
     String amount="";
     String name="";
+    String buy_sell="";
     String updated_at="";
     String created_at="";
 
+
+    public String getbuy_sell() {
+        return buy_sell;
+    }
+
+    public void setbuy_sell(String buy_sell) {
+        this.buy_sell = buy_sell;
+    }
 
     public String getName() {
         return name;

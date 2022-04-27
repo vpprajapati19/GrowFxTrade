@@ -17,6 +17,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +37,7 @@ import androidx.core.content.ContextCompat;
 import com.growfxtrade.adapter.CustomAdapter11;
 import com.growfxtrade.R;
 import com.growfxtrade.utils.CommonMethods;
+import com.growfxtrade.utils.ImageResizer;
 import com.growfxtrade.utils.RequestInterface;
 import com.growfxtrade.utils.RetrofitClient;
 
@@ -145,7 +147,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 }
 
                 // Showing selected spinner item
-              //  Toast.makeText(adapterView.getContext(), docposition, Toast.LENGTH_LONG).show();
+                //  Toast.makeText(adapterView.getContext(), docposition, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -208,7 +210,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 et_usermobile.setError("Enter Valid Number");
                 return;
             } /*else if (et_usermobile.length() <10 || et_usermobile.length() > 13) {
-
                 et_usermobile.setError("Phone number length should be 10 digits");
                 et_usermobile.requestFocus();
             }*/
@@ -228,8 +229,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             if (et_pancard.getText().length() <= 0) {
                 et_pancard.setError("Enter Valid PanCard Number");
                 return;
-               // Toast.makeText(this, "Enter Valid PanCard Number", Toast.LENGTH_SHORT).show();
-               // return;
+                // Toast.makeText(this, "Enter Valid PanCard Number", Toast.LENGTH_SHORT).show();
+                // return;
             }/*else  if (!regex_matcher(r, et_pancard.getText().toString())) {
                 //error = "Invalid PAN number";
                 et_pancard.setError("Invalid PAN number");
@@ -293,7 +294,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
             getRegister(et_usernmae.getText().toString().trim(),et_useremail.getText().toString().trim(),et_password.getText().toString().trim(),et_usermobile.getText().toString().trim()
                     ,et_usercity.getText().toString().trim(),country,et_accno.getText().toString().trim(), et_ifsccode.getText().toString().trim()
-            ,et_doc_no.getText().toString().trim(),et_pancard.getText().toString().trim());
+                    ,et_doc_no.getText().toString().trim(),et_pancard.getText().toString().trim());
 
 
            /* Intent intent = new Intent(this, SignupOtpActivity.class);
@@ -327,7 +328,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     }
     private void selectImage() {
         final CharSequence[] items = {RegisterActivity.this.getResources().getString(R.string.take_photo)
-                  ,RegisterActivity.this.getResources().getString(R.string.choose_gallery),
+                ,RegisterActivity.this.getResources().getString(R.string.choose_gallery),
                 RegisterActivity.this.getResources().getString(R.string.Cancel)};
         final AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
         builder.setTitle( RegisterActivity.this.getResources().getString(R.string.add_photo));
@@ -351,7 +352,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     private void setImage(Bitmap bitmap, Uri tempUri,String pathh) {
         Log.e("debug_336",""+tempUri);
-       // Damagedapi(OrderReference,pathh);
+        // Damagedapi(OrderReference,pathh);
     }
     @SuppressLint("LongLogTag")
     @Override
@@ -406,7 +407,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 filename = path.substring(path.lastIndexOf("/") + 1);
                 if(screentype.equalsIgnoreCase("second")){
                     path2=path;
-                   tv_adharcard_back.setText(filename);
+                    tv_adharcard_back.setText(filename);
                     imagefile2= new File(imagePath);
                 }else{
                     path1=path;
@@ -422,6 +423,25 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
             }
         }
+    }
+    private File getbitmapfile(Bitmap reduse) {
+        File file =new File(Environment.getExternalStorageDirectory() +File.separator+"document_img");
+
+        ByteArrayOutputStream bos=new ByteArrayOutputStream();
+        reduse.compress(Bitmap.CompressFormat.JPEG,0,bos);
+        byte[] bitmapdata=bos.toByteArray();
+        try {
+            file.createNewFile();
+            FileOutputStream fos=new FileOutputStream(file);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+            return file;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return file;
     }
     public File saveBitmapToFile(File file) {
         try {
@@ -533,8 +553,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         dialog = CommonMethods.showDialogProgressBarNew(this);
 
         /////
-       // RequestBody orderstatus_idd = RequestBody.create(MediaType.parse("text/plain"), orderstatus_id);
-      //  RequestBody useridd = RequestBody.create(MediaType.parse("text/plain"), userid);
+        // RequestBody orderstatus_idd = RequestBody.create(MediaType.parse("text/plain"), orderstatus_id);
+        //  RequestBody useridd = RequestBody.create(MediaType.parse("text/plain"), userid);
 
 //        Log.e("urllshow",""+wsu);
         MultipartBody.Part document_back_image;
@@ -543,27 +563,31 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             document_back_image =MultipartBody.Part.createFormData("document_back_image","");
         }else{
             Log.e("debug_800",""+path2);
-            File file2 = new File(path2);
-            RequestBody fileReqBody1 = RequestBody.create(MediaType.parse("image/*"), file2);
-            document_back_image = MultipartBody.Part.createFormData("document_back_image", file2.getName(), fileReqBody1);
+
+            //  File file2 = new File(path2);
+            Bitmap fullsize=BitmapFactory.decodeFile(path2);
+            Bitmap reduse=ImageResizer.reduceBitmapSize(fullsize,240000);
+            File fileredues=getbitmapfile(reduse);
+            RequestBody fileReqBody1 = RequestBody.create(MediaType.parse("image/*"), fileredues);
+            document_back_image = MultipartBody.Part.createFormData("document_back_image", fileredues.getName(), fileReqBody1);
         }
         if (path1==null){
             document_front_image  =MultipartBody.Part.createFormData("document_front_image","");
         }else{
             Log.e("debug_800",""+path1);
-            File file1 = new File(path1);
-            RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file1);
-            document_front_image = MultipartBody.Part.createFormData("document_front_image", file1.getName(), fileReqBody);
-
-
+            //   File file1 = new File(path1);
+            Bitmap fullsize=BitmapFactory.decodeFile(path1);
+            Bitmap reduse= ImageResizer.reduceBitmapSize(fullsize,240000);
+            File fileredues=getbitmapfile(reduse);
+            RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), fileredues);
+            document_front_image = MultipartBody.Part.createFormData("document_front_image", fileredues.getName(), fileReqBody);
         }
 
         ///
 
-
         //  RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
         RequestInterface req = RetrofitClient.getClientone().create(RequestInterface.class);
-      //  RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), getRealPathFromURI(data.getData()));
+        //  RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), getRealPathFromURI(data.getData()));
 
         //  RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), getRealPathFromURI(data.getData()));
     /*    if (imagefile1==null){
@@ -621,6 +645,4 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         });
 
     }
-
-
 }

@@ -81,8 +81,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/_35sdp"
-                        android:layout_marginLeft="@dimen/_15sdp"
-                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginRight="@dimen/_8sdp"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -340,11 +340,12 @@
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/rec_home"
                                     android:layout_width="match_parent"
-                                    android:layout_height="@dimen/_250sdp"
+                                    android:layout_height="wrap_content"
                                     android:layout_below="@+id/view"
-                                    android:layout_marginLeft="@dimen/_15sdp"
+                                    android:layout_marginBottom="@dimen/_20sdp"
+                                    android:layout_marginLeft="@dimen/_8sdp"
                                     android:layout_marginTop="@dimen/_5sdp"
-                                    android:layout_marginRight="@dimen/_15sdp" />
+                                    android:layout_marginRight="@dimen/_8sdp" />
 
                             </RelativeLayout>
 

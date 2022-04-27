@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="340dp"
+    android:layout_width="290dp"
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:background="@color/white"
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        android:background="@color/colorBgHeader"
+        android:background="@color/bg_new"
         android:gravity="center"
         android:paddingTop="@dimen/_15sdp"
         android:paddingBottom="@dimen/_15sdp"
@@ -23,11 +23,9 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/user_new"
+            android:src="@drawable/ic_noun_user"
             android:layout_marginLeft="@dimen/_15sdp"
-            android:tint="@color/white"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="1dp" />
+            android:tint="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:fontFamily="@font/lato_bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_16sdp"
                 android:textStyle="bold" />
 
@@ -53,9 +51,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="-"
+                android:layout_marginRight="@dimen/_5sdp"
                 android:fontFamily="@font/lato_bold"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_16sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -516,6 +515,7 @@
                     android:layout_marginLeft="@dimen/_42sdp"
                     android:id="@+id/drawer_item_resetpwd"
                     style="@style/DrawerItemStyle2"
+                    android:layout_marginBottom="@dimen/_20sdp"
                     android:text="Reset Password" />
 
             </LinearLayout>
