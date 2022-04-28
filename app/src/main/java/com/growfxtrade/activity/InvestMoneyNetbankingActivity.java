@@ -2,10 +2,20 @@ package com.growfxtrade.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -23,6 +33,14 @@ import com.growfxtrade.utils.RetrofitClient;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +54,9 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
     private Dialog dialog;
     JSONObject jsonObject;
     String price;
+    private static final int REQUEST_EXTERNAL_STORAGe = 1;
+    private static String[] permissionstorage = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +69,139 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
             Log.e("price25","=="+price);
             tv_price.setText(price);
         }
+        takeScreenshot();
+       // screenshot(getWindow().getDecorView().getRootView(), "result");
+
     }
+    public static File saveBitmapToFile(File file) {
+        try {
+
+// BitmapFactory options to downsize the image
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            o.inSampleSize = 1;
+// factor of downsizing the image
+
+            FileInputStream inputStream = new FileInputStream(file);
+            BitmapFactory.decodeStream(inputStream, null, o);
+            inputStream.close();
+
+// The new size we want to scale to
+            final int REQUIRED_SIZE = 75;
+
+            /*int scale = 1;
+            while (o.outWidth / scale / 2 >= REQUIRED_SIZE
+                    && o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                scale *= 2;
+            }*/
+
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            //  o2.inSampleSize = scale;
+            inputStream = new FileInputStream(file);
+
+            Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream,
+                    null, o2);
+            inputStream.close();
+
+            file.createNewFile();
+            FileOutputStream outputStream = new FileOutputStream(file);
+
+            selectedBitmap.compress(Bitmap.CompressFormat.PNG, 100,
+                    outputStream);
+
+            return file;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.PNG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        Log.e("PathURLLLLLLLLLLLL", "" + Uri.parse(path));
+        return Uri.parse(path);
+    }private void openScreenshot(File imageFile) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        Uri uri = Uri.fromFile(imageFile);
+        intent.setDataAndType(uri, "image/*");
+        startActivity(intent);
+    }
+    private void takeScreenshot() {
+        Date now = new Date();
+        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+
+        try {
+            // image naming and path  to include sd card  appending name you choose for file
+            String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
+
+            // create bitmap screen capture
+            View v1 = getWindow().getDecorView().getRootView();
+            v1.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+            v1.setDrawingCacheEnabled(false);
+
+            File imageFile = new File(mPath);
+            Log.e("image146","---"+imageFile);
+            FileOutputStream outputStream = new FileOutputStream(imageFile);
+            int quality = 100;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+            outputStream.flush();
+            outputStream.close();
+
+            openScreenshot(imageFile);
+        } catch (Throwable e) {
+            // Several error may come out with file handling or DOM
+            e.printStackTrace();
+        }
+    }
+
+
+    protected static File screenshot(View view, String filename) {
+        Date date = new Date();
+
+        // Here we are initialising the format of our image name
+        CharSequence format = android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", date);
+        try {
+            // Initialising the directory of storage
+            String dirpath = Environment.getExternalStorageDirectory() + "";
+            File file = new File(dirpath);
+            if (!file.exists()) {
+                boolean mkdir = file.mkdir();
+            }
+            // File name
+            String path = dirpath + "/" + filename + "-" + format + ".jpeg";
+            view.setDrawingCacheEnabled(true);
+           // Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
+            view.setDrawingCacheEnabled(false);
+            File imageurl = new File(path);
+            Log.e("image88",""+imageurl);
+            FileOutputStream outputStream = new FileOutputStream(imageurl);
+          //  bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+            outputStream.flush();
+            outputStream.close();
+            return imageurl;
+
+        } catch (FileNotFoundException io) {
+            io.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // verifying if storage permission is given or not
+    public static void verifystoragepermissions(Activity activity) {
+
+        int permissions = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        // If storage permission is not given then request for External Storage Permission
+        if (permissions != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, permissionstorage, REQUEST_EXTERNAL_STORAGe);
+        }
+    }
+
     private void initComponent() {
         ivicon = findViewById(R.id.ivicon);
         tv_price = findViewById(R.id.tv_price);

@@ -10,6 +10,7 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:id="@+id/rl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_button_asmani">
@@ -77,6 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Profit"
+                        android:visibility="gone"
                         android:textColor="@color/black"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:textStyle="bold"
@@ -88,6 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/_5sdp"
                         android:text="Loss"
+                        android:visibility="gone"
                         android:textColor="@color/black"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:textStyle="bold"
@@ -153,6 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0.00"
+                        android:visibility="gone"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
@@ -162,6 +166,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0.00"
+                        android:visibility="gone"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
@@ -198,8 +203,9 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom">
+            android:layout_below="@+id/rl"
+            android:layout_marginTop="-30dp"
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:visibility="visible"
                 android:layout_width="match_parent"
