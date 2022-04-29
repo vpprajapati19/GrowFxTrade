@@ -175,13 +175,12 @@ public interface RequestInterface {
             @Field("buy_sell") String type,
             @Field("currency_id") String currency_id,
             @Field("amount") String amount,
-            @Field("qty") String qty,
+           /* @Field("qty") String qty,*/
             @Field("total") String total,
             @Field("id") String id,
             @Field("currency_name") String currency_name
 
     );
-
 //    @POST("login/index.php")
 //    @FormUrlEncoded
 //    Call<Login> requestLogin(@Field("phone") String email, @Field("password") String password);

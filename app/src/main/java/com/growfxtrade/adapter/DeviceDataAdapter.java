@@ -95,17 +95,19 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
 
                     LinearLayout dialogParent=(LinearLayout) promptsView.findViewById(R.id.dialogParent);
                     TextView currencyvalue=(TextView)promptsView.findViewById(R.id.tv_currencyvalue);
+                    TextView tv_balance_value=(TextView)promptsView.findViewById(R.id.tv_balance_value);
                     TextView askvalue=(TextView)promptsView.findViewById(R.id.tv_askvalue);
                     TextView bidvalue=(TextView)promptsView.findViewById(R.id.tv_bidvalue);
                     TextView balance=(TextView)promptsView.findViewById(R.id.tv_balance_value);
                     Button btn_buy=(Button)promptsView.findViewById(R.id.btn_buy);
-                    final TextView et_amount=(TextView) promptsView.findViewById(R.id.et_amount);
-                    final EditText et_qty=(EditText) promptsView.findViewById(R.id.et_qty);
+                    final EditText et_amount=(EditText) promptsView.findViewById(R.id.et_amount);
+                  //  final EditText et_qty=(EditText) promptsView.findViewById(R.id.et_qty);
                     currencyvalue.setText(analogDashboardModel.getSymbol());
                     askvalue.setText(analogDashboardModel.getAsk());
                     bidvalue.setText(analogDashboardModel.getBid());
                     balance.setText(analogDashboardModel.getPrice());
-                    et_qty.addTextChangedListener(new TextWatcher() {
+                    tv_balance_value.setText(PrefrenceManager.getString((Activity) mContext, PrefrenceManager.user_balence));
+                 /*   et_qty.addTextChangedListener(new TextWatcher() {
                         @Override
                         public void afterTextChanged(Editable s) {
                             Log.e("text_111",""+s);
@@ -132,15 +134,15 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
 
                                // field2.setText("");
                         }
-                    });
+                    });*/
                     btn_buy.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             String total=et_amount.getText().toString();
                             String cur_name=analogDashboardModel.getSymbol();
                             String cur_id=analogDashboardModel.getTimestamp();
-                            if(et_qty.getText().length()==0){
-                                Toast.makeText(mContext, "Please Enter QTY", Toast.LENGTH_SHORT).show();
+                            if(et_amount.getText().length()==0){
+                                Toast.makeText(mContext, "Please Enter Amount", Toast.LENGTH_SHORT).show();
                             }else{
                                 Buyapi(total,analogDashboardModel.getAsk(),cur_name,cur_id,alertDialog,qty);
                             }
@@ -218,7 +220,7 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
         Log.e("userid187","=="+PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(mContext);
         RequestInterface req = RetrofitClient.getClient(mContext).create(RequestInterface.class);
-        Call<ResponseBody> call = req.getBuySell("buy",cur_name,amoun,qty,total, PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID),cur_name);
+        Call<ResponseBody> call = req.getBuySell("buy",cur_name,amoun,total, PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID),cur_name);
 
         call.enqueue(new Callback<ResponseBody>() {
             @SuppressLint("NewApi")
@@ -226,7 +228,6 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 String msg;
                 dialog.dismiss();
-
                 try {
                     alertDialog.dismiss();
                     String jsonst = response.body().string();

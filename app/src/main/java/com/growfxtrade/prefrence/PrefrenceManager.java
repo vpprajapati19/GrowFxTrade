@@ -22,6 +22,7 @@ public class PrefrenceManager {
     public static String Bankname = "bankname";
     public static String IFCI = "ifci";
     public static String UPI = "upi";
+    public static String user_balence = "amountt";
 
 
     public static void setString(Context activity, String key, String value) {
@@ -33,6 +34,19 @@ public class PrefrenceManager {
     }
 
     public static String getString(Activity activity, String key) {
+        sharedPref = activity.getSharedPreferences(MY_PREFS_NAME, 0);
+        return sharedPref.getString(key, "");
+
+    }
+    public static void setuser_balence(Context activity, String key, String value) {
+        sharedPref = activity.getSharedPreferences(MY_PREFS_NAME, 0);
+        editor = sharedPref.edit();
+        editor.putString(key, value);
+        editor.apply();
+
+    }
+
+    public static String getuser_balence(Activity activity, String key) {
         sharedPref = activity.getSharedPreferences(MY_PREFS_NAME, 0);
         return sharedPref.getString(key, "");
 

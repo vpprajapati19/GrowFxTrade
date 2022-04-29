@@ -28,6 +28,7 @@ import com.growfxtrade.R;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +115,7 @@ public class TransactionActivity extends AppCompatActivity {
 
 
                     tv_invest.setText(invest);
+                   // tv_invest.setText(new DecimalFormat("####.##").format(invest));
                     tv_withdrawal.setText(withdrawal);
                     tv_profit.setText(profit);
                     tv_loss.setText(loss);

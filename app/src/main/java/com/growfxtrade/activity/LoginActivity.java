@@ -207,7 +207,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void getwirthdraw() {
 
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.get_pending_withdraw(PrefrenceManager.getString(LoginActivity.this, PrefrenceManager.USERID));
+        Call<ResponseBody> call = req.getPrfile(PrefrenceManager.getString(LoginActivity.this, PrefrenceManager.USERID));
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -219,23 +219,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String IFCI="";
                 String UPI="";
                 String Accountname="";
+                String Accountbalence="";
 
                 try {
                     String res = response.body().string();
                     CommonMethods.PrintLog(TAG, "url res " + res);
                     JSONObject jsonObject = new JSONObject(res);
-                    JSONObject jsonObject1 = jsonObject.getJSONObject("withdraw_data");
+                    JSONObject jsonObject1 = jsonObject.getJSONObject("wallet_data");
                     Accountno = jsonObject1.getString("bank_account_no");
                     IFCI = jsonObject1.getString("ifsc");
                     UPI = jsonObject1.getString("upi_id");
                     Accountname = jsonObject1.getString("bank_name");
+                    Accountbalence = jsonObject1.getString("amountt");
                     Log.e("bank_account_no--204","--"+Accountno);
                     Log.e("ifsc--204","--"+IFCI);
                     Log.e("upi_id--204","--"+UPI);
+                    Log.e("Accountbalence--204","--"+Accountbalence);
                     PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.Bankname, Accountname);
                     PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.Accountno, Accountno);
                     PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.IFCI, IFCI);
                     PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.UPI, UPI);
+                    PrefrenceManager.setString(LoginActivity.this, PrefrenceManager.user_balence, Accountbalence);
                     Log.e("Account_No","==="+PrefrenceManager.getString(LoginActivity.this, PrefrenceManager.Accountno));
                     Log.e("IFSC","==="+PrefrenceManager.getString(LoginActivity.this, PrefrenceManager.IFCI));
                     Log.e("Account_name","==="+PrefrenceManager.getString(LoginActivity.this, PrefrenceManager.Bankname));
