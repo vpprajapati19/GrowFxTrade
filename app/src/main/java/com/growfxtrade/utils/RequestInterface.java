@@ -1,6 +1,7 @@
 package com.growfxtrade.utils;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -137,9 +138,9 @@ public interface RequestInterface {
     @FormUrlEncoded
     Call<ResponseBody> addMoney(
             @Part MultipartBody.Part image1,
-            @Field("id") String id,
-            @Field("type") String type,
-            @Field("amount") String amount
+            @Part("id") RequestBody id,
+            @Part("type") RequestBody  type,
+            @Part("amount") RequestBody  amount
 
     );
 

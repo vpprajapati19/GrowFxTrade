@@ -22,6 +22,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -65,7 +66,7 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
     private Dialog dialog;
     JSONObject jsonObject;
     String price,path;
-    File pathh;
+    static File pathh;
     private static final int REQUEST_EXTERNAL_STORAGe = 1;
     private static String[] permissionstorage = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
 
@@ -85,9 +86,16 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
         } else {
             //Calling method to enable permission.
             Log.e("first_click", "first_click");
-            RequestMultiplePermission();
+            verifystoragepermissions(this);
+          //  RequestMultiplePermission();
         }
-        takeScreenshot();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                screenshot(getWindow().getDecorView().getRootView(),"result");
+            }
+        }, 3000);
+       // takeScreenshot();
        // screenshot(getWindow().getDecorView().getRootView(), "result");
 
     }
@@ -235,12 +243,16 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
             // File name
             String path = dirpath + "/" + filename + "-" + format + ".jpeg";
             view.setDrawingCacheEnabled(true);
-           // Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
+            Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
             view.setDrawingCacheEnabled(false);
             File imageurl = new File(path);
             Log.e("image88",""+imageurl);
+            pathh = new File(path);
+            Log.e("image146","---"+pathh);
+            path = String.valueOf(pathh);
             FileOutputStream outputStream = new FileOutputStream(imageurl);
-          //  bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+            int quality=100;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
             outputStream.flush();
             outputStream.close();
             return imageurl;
@@ -291,7 +303,6 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
             addMoney(price);
         }
     }
-
     private File getbitmapfile(Bitmap reduse) {
         File file =new File(Environment.getExternalStorageDirectory() +File.separator+"document_img");
 
@@ -316,14 +327,19 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
         Bitmap fullsize=BitmapFactory.decodeFile(path);
         Bitmap reduse= ImageResizer.reduceBitmapSize(fullsize,240000);
         File fileredues=getbitmapfile(reduse);*/
-        MultipartBody.Part document_image;
-        document_image =MultipartBody.Part.createFormData("image",pathh.getName());
+        RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), pathh);
+        MultipartBody.Part document_image = MultipartBody.Part.createFormData("image", pathh.getName(), fileReqBody);
+
+
+        RequestBody useridpart = RequestBody.create(MediaType.parse("text/plain"), PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID));
+        RequestBody typee = RequestBody.create(MediaType.parse("text/plain"), "Net-Banking");
+        RequestBody moneyy = RequestBody.create(MediaType.parse("text/plain"), money);
 
         Log.e(TAG, "money  " + money);
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.addMoney(document_image,PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID), "Net-Banking", money);
+        Call<ResponseBody> call = req.addMoney(document_image,useridpart, typee, moneyy);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -340,6 +356,7 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
                     staus = jsonObject.getString("staus");
                     msg = jsonObject.getString("msg");
                 } catch (Exception e) {
+                    Log.e("exception",""+e);
                     msg = "Error..!!!";
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
                 }
@@ -370,9 +387,9 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
 
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("failure--391",""+t);
                 dialog.dismiss();
                 CommonMethods.simpleSnackbar(InvestMoneyNetbankingActivity.this, AppUtils.SERVER_ERROR);
 //                CommonMethods.PrintLog(TAG, t.toString());
