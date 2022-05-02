@@ -229,7 +229,7 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
                 R.anim.exit_to_right);
     }
 
-    public void addMoney(String money) {
+/*    public void addMoney(String money) {
         Log.e(TAG, "money  " + money);
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
@@ -291,6 +291,6 @@ public class InvestMoneyActivity extends AppCompatActivity implements View.OnCli
 
             }
         });
-    }
+    }*/
 
 }

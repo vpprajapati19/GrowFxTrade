@@ -62,10 +62,10 @@ public class InvestMoneyQrCodeActivity extends AppCompatActivity implements View
             finish();
             onBackPressed();
         }else if (v== btn_sent_money_QrCode){
-            addMoney(price);
+           // addMoney(price);
         }
     }
-    public void addMoney(String money) {
+   /* public void addMoney(String money) {
         Log.e(TAG, "money  " + money);
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyQrCodeActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
@@ -127,5 +127,5 @@ public class InvestMoneyQrCodeActivity extends AppCompatActivity implements View
 
             }
         });
-    }
+    }*/
 }

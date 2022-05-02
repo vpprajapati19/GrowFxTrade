@@ -110,14 +110,14 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
                             orderHIstoryModel.setUser_id(jsonObject1.getString("user_id"));
                             orderHIstoryModel.setDate(jsonObject1.getString("date"));
                             orderHIstoryModel.setAmount(jsonObject1.getString("amount"));
-                            orderHIstoryModel.setQty(jsonObject1.getString("qty"));
+                         //   orderHIstoryModel.setQty(jsonObject1.getString("qty"));
                             orderHIstoryModel.setTotal(jsonObject1.getString("total"));
                             orderHIstoryModel.setBuy_sell(jsonObject1.getString("buy_sell"));
                             orderHIstoryModel.setSell(jsonObject1.getString("sell"));
                             orderHIstoryModel.setCurrency_name(jsonObject1.getString("currency_name"));
                             orderHIstoryModel.setOrder_id(jsonObject1.getString("order_id"));
                             orderHIstoryModel.setProfit(jsonObject1.getString("profit"));
-                            orderHIstoryModel.setLoss(jsonObject1.getString("loss"));
+                           // orderHIstoryModel.setLoss(jsonObject1.getString("loss"));
                             orderHIstoryModelArrayList.add(orderHIstoryModel);
                         }
                     }
@@ -191,18 +191,18 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
                 mholder.tv_orderid.setText(orderHIstoryModel.getOrder_id());
                 mholder.tv_currencyprice.setText(orderHIstoryModel.getAmount());
                 mholder.tv_date.setText(orderHIstoryModel.getDate());
-                mholder.tv_profit.setText(orderHIstoryModel.getProfit());
+              //  mholder.tv_profit.setText(orderHIstoryModel.getProfit());
                 mholder.tv_loss.setText(orderHIstoryModel.getLoss());
 
                 String buy_sell = orderHIstoryModel.getBuy_sell().trim();
-                String qty = orderHIstoryModel.getQty().trim();
-                String buy_qty = orderHIstoryModel.getQty().trim();
+              //  String qty = orderHIstoryModel.getQty().trim();
+              //  String buy_qty = orderHIstoryModel.getQty().trim();
                 String sell_qty = orderHIstoryModel.getSell().trim();
 
 
              //   mholder.tv_sellqty.setText(qty);
 
-                if(buy_qty.equalsIgnoreCase(sell_qty)){
+              /*  if(buy_qty.equalsIgnoreCase(sell_qty)){
                     mholder.tv_status.setText("Closed");
                     mholder.listatus.setBackgroundColor(getResources().getColor(R.color.red));
                 }else {
@@ -215,7 +215,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
                 } else {
                     mholder.tv_buy.setText("BUY : " + "0");
 
-                }
+                }*/
                 if (sell_qty.length() > 0) {
                     mholder.tv_sell.setText("SELL : " + sell_qty);
                 } else {

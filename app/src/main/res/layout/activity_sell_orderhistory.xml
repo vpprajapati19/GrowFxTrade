@@ -50,7 +50,7 @@
                         android:fontFamily="@font/lato_bold"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="@string/orderhistory"
+                        android:text="@string/closehistory"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18sdp"

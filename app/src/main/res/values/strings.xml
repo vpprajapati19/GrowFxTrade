@@ -47,6 +47,7 @@
     <string name="coundtry">Country</string>
     <string name="submit">SUBMIT</string>
     <string name="orderhistory">Order History</string>
+    <string name="closehistory">Close History</string>
     <string name="currencyname">Currency Name : </string>
     <string name="orderid">Order Id : </string>
     <string name="price">Currency Price : </string>

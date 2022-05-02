@@ -1,8 +1,15 @@
 package com.growfxtrade.activity;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.Manifest.permission_group.CAMERA;
+
+import static com.growfxtrade.activity.RegisterActivity.RequestPermissionCode;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
@@ -28,6 +35,7 @@ import com.growfxtrade.R;
 import com.growfxtrade.prefrence.PrefrenceManager;
 import com.growfxtrade.utils.AppUtils;
 import com.growfxtrade.utils.CommonMethods;
+import com.growfxtrade.utils.ImageResizer;
 import com.growfxtrade.utils.RequestInterface;
 import com.growfxtrade.utils.RetrofitClient;
 
@@ -41,6 +49,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,7 +64,8 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
     LinearLayout btn_sent_money_netbank;
     private Dialog dialog;
     JSONObject jsonObject;
-    String price;
+    String price,path;
+    File pathh;
     private static final int REQUEST_EXTERNAL_STORAGe = 1;
     private static String[] permissionstorage = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
 
@@ -69,8 +81,56 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
             Log.e("price25","=="+price);
             tv_price.setText(price);
         }
+        if (CheckingPermissionIsEnabledOrNot()) {
+        } else {
+            //Calling method to enable permission.
+            Log.e("first_click", "first_click");
+            RequestMultiplePermission();
+        }
         takeScreenshot();
        // screenshot(getWindow().getDecorView().getRootView(), "result");
+
+    }
+    public boolean CheckingPermissionIsEnabledOrNot() {
+
+        int CAMERA_PermissionResult = ContextCompat.checkSelfPermission(InvestMoneyNetbankingActivity.this, CAMERA);
+        int READ_EXTERNAL_STORAGE_PermissionResult = ContextCompat.checkSelfPermission(InvestMoneyNetbankingActivity.this, READ_EXTERNAL_STORAGE);
+        int WRITE_EXTERNAL_STORAGE_PermissionResult = ContextCompat.checkSelfPermission(InvestMoneyNetbankingActivity.this, WRITE_EXTERNAL_STORAGE);
+
+        return CAMERA_PermissionResult == PackageManager.PERMISSION_GRANTED &&
+                READ_EXTERNAL_STORAGE_PermissionResult == PackageManager.PERMISSION_GRANTED &&
+                WRITE_EXTERNAL_STORAGE_PermissionResult == PackageManager.PERMISSION_GRANTED;
+
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case RequestPermissionCode:
+                if (grantResults.length > 0) {
+                    boolean StoragePermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean RecordPermission = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+
+                    if (StoragePermission && RecordPermission) {
+                        Toast.makeText(InvestMoneyNetbankingActivity.this, "Permission Granted",
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(InvestMoneyNetbankingActivity.this, "Permission Denied", Toast.LENGTH_LONG).show();
+                    }
+                }
+                break;
+        }
+    }
+    private void RequestMultiplePermission() {
+        Log.e("requested", "requested");
+        // Creating String Array with Permissions.
+        ActivityCompat.requestPermissions(InvestMoneyNetbankingActivity.this, new String[]
+                {
+                        CAMERA,
+                        READ_EXTERNAL_STORAGE,
+                        WRITE_EXTERNAL_STORAGE,
+
+                }, RequestPermissionCode);
 
     }
     public static File saveBitmapToFile(File file) {
@@ -139,19 +199,21 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
             // create bitmap screen capture
             View v1 = getWindow().getDecorView().getRootView();
             v1.setDrawingCacheEnabled(true);
-            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+           // Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
             v1.setDrawingCacheEnabled(false);
-
-            File imageFile = new File(mPath);
-            Log.e("image146","---"+imageFile);
-            FileOutputStream outputStream = new FileOutputStream(imageFile);
+            Log.e("image199","---"+v1);
+            pathh = new File(mPath);
+            Log.e("image146","---"+pathh);
+            path = String.valueOf(pathh);
+            FileOutputStream outputStream = new FileOutputStream(pathh);
             int quality = 100;
-            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+            //bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
             outputStream.flush();
             outputStream.close();
 
-            openScreenshot(imageFile);
+            openScreenshot(pathh);
         } catch (Throwable e) {
+            Log.e("erro210","===="+e);
             // Several error may come out with file handling or DOM
             e.printStackTrace();
         }
@@ -229,12 +291,39 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
             addMoney(price);
         }
     }
+
+    private File getbitmapfile(Bitmap reduse) {
+        File file =new File(Environment.getExternalStorageDirectory() +File.separator+"document_img");
+
+        ByteArrayOutputStream bos=new ByteArrayOutputStream();
+        reduse.compress(Bitmap.CompressFormat.JPEG,0,bos);
+        byte[] bitmapdata=bos.toByteArray();
+        try {
+            file.createNewFile();
+            FileOutputStream fos=new FileOutputStream(file);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+            return file;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return file;
+    }
     public void addMoney(String money) {
+       /*
+        Bitmap fullsize=BitmapFactory.decodeFile(path);
+        Bitmap reduse= ImageResizer.reduceBitmapSize(fullsize,240000);
+        File fileredues=getbitmapfile(reduse);*/
+        MultipartBody.Part document_image;
+        document_image =MultipartBody.Part.createFormData("image",pathh.getName());
+
         Log.e(TAG, "money  " + money);
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.addMoney(PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID), "Net-Banking", money);
+        Call<ResponseBody> call = req.addMoney(document_image,PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID), "Net-Banking", money);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

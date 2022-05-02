@@ -53,7 +53,7 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orderhistory);
+        setContentView(R.layout.activity_sell_orderhistory);
         initComponent();
 
         if (!CommonMethods.getInternetStatus(this)) {
@@ -110,14 +110,14 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
                             orderHIstoryModel.setUser_id(jsonObject1.getString("user_id"));
                             orderHIstoryModel.setDate(jsonObject1.getString("date"));
                             orderHIstoryModel.setAmount(jsonObject1.getString("amount"));
-                            orderHIstoryModel.setQty(jsonObject1.getString("qty"));
+                          //  orderHIstoryModel.setQty(jsonObject1.getString("qty"));
                             orderHIstoryModel.setTotal(jsonObject1.getString("total"));
                             orderHIstoryModel.setBuy_sell(jsonObject1.getString("buy_sell"));
                             orderHIstoryModel.setSell(jsonObject1.getString("sell"));
                             orderHIstoryModel.setCurrency_name(jsonObject1.getString("currency_name"));
                             orderHIstoryModel.setOrder_id(jsonObject1.getString("order_id"));
                             orderHIstoryModel.setProfit(jsonObject1.getString("profit"));
-                            orderHIstoryModel.setLoss(jsonObject1.getString("loss"));
+                         //   orderHIstoryModel.setLoss(jsonObject1.getString("loss"));
                             orderHIstoryModelArrayList.add(orderHIstoryModel);
                         }
                     }
@@ -195,14 +195,14 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
                 mholder.tv_loss.setText(orderHIstoryModel.getLoss());
 
                 String buy_sell = orderHIstoryModel.getBuy_sell().trim();
-                String qty = orderHIstoryModel.getQty().trim();
-                String buy_qty = orderHIstoryModel.getQty().trim();
+               // String qty = orderHIstoryModel.getQty().trim();
+               // String buy_qty = orderHIstoryModel.getQty().trim();
                 String sell_qty = orderHIstoryModel.getSell().trim();
 
 
              //   mholder.tv_sellqty.setText(qty);
 
-                if(buy_qty.equalsIgnoreCase(sell_qty)){
+              /*  if(buy_qty.equalsIgnoreCase(sell_qty)){
                     mholder.tv_status.setText("Closed");
                     mholder.listatus.setBackgroundColor(getResources().getColor(R.color.red));
                 }else {
@@ -215,12 +215,12 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
                 } else {
                     mholder.tv_buy.setText("BUY : " + "0");
 
-                }
-                if (sell_qty.length() > 0) {
+                }*/
+             /*   if (sell_qty.length() > 0) {
                     mholder.tv_sell.setText("SELL : " + sell_qty);
                 } else {
                     mholder.tv_sell.setText("SELL : " + "0");
-                }
+                }*/
                 Log.e(TAG, "sell_qty   " + sell_qty);
               /*  mholder.tv_sellqty.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -246,7 +246,7 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
             View v = null;
             switch (viewType) {
                 case VIEW_ITEM:
-                    return new ItemViewHeader(LayoutInflater.from(mContext).inflate(R.layout.row_orderhistory, parent, false));
+                    return new ItemViewHeader(LayoutInflater.from(mContext).inflate(R.layout.row_sellorderhistory, parent, false));
 
             }
             return null;

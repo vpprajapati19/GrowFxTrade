@@ -27,7 +27,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private ImageView iv_main_drawer, iv_main_filter;
     private TextView tv_user,tv_email, drawer_item_resetpwd,drawer_item_privacypolicy, drawer_item_aboutus,drawer_item_termsandcondition,drawer_item_refundpolicy;
     private LinearLayout drawer_item_profile,  drawer_item_chatwithus, drawer_item_chart, drawer_item_calaneder,   drawer_item_fxrobo,
-            drawer_item_withdrawal, drawer_item_yourwishlist, drawer_orderhistory, drawer_item_portfolio, drawer_item_traction, drawer_item_logout;
+            drawer_item_withdrawal, drawer_item_yourwishlist,drawer_closeorderhistory, drawer_orderhistory, drawer_item_portfolio, drawer_item_traction, drawer_item_logout;
     DrawerLayout drawer_layout;
 
     public static ImageView img_search = null;
@@ -63,6 +63,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         drawer_item_aboutus = findViewById(R.id.drawer_item_aboutus);
         drawer_item_withdrawal = findViewById(R.id.drawer_item_withdrawal);
         drawer_orderhistory = findViewById(R.id.drawer_orderhistory);
+        drawer_closeorderhistory = findViewById(R.id.drawer_closeorderhistory);
         drawer_item_termsandcondition = findViewById(R.id.drawer_item_termsandcondition);
         drawer_item_refundpolicy = findViewById(R.id.drawer_item_refundpolicy);
         drawer_item_portfolio = findViewById(R.id.drawer_item_portfolio);
@@ -91,6 +92,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         drawer_item_refundpolicy.setOnClickListener(this);
         drawer_item_chatwithus.setOnClickListener(this);
         drawer_item_chart.setOnClickListener(this);
+        drawer_closeorderhistory.setOnClickListener(this);
         drawer_orderhistory.setOnClickListener(this);
         drawer_item_calaneder.setOnClickListener(this);
         drawer_item_privacypolicy.setOnClickListener(this);
@@ -285,6 +287,17 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 drawer_orderhistory.setSelected(true);
             }
             Intent intent = new Intent(this, OrderHistoryActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
+        if (view == drawer_closeorderhistory) {
+            if (drawer_closeorderhistory.isSelected()) {
+              //  drawer_orderhistory.setBackgroundColor(getResources().getColor(R.color.light_blue));
+                drawer_closeorderhistory.setSelected(false);
+            } else {
+                drawer_closeorderhistory.setSelected(true);
+            }
+            Intent intent = new Intent(this, Sell_OrderHistoryActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }

@@ -131,9 +131,12 @@ public interface RequestInterface {
 
     );
 
+
     @POST("trade_api/update_wallet.php")
+    @Multipart
     @FormUrlEncoded
     Call<ResponseBody> addMoney(
+            @Part MultipartBody.Part image1,
             @Field("id") String id,
             @Field("type") String type,
             @Field("amount") String amount

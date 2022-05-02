@@ -134,7 +134,8 @@ public class MyPortfolioActivity extends AppCompatActivity implements View.OnCli
                 }
                 tv_available.setText("$ " + available);
                 tv_withdrawl.setText("$ " + withdraw);
-                tv_totalorex.setText("$ " + new DecimalFormat("##.###").format(Double.parseDouble(total_buy)));
+                tv_totalorex.setText("$ " + total_buy);
+                //tv_totalorex.setText("$ " + new DecimalFormat("##.###").format(Double.parseDouble(total_buy)));
             }
 
             @Override

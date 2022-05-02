@@ -402,7 +402,34 @@
                     android:background="@color/colorDrawerMenuLine"
                     android:layout_marginBottom="@dimen/_5sdp"/>
 
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:id="@+id/drawer_closeorderhistory"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_orderhistory_sv" />
+
+                    <TextView
+                        style="@style/DrawerItemStyle"
+                        android:text="@string/closehistory" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/colorDrawerMenuLine"
+                    android:layout_marginBottom="@dimen/_5sdp"/>
                 <LinearLayout
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_width="match_parent"

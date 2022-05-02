@@ -84,10 +84,10 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
             finish();
             onBackPressed();
         }else if(v== btn_sent_money_upi){
-            addMoney(price);
+         //   addMoney(price);
         }
     }
-    public void addMoney(String money) {
+ /*   public void addMoney(String money) {
         Log.e(TAG, "money  " + money);
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyUpiActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
@@ -149,5 +149,5 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
 
             }
         });
-    }
+    }*/
 }
