@@ -1,6 +1,8 @@
 package com.growfxtrade.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -198,7 +200,12 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
               //  String qty = orderHIstoryModel.getQty().trim();
               //  String buy_qty = orderHIstoryModel.getQty().trim();
                 String sell_qty = orderHIstoryModel.getSell().trim();
-
+                mholder.tv_sell.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Buyapi("sell",orderHIstoryModel.getTotal(),orderHIstoryModel.getAmount(),orderHIstoryModel.getCurrency_name(),orderHIstoryModel.getCurrency_name());
+                    }
+                });
 
              //   mholder.tv_sellqty.setText(qty);
 
@@ -251,7 +258,50 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
             }
             return null;
         }
+        public void Buyapi(String type, String total, String amoun, String cur_name, String cur_id) {
+            //   Log.e("list236","=="+clist);
+            Log.e("userid187","=="+PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID));
+            dialog = CommonMethods.showDialogProgressBarNew(mContext);
+            RequestInterface req = RetrofitClient.getClient(mContext).create(RequestInterface.class);
+            Call<ResponseBody> call = req.getBuySell(type,cur_name,amoun,total, PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID),cur_name);
 
+            call.enqueue(new Callback<ResponseBody>() {
+                @SuppressLint("NewApi")
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    String msg;
+                    dialog.dismiss();
+                    try {
+                       // alertDialog.dismiss();
+                        String jsonst = response.body().string();
+                        Log.e( "url jsonst ","194"+ jsonst);
+
+                        JSONObject jsonObject = new JSONObject(jsonst);
+                        String staus = jsonObject.getString("staus");
+                        msg = jsonObject.getString("msg");
+                        Log.e("message","200"+msg);
+                        Toast.makeText(mContext, ""+msg, Toast.LENGTH_SHORT).show();
+
+                    } catch (Exception e) {
+                       // alertDialog.dismiss();
+                        msg = "Error..!!!";
+                        CommonMethods.PrintLog("Error catch ", e.toString());
+                        e.printStackTrace();
+                    }
+                    // deviceDataAdapter.notifyDataSetChanged();
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    dialog.dismiss();
+                  //  alertDialog.dismiss();
+                    CommonMethods.simpleSnackbar(mContext, AppUtils.SERVER_ERROR);
+                    Log.e("onFailure",""+t.toString());
+                    //  CommonMethods.PrintLog(TAG, "onFailure " + t.toString());
+
+                }
+
+            });
+        }
 
         public class ItemViewHeader extends MainViewHolder {
             private TextView tv_loss,tv_profit,tv_amount,tv_currency_price,tv_currencyname, tv_orderid, tv_currencyprice, tv_date, tv_buy, tv_sell, tv_sellqty,tv_status;

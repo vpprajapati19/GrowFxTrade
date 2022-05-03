@@ -100,6 +100,7 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
                     TextView bidvalue=(TextView)promptsView.findViewById(R.id.tv_bidvalue);
                     TextView balance=(TextView)promptsView.findViewById(R.id.tv_balance_value);
                     Button btn_buy=(Button)promptsView.findViewById(R.id.btn_buy);
+                    Button btnSale=(Button)promptsView.findViewById(R.id.btnSale);
                     final EditText et_amount=(EditText) promptsView.findViewById(R.id.et_amount);
                   //  final EditText et_qty=(EditText) promptsView.findViewById(R.id.et_qty);
                     currencyvalue.setText(analogDashboardModel.getSymbol());
@@ -144,7 +145,20 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
                             if(et_amount.getText().length()==0){
                                 Toast.makeText(mContext, "Please Enter Amount", Toast.LENGTH_SHORT).show();
                             }else{
-                                Buyapi(total,analogDashboardModel.getAsk(),cur_name,cur_id,alertDialog,qty);
+                                Buyapi("buy",total,analogDashboardModel.getAsk(),cur_name,cur_id,alertDialog,qty);
+                            }
+                        }
+                    });
+                    btnSale.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String total=et_amount.getText().toString();
+                            String cur_name=analogDashboardModel.getSymbol();
+                            String cur_id=analogDashboardModel.getTimestamp();
+                            if(et_amount.getText().length()==0){
+                                Toast.makeText(mContext, "Please Enter Amount", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Buyapi("sell",total,analogDashboardModel.getAsk(),cur_name,cur_id,alertDialog,qty);
                             }
                         }
                     });
@@ -215,12 +229,12 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
             });
         }
     }
-    public void Buyapi(String total,String amoun, String cur_name, String cur_id, final AlertDialog alertDialog,String qty) {
+    public void Buyapi(String type,String total,String amoun, String cur_name, String cur_id, final AlertDialog alertDialog,String qty) {
      //   Log.e("list236","=="+clist);
         Log.e("userid187","=="+PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(mContext);
         RequestInterface req = RetrofitClient.getClient(mContext).create(RequestInterface.class);
-        Call<ResponseBody> call = req.getBuySell("buy",cur_name,amoun,total, PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID),cur_name);
+        Call<ResponseBody> call = req.getBuySell(type,cur_name,amoun,total, PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID),cur_name);
 
         call.enqueue(new Callback<ResponseBody>() {
             @SuppressLint("NewApi")
