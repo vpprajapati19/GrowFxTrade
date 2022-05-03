@@ -339,11 +339,14 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.addMoney(document_image,useridpart, typee, moneyy);
+        Call<ResponseBody> call = req.addMoney(document_image,PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID), "Net-Banking", money);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+               Log.e("response3333",""+response.body());
+                Log.e("response2222","=="+response.toString());
+               Log.e("response444",""+response);
                 dialog.dismiss();
                 CommonMethods.PrintLog(TAG, "url  " + response.raw().request().url());
                 String staus = "";
