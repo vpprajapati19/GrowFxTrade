@@ -82,7 +82,7 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
         Log.e("userid","=="+PrefrenceManager.USERID);
-        Call<ResponseBody> call = req.getOrderHistory(PrefrenceManager.getString(this, PrefrenceManager.USERID));
+        Call<ResponseBody> call = req.getsellOrderHistory(PrefrenceManager.getString(this, PrefrenceManager.USERID));
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -99,7 +99,7 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
                     Log.e("jsonarray96","=="+jsonArray);
                     if(jsonArray.length()==0){
                         lv_nodatafound.setVisibility(View.VISIBLE);
-                      Log.e("No data found==","98"+jsonArray.length());
+                        Log.e("No data found==","98"+jsonArray.length());
                     }else {
                         lv_nodatafound.setVisibility(View.GONE);
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -110,14 +110,14 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
                             orderHIstoryModel.setUser_id(jsonObject1.getString("user_id"));
                             orderHIstoryModel.setDate(jsonObject1.getString("date"));
                             orderHIstoryModel.setAmount(jsonObject1.getString("amount"));
-                          //  orderHIstoryModel.setQty(jsonObject1.getString("qty"));
+                            //  orderHIstoryModel.setQty(jsonObject1.getString("qty"));
                             orderHIstoryModel.setTotal(jsonObject1.getString("total"));
                             orderHIstoryModel.setBuy_sell(jsonObject1.getString("buy_sell"));
                             orderHIstoryModel.setSell(jsonObject1.getString("sell"));
                             orderHIstoryModel.setCurrency_name(jsonObject1.getString("currency_name"));
                             orderHIstoryModel.setOrder_id(jsonObject1.getString("order_id"));
-                            orderHIstoryModel.setProfit(jsonObject1.getString("profit"));
-                         //   orderHIstoryModel.setLoss(jsonObject1.getString("loss"));
+                            orderHIstoryModel.setProfit(jsonObject1.getString("profit_loss_amount"));
+                            orderHIstoryModel.setLoss(jsonObject1.getString("profit_loss_type"));
                             orderHIstoryModelArrayList.add(orderHIstoryModel);
                         }
                     }
@@ -195,12 +195,12 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
                 mholder.tv_loss.setText(orderHIstoryModel.getLoss());
 
                 String buy_sell = orderHIstoryModel.getBuy_sell().trim();
-               // String qty = orderHIstoryModel.getQty().trim();
-               // String buy_qty = orderHIstoryModel.getQty().trim();
+                // String qty = orderHIstoryModel.getQty().trim();
+                // String buy_qty = orderHIstoryModel.getQty().trim();
                 String sell_qty = orderHIstoryModel.getSell().trim();
 
 
-             //   mholder.tv_sellqty.setText(qty);
+                //   mholder.tv_sellqty.setText(qty);
 
               /*  if(buy_qty.equalsIgnoreCase(sell_qty)){
                     mholder.tv_status.setText("Closed");
@@ -269,7 +269,7 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
                 tv_date = view.findViewById(R.id.tv_date);
                 tv_buy = view.findViewById(R.id.tv_buy);
                 tv_sell = view.findViewById(R.id.tv_sell);
-             //   tv_sellqty = view.findViewById(R.id.tv_sellqty);
+                //   tv_sellqty = view.findViewById(R.id.tv_sellqty);
                 tv_status = view.findViewById(R.id.tv_status);
                 listatus = view.findViewById(R.id.listatus);
             }

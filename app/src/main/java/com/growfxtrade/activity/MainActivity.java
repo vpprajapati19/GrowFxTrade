@@ -1,7 +1,15 @@
 package com.growfxtrade.activity;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.Manifest.permission_group.CAMERA;
+
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +19,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -34,17 +44,44 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public static ImageView img_search_back = null;
     public static EditText edt_serch;
     public static TextView iv_icon;
+    private static final int REQUEST_EXTERNAL_STORAGe = 1;
+    private static String[] permissionstorage = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        if (CheckingPermissionIsEnabledOrNot()) {
+        } else {
+            //Calling method to enable permission.
+            Log.e("first_click", "first_click");
+            verifystoragepermissions(this);
+            //  RequestMultiplePermission();
+        }
         initComponent();
         replaceFragment(new FragmentHome(), R.id.frame, FragmentHome.class.getName());
 
-    }
+    }// verifying if storage permission is given or not
+    public static void verifystoragepermissions(Activity activity) {
 
+        int permissions = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        // If storage permission is not given then request for External Storage Permission
+        if (permissions != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, permissionstorage, REQUEST_EXTERNAL_STORAGe);
+        }
+    }
+    public boolean CheckingPermissionIsEnabledOrNot() {
+
+        int CAMERA_PermissionResult = ContextCompat.checkSelfPermission(MainActivity.this, CAMERA);
+        int READ_EXTERNAL_STORAGE_PermissionResult = ContextCompat.checkSelfPermission(MainActivity.this, READ_EXTERNAL_STORAGE);
+        int WRITE_EXTERNAL_STORAGE_PermissionResult = ContextCompat.checkSelfPermission(MainActivity.this, WRITE_EXTERNAL_STORAGE);
+
+        return CAMERA_PermissionResult == PackageManager.PERMISSION_GRANTED &&
+                READ_EXTERNAL_STORAGE_PermissionResult == PackageManager.PERMISSION_GRANTED &&
+                WRITE_EXTERNAL_STORAGE_PermissionResult == PackageManager.PERMISSION_GRANTED;
+
+    }
     private void initComponent() {
         drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         iv_main_drawer = (ImageView) findViewById(R.id.iv_main_drawer);

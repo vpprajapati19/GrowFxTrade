@@ -20,6 +20,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -48,6 +49,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Date;
 
 import okhttp3.MediaType;
@@ -65,10 +67,21 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
     LinearLayout btn_sent_money_netbank;
     private Dialog dialog;
     JSONObject jsonObject;
-    String price,path;
+    String price;
+    static String path;
     static File pathh;
     private static final int REQUEST_EXTERNAL_STORAGe = 1;
     private static String[] permissionstorage = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+
+    static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    static SecureRandom rnd = new SecureRandom();
+
+    String randomString(int len){
+        StringBuilder sb = new StringBuilder(len);
+        for(int i = 0; i < len; i++)
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        return sb.toString();
+    }
 
 
     @Override
@@ -87,16 +100,16 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
             //Calling method to enable permission.
             Log.e("first_click", "first_click");
             verifystoragepermissions(this);
-          //  RequestMultiplePermission();
+            //  RequestMultiplePermission();
         }
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 screenshot(getWindow().getDecorView().getRootView(),"result");
             }
-        }, 3000);
-       // takeScreenshot();
-       // screenshot(getWindow().getDecorView().getRootView(), "result");
+        }, 2000);
+        // takeScreenshot();
+        // screenshot(getWindow().getDecorView().getRootView(), "result");
 
     }
     public boolean CheckingPermissionIsEnabledOrNot() {
@@ -129,129 +142,40 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
                 break;
         }
     }
-    private void RequestMultiplePermission() {
-        Log.e("requested", "requested");
-        // Creating String Array with Permissions.
-        ActivityCompat.requestPermissions(InvestMoneyNetbankingActivity.this, new String[]
-                {
-                        CAMERA,
-                        READ_EXTERNAL_STORAGE,
-                        WRITE_EXTERNAL_STORAGE,
-
-                }, RequestPermissionCode);
-
-    }
-    public static File saveBitmapToFile(File file) {
-        try {
-
-// BitmapFactory options to downsize the image
-            BitmapFactory.Options o = new BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            o.inSampleSize = 1;
-// factor of downsizing the image
-
-            FileInputStream inputStream = new FileInputStream(file);
-            BitmapFactory.decodeStream(inputStream, null, o);
-            inputStream.close();
-
-// The new size we want to scale to
-            final int REQUIRED_SIZE = 75;
-
-            /*int scale = 1;
-            while (o.outWidth / scale / 2 >= REQUIRED_SIZE
-                    && o.outHeight / scale / 2 >= REQUIRED_SIZE) {
-                scale *= 2;
-            }*/
-
-            BitmapFactory.Options o2 = new BitmapFactory.Options();
-            //  o2.inSampleSize = scale;
-            inputStream = new FileInputStream(file);
-
-            Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream,
-                    null, o2);
-            inputStream.close();
-
-            file.createNewFile();
-            FileOutputStream outputStream = new FileOutputStream(file);
-
-            selectedBitmap.compress(Bitmap.CompressFormat.PNG, 100,
-                    outputStream);
-
-            return file;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public Uri getImageUri(Context inContext, Bitmap inImage) {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.PNG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
-        Log.e("PathURLLLLLLLLLLLL", "" + Uri.parse(path));
-        return Uri.parse(path);
-    }private void openScreenshot(File imageFile) {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        Uri uri = Uri.fromFile(imageFile);
-        intent.setDataAndType(uri, "image/*");
-        startActivity(intent);
-    }
-    private void takeScreenshot() {
-        Date now = new Date();
-        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
-
-        try {
-            // image naming and path  to include sd card  appending name you choose for file
-            String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
-
-            // create bitmap screen capture
-            View v1 = getWindow().getDecorView().getRootView();
-            v1.setDrawingCacheEnabled(true);
-           // Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
-            v1.setDrawingCacheEnabled(false);
-            Log.e("image199","---"+v1);
-            pathh = new File(mPath);
-            Log.e("image146","---"+pathh);
-            path = String.valueOf(pathh);
-            FileOutputStream outputStream = new FileOutputStream(pathh);
-            int quality = 100;
-            //bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
-            outputStream.flush();
-            outputStream.close();
-
-            openScreenshot(pathh);
-        } catch (Throwable e) {
-            Log.e("erro210","===="+e);
-            // Several error may come out with file handling or DOM
-            e.printStackTrace();
-        }
-    }
-
-
-    protected static File screenshot(View view, String filename) {
+    protected File screenshot(View view, String filename) {
         Date date = new Date();
 
         // Here we are initialising the format of our image name
         CharSequence format = android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", date);
         try {
             // Initialising the directory of storage
+          /*  String dirpath;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD_MR1) {
+                dirpath= InvestMoneyNetbankingActivity.this.getExternalFilesDir(Environment.DIRECTORY_DCIM) + "/" + format + ".jpeg";
+            }
+            else
+            {
+                dirpath= Environment.getExternalStorageDirectory().toString() + "/" + format + ".jpeg";
+            }*/
+
             String dirpath = Environment.getExternalStorageDirectory() + "";
             File file = new File(dirpath);
             if (!file.exists()) {
                 boolean mkdir = file.mkdir();
             }
             // File name
-            String path = dirpath + "/" + filename + "-" + format + ".jpeg";
+            String paths = Environment.getExternalStorageDirectory().toString() + "/" + randomString(5) + ".jpg";
+            // String paths = dirpath + "/" + filename + "-" + format + ".jpeg";
             view.setDrawingCacheEnabled(true);
             Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
             view.setDrawingCacheEnabled(false);
-            File imageurl = new File(path);
+            File imageurl = new File(paths);
             Log.e("image88",""+imageurl);
-            pathh = new File(path);
+            pathh = new File(paths);
             Log.e("image146","---"+pathh);
             path = String.valueOf(pathh);
             FileOutputStream outputStream = new FileOutputStream(imageurl);
-            int quality=100;
+            int quality=73;
             bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
             outputStream.flush();
             outputStream.close();
@@ -323,13 +247,18 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
         return file;
     }
     public void addMoney(String money) {
-       /*
-        Bitmap fullsize=BitmapFactory.decodeFile(path);
+      /*  Bitmap fullsize=BitmapFactory.decodeFile(path);
         Bitmap reduse= ImageResizer.reduceBitmapSize(fullsize,240000);
-        File fileredues=getbitmapfile(reduse);*/
-        RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), pathh);
-        MultipartBody.Part document_image = MultipartBody.Part.createFormData("image", pathh.getName(), fileReqBody);
+        File fileredues=getbitmapfile(reduse);
+*/
+        Log.e("debug_800",""+path);
+        File file = new File(path);
+        RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
 
+      /*  RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), pathh);
+        MultipartBody.Part document_image = MultipartBody.Part.createFormData("image", pathh.getName(), fileReqBody);
+*/
 
         RequestBody useridpart = RequestBody.create(MediaType.parse("text/plain"), PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID));
         RequestBody typee = RequestBody.create(MediaType.parse("text/plain"), "Net-Banking");
@@ -339,14 +268,15 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
         Log.e(TAG, "money1  " + PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.addMoney(document_image,PrefrenceManager.getString(InvestMoneyNetbankingActivity.this, PrefrenceManager.USERID), "Net-Banking", money);
+        Call<ResponseBody> call = req.addMoney(part,useridpart, typee, moneyy);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-               Log.e("response3333",""+response.body());
+                Log.e("response444",""+response);
+                Log.e("response3333",""+response.body());
                 Log.e("response2222","=="+response.toString());
-               Log.e("response444",""+response);
+
                 dialog.dismiss();
                 CommonMethods.PrintLog(TAG, "url  " + response.raw().request().url());
                 String staus = "";
@@ -392,7 +322,7 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
             }
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.e("failure--391",""+t);
+                Log.e("failure--391",""+t.toString());
                 dialog.dismiss();
                 CommonMethods.simpleSnackbar(InvestMoneyNetbankingActivity.this, AppUtils.SERVER_ERROR);
 //                CommonMethods.PrintLog(TAG, t.toString());

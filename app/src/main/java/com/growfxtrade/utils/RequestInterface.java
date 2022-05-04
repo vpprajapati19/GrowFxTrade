@@ -21,7 +21,7 @@ public interface RequestInterface {
     Call<ResponseBody> getCurrency(@Query("api_key") String api_key
     );
 
-//    @GET("trade/trade_api/withdraw.php")
+    //    @GET("trade/trade_api/withdraw.php")
     @GET("trade_api/withdraw.php")
     Call<ResponseBody> getWithdraw(
             @Query("id") String id,
@@ -68,7 +68,7 @@ public interface RequestInterface {
             @Field("email") String email
     );
 
-//    @POST("trade/trade_api/login.php")
+    //    @POST("trade/trade_api/login.php")
     @POST("trade_api/login.php")
     @FormUrlEncoded
     Call<ResponseBody> getLoginDetails(
@@ -135,10 +135,10 @@ public interface RequestInterface {
     @Multipart
     @POST("trade_api/update_wallet.php")
     Call<ResponseBody> addMoney(
-            @Part MultipartBody.Part image1,
-            @Query("id") String id,
-            @Query("type") String  type,
-            @Query("amount") String  amount
+            @Part MultipartBody.Part image,
+            @Part("id") RequestBody id,
+            @Part("type") RequestBody  type,
+            @Part("amount") RequestBody  amount
 
     );
 
@@ -147,8 +147,8 @@ public interface RequestInterface {
     Call<ResponseBody> addContact(
             @Field("name") String name,
             @Field("email") String email,
-           // @Field("phone") String phone,
-           // @Field("reason") String reason,
+            // @Field("phone") String phone,
+            // @Field("reason") String reason,
             @Field("message") String message
 
     );
@@ -156,6 +156,11 @@ public interface RequestInterface {
     @POST("trade_api/get_buy_sell.php")
     @FormUrlEncoded
     Call<ResponseBody> getOrderHistory(
+            @Field("id") String id
+    );
+    @POST("trade_api/get_close_history.php")
+    @FormUrlEncoded
+    Call<ResponseBody> getsellOrderHistory(
             @Field("id") String id
     );
     @POST("trade_api/get_wallet.php")
@@ -177,7 +182,7 @@ public interface RequestInterface {
             @Field("buy_sell") String type,
             @Field("currency_id") String currency_id,
             @Field("amount") String amount,
-           /* @Field("qty") String qty,*/
+            /* @Field("qty") String qty,*/
             @Field("total") String total,
             @Field("id") String id,
             @Field("currency_name") String currency_name
