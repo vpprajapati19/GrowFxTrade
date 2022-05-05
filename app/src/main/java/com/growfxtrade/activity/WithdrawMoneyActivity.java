@@ -1,8 +1,19 @@
 package com.growfxtrade.activity;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.Manifest.permission_group.CAMERA;
+import static com.growfxtrade.activity.RegisterActivity.RequestPermissionCode;
+
+import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +25,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.growfxtrade.R;
@@ -26,6 +39,16 @@ import com.growfxtrade.utils.RetrofitClient;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.security.SecureRandom;
+import java.util.Date;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,6 +68,21 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
     TextInputEditText et_investmoney;
     private final Integer[] paymentFlg = {R.drawable.ic_deposit_new};
     private final String[] paymentValue = {"Crypto", "Upi", "Net-Banking"};
+
+    static String path;
+    static File pathh;
+    private static final int REQUEST_EXTERNAL_STORAGe = 1;
+    private static String[] permissionstorage = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+
+    static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    static SecureRandom rnd = new SecureRandom();
+
+    String randomString(int len){
+        StringBuilder sb = new StringBuilder(len);
+        for(int i = 0; i < len; i++)
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        return sb.toString();
+    }
 
 
    /* private String TAG = "WithdrawMoneyActivity";
@@ -82,10 +120,107 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
             getProfileInfo();
 
         }
+        if (CheckingPermissionIsEnabledOrNot()) {
+        } else {
+            //Calling method to enable permission.
+            Log.e("first_click", "first_click");
+            verifystoragepermissions(this);
+            //  RequestMultiplePermission();
+        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                screenshot(getWindow().getDecorView().getRootView(),"result");
+            }
+        }, 2000);
 
 
     }
+    public static void verifystoragepermissions(Activity activity) {
 
+        int permissions = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        // If storage permission is not given then request for External Storage Permission
+        if (permissions != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, permissionstorage, REQUEST_EXTERNAL_STORAGe);
+        }
+    }
+    public boolean CheckingPermissionIsEnabledOrNot() {
+
+        int CAMERA_PermissionResult = ContextCompat.checkSelfPermission(WithdrawMoneyActivity.this, CAMERA);
+        int READ_EXTERNAL_STORAGE_PermissionResult = ContextCompat.checkSelfPermission(WithdrawMoneyActivity.this, READ_EXTERNAL_STORAGE);
+        int WRITE_EXTERNAL_STORAGE_PermissionResult = ContextCompat.checkSelfPermission(WithdrawMoneyActivity.this, WRITE_EXTERNAL_STORAGE);
+
+        return CAMERA_PermissionResult == PackageManager.PERMISSION_GRANTED &&
+                READ_EXTERNAL_STORAGE_PermissionResult == PackageManager.PERMISSION_GRANTED &&
+                WRITE_EXTERNAL_STORAGE_PermissionResult == PackageManager.PERMISSION_GRANTED;
+
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case RequestPermissionCode:
+                if (grantResults.length > 0) {
+                    boolean StoragePermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean RecordPermission = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+
+                    if (StoragePermission && RecordPermission) {
+                        Toast.makeText(WithdrawMoneyActivity.this, "Permission Granted",
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(WithdrawMoneyActivity.this, "Permission Denied", Toast.LENGTH_LONG).show();
+                    }
+                }
+                break;
+        }
+    }
+    protected File screenshot(View view, String filename) {
+        Date date = new Date();
+
+        // Here we are initialising the format of our image name
+        CharSequence format = android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", date);
+        try {
+            // Initialising the directory of storage
+          /*  String dirpath;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD_MR1) {
+                dirpath= InvestMoneyNetbankingActivity.this.getExternalFilesDir(Environment.DIRECTORY_DCIM) + "/" + format + ".jpeg";
+            }
+            else
+            {
+                dirpath= Environment.getExternalStorageDirectory().toString() + "/" + format + ".jpeg";
+            }*/
+
+            String dirpath = Environment.getExternalStorageDirectory() + "";
+            File file = new File(dirpath);
+            if (!file.exists()) {
+                boolean mkdir = file.mkdir();
+            }
+            // File name
+            String paths = Environment.getExternalStorageDirectory().toString() + "/" + randomString(5) + ".jpg";
+            // String paths = dirpath + "/" + filename + "-" + format + ".jpeg";
+            view.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
+            view.setDrawingCacheEnabled(false);
+            File imageurl = new File(paths);
+            Log.e("image88",""+imageurl);
+            pathh = new File(paths);
+            Log.e("image146","---"+pathh);
+            path = String.valueOf(pathh);
+            FileOutputStream outputStream = new FileOutputStream(imageurl);
+            int quality=73;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+            outputStream.flush();
+            outputStream.close();
+            return imageurl;
+
+        } catch (FileNotFoundException io) {
+            io.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     private void initComponent() {
         ivicon = findViewById(R.id.ivicon);
         btn_submit = findViewById(R.id.btn_submit);
@@ -230,9 +365,10 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
 //                    email=jsonObject1.getString("email");
 //                    mono=jsonObject1.getString("mono");
                     amount = jsonObject1.getString("amountt");
-                    tv_amount.setText("$ "+amount);
+                    PrefrenceManager.setString(WithdrawMoneyActivity.this, PrefrenceManager.user_balence, amount);
+                    tv_amount.setText("$ "+PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.user_balence));
 //                    profit=jsonObject1.getString("profit");
-                    Log.e("ammount217","=="+amount);
+                    Log.e("ammount217","=="+PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.user_balence));
 
                 } catch (Exception e) {
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
@@ -249,11 +385,19 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
         });
     }
     public void addMoney(String money) {
+        Log.e("debug_800",""+path);
+        File file = new File(path);
+        RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
+
+        RequestBody useridpart = RequestBody.create(MediaType.parse("text/plain"), PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.USERID));
+        RequestBody typee = RequestBody.create(MediaType.parse("text/plain"), selectPaymentValue);
+        RequestBody moneyy = RequestBody.create(MediaType.parse("text/plain"), money);
         Log.e(TAG, "money  " + money);
         Log.e(TAG, "money1  " + PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.USERID));
         dialog = CommonMethods.showDialogProgressBarNew(this);
         RequestInterface req = RetrofitClient.getClient(this).create(RequestInterface.class);
-        Call<ResponseBody> call = req.getWithdraw(PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.USERID),selectPaymentValue, money);
+        Call<ResponseBody> call = req.getWithdraw(part,useridpart,typee, moneyy);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

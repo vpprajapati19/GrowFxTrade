@@ -22,12 +22,13 @@ public interface RequestInterface {
     );
 
     //    @GET("trade/trade_api/withdraw.php")
-    @GET("trade_api/withdraw.php")
+    @Multipart
+    @POST("trade_api/withdraw.php")
     Call<ResponseBody> getWithdraw(
-            @Query("id") String id,
-            @Query("type") String type,
-            @Query("amount") String amount
-    );
+            @Part MultipartBody.Part image,
+            @Part("id") RequestBody id,
+            @Part("type") RequestBody  type,
+            @Part("amount") RequestBody  amount);
 
     @GET("trade_api/change_password.php")
     Call<ResponseBody> getChangePassword(

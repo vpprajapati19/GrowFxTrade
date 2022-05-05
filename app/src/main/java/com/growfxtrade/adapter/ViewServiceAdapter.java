@@ -50,7 +50,12 @@ public class ViewServiceAdapter extends RecyclerView.Adapter<ViewServiceAdapter.
                 .
                 .centerCrop()
                 .into(itemViewHolder.grid_item_image);*/
-        itemViewHolder.txtdate.setText(list.get(pos).getDate());
+        String currentString = list.get(pos).getDate();
+        String[] separated = currentString.split(" ");
+        String one=separated[0];
+        String two=separated[1];
+
+        itemViewHolder.txtdate.setText(one);
         itemViewHolder.txttype.setText(list.get(pos).getbuy_sell());
         itemViewHolder.txtamount.setText(list.get(pos).getAmount());
 
