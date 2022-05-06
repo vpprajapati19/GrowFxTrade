@@ -366,7 +366,9 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
 //                    mono=jsonObject1.getString("mono");
                     amount = jsonObject1.getString("amountt");
                     PrefrenceManager.setString(WithdrawMoneyActivity.this, PrefrenceManager.user_balence, amount);
-                    tv_amount.setText("$ "+PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.user_balence));
+                    Double value= Double.valueOf(PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.user_balence));
+                    Log.e("aaaaaaaaaaaaaaaaaaaaaa",""+value);
+                    tv_amount.setText("$ "+ String.format("%.2f", value));
 //                    profit=jsonObject1.getString("profit");
                     Log.e("ammount217","=="+PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.user_balence));
 
@@ -402,6 +404,9 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.e("response404",""+response);
+                Log.e("response406",""+response.body());
+                Log.e("response407","=="+response.toString());
                 dialog.dismiss();
                 CommonMethods.PrintLog(TAG, "url  " + response.raw().request().url());
                 String staus = "";
