@@ -175,8 +175,6 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
             this.mContext = mContext;
             this.currencyModelArrayList = currencyModelArrayList;
         }
-
-
         @SuppressLint({"WrongConstant", "ResourceAsColor"})
         @Override
         public void onBindViewHolder(MainViewHolder holder, final int position) {
@@ -185,15 +183,31 @@ public class Sell_OrderHistoryActivity extends AppCompatActivity implements View
 
                 final OrderHIstoryModel orderHIstoryModel = currencyModelArrayList.get(position);
                 final ItemViewHeader mholder = (ItemViewHeader) holder;
-                mholder.tv_amount.setText(orderHIstoryModel.getTotal());
-                mholder.tv_currency_price.setText(orderHIstoryModel.getAmount());
+                Double value_getAmount= Double.valueOf(orderHIstoryModel.getAmount());
+                mholder.tv_amount.setText(String.format("%.2f", value_getAmount));
+                Double value_currency_price= Double.valueOf(orderHIstoryModel.getAmount());
+                mholder.tv_currency_price.setText(String.format("%.2f", value_currency_price));
                 mholder.tv_currencyname.setText(orderHIstoryModel.getCurrency_name());
                 mholder.tv_orderid.setText(orderHIstoryModel.getOrder_id());
                 mholder.tv_currencyprice.setText(orderHIstoryModel.getAmount());
                 mholder.tv_date.setText(orderHIstoryModel.getDate());
-                mholder.tv_profit.setText(orderHIstoryModel.getProfit());
-                mholder.tv_loss.setText(orderHIstoryModel.getLoss());
-
+                Log.e("loss_type111",""+orderHIstoryModel.getLoss());
+                if(orderHIstoryModel.getLoss().equalsIgnoreCase("profit")){
+                    Log.e("profit_value1966","=="+orderHIstoryModel.getProfit());
+                    Double value_getProfit= Double.valueOf(orderHIstoryModel.getProfit());
+                    Log.e("profit_value90000","=="+value_getProfit);
+                    mholder.tv_profit.setText(String.format("%.2f", value_getProfit));
+                    mholder.tv_loss.setText("0.00");
+                }else if(orderHIstoryModel.getLoss().equalsIgnoreCase("loss")){
+                    Double value_getProfit= Double.valueOf(orderHIstoryModel.getProfit());
+                    mholder.tv_loss.setText(String.format("%.2f", value_getProfit));
+                    mholder.tv_profit.setText("0.00");
+                }
+               else{
+                    Double value_getProfit= Double.valueOf(orderHIstoryModel.getProfit());
+                    mholder.tv_loss.setText(String.format("%.2f", value_getProfit));
+                    mholder.tv_profit.setText(String.format("%.2f", value_getProfit));
+                }
                 String buy_sell = orderHIstoryModel.getBuy_sell().trim();
                 // String qty = orderHIstoryModel.getQty().trim();
                 // String buy_qty = orderHIstoryModel.getQty().trim();

@@ -26,6 +26,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.growfxtrade.activity.ChatWithUsActivity;
+import com.growfxtrade.activity.WithdrawMoneyActivity;
 import com.growfxtrade.activity.demo_popup;
 import com.growfxtrade.model.CurrencyModel;
 import com.growfxtrade.R;
@@ -229,6 +230,53 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
             });
         }
     }
+    public void getProfileInfo() {
+        dialog = CommonMethods.showDialogProgressBarNew(mContext);
+        RequestInterface req = RetrofitClient.getClient(mContext).create(RequestInterface.class);
+        Call<ResponseBody> call = req.getPrfile(PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID));
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.e("res_197", "=" + response.body());
+                Log.e("res__198", "=" + response);
+                dialog.dismiss();
+                CommonMethods.PrintLog("urll", "url  " + response.raw().request().url());
+                String usernm = "";
+                String email = "";
+                String mono = "";
+                String amount = "";
+                String profit = "";
+                try {
+                    String res = response.body().string();
+
+                    JSONObject jsonObject = new JSONObject(res);
+                    JSONObject jsonObject1 = jsonObject.getJSONObject("wallet_data");
+//                    usernm=jsonObject1.getString("user_id");
+//                    email=jsonObject1.getString("email");
+//                    mono=jsonObject1.getString("mono");
+                    amount = jsonObject1.getString("amountt");
+                    PrefrenceManager.setString(mContext, PrefrenceManager.user_balence, amount);
+                    Double value= Double.valueOf(PrefrenceManager.getString((Activity) mContext, PrefrenceManager.user_balence));
+                    Log.e("aaaaaaaaaaaaaaaaaaaaaa",""+value);
+                  //  tv_amount.setText("$ "+ String.format("%.2f", value));
+//                    profit=jsonObject1.getString("profit");
+                 //   Log.e("ammount217","=="+PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.user_balence));
+
+                } catch (Exception e) {
+                    CommonMethods.PrintLog("Exception", " " + e.toString());
+                }
+                //et_wallet.setText("$ " + amount);
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                dialog.dismiss();
+                CommonMethods.simpleSnackbar(mContext, AppUtils.SERVER_ERROR);
+//                CommonMethods.PrintLog(TAG, t.toString());
+
+            }
+        });
+    }
     public void Buyapi(String type,String total,String amoun, String cur_name, String cur_id, final AlertDialog alertDialog,String qty) {
      //   Log.e("list236","=="+clist);
         Log.e("userid187","=="+PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID));
@@ -242,6 +290,7 @@ public class DeviceDataAdapter extends RecyclerView.Adapter<DeviceDataAdapter.Ma
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 String msg;
                 dialog.dismiss();
+                getProfileInfo();
                 try {
                     alertDialog.dismiss();
                     String jsonst = response.body().string();

@@ -57,7 +57,8 @@ public class ViewServiceAdapter extends RecyclerView.Adapter<ViewServiceAdapter.
 
         itemViewHolder.txtdate.setText(one);
         itemViewHolder.txttype.setText(list.get(pos).getbuy_sell());
-        itemViewHolder.txtamount.setText(list.get(pos).getAmount());
+        Double value_available= Double.valueOf(list.get(pos).getAmount());
+        itemViewHolder.txtamount.setText(String.format("%.2f", value_available));
 
       //  Picasso.with(this.context).load((FilterdList.get(pos).getImgurl())).placeholder(R.drawable.default_image).into(itemViewHolder.grid_item_image);
     }

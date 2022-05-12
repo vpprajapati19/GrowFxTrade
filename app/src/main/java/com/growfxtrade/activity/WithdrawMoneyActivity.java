@@ -387,11 +387,16 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
         });
     }
     public void addMoney(String money) {
-        Log.e("debug_800",""+path);
-        File file = new File(path);
-        RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
-        MultipartBody.Part part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
 
+        MultipartBody.Part part;
+        if (path==null){
+            part =MultipartBody.Part.createFormData("image","");
+        }else{
+            Log.e("debug_800",""+path);
+            File file = new File(path);
+            RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
+            part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
+        }
         RequestBody useridpart = RequestBody.create(MediaType.parse("text/plain"), PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.USERID));
         RequestBody typee = RequestBody.create(MediaType.parse("text/plain"), selectPaymentValue);
         RequestBody moneyy = RequestBody.create(MediaType.parse("text/plain"), money);
@@ -419,6 +424,7 @@ public class WithdrawMoneyActivity extends AppCompatActivity implements View.OnC
                     staus = jsonObject.getString("staus");
                     msg = jsonObject.getString("msg");
                 } catch (Exception e) {
+                    Log.e("exception422","---"+e);
                     msg = "Error..!!!";
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
                 }

@@ -19,7 +19,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <RelativeLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/mainc"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
@@ -133,12 +132,13 @@
                                     android:backgroundTint="@color/colorLine"
                                     android:drawableLeft="@drawable/ic_user_sv"
                                     android:cursorVisible="true"
+                                    android:editable="false"
                                     android:fontFamily="@font/lato_regular"
                                     android:drawablePadding="@dimen/_15sdp"
                                     android:paddingTop="@dimen/_15sdp"
                                     android:paddingBottom="@dimen/_15sdp"
                                     android:hint="Name"
-                                    android:inputType="text"
+                                    android:inputType="none"
                                     android:textColorHint="@color/colorLine"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_16sdp" />
@@ -167,7 +167,7 @@
                                     android:paddingTop="@dimen/_15sdp"
                                     android:paddingBottom="@dimen/_15sdp"
                                     android:hint="@string/email"
-                                    android:inputType="text"
+                                    android:inputType="none"
                                     android:textColorHint="@color/colorLine"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_16sdp" />
@@ -195,7 +195,7 @@
                                     android:paddingTop="@dimen/_15sdp"
                                     android:paddingBottom="@dimen/_15sdp"
                                     android:hint="@string/contactno"
-                                    android:inputType="text"
+                                    android:inputType="none"
                                     android:textColorHint="@color/colorLine"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_16sdp" />
@@ -223,7 +223,7 @@
                                     android:paddingTop="@dimen/_15sdp"
                                     android:paddingBottom="@dimen/_15sdp"
                                     android:hint="Account Number"
-                                    android:inputType="text"
+                                    android:inputType="none"
                                     android:textColorHint="@color/colorLine"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_16sdp" />
@@ -251,7 +251,7 @@
                                     android:paddingTop="@dimen/_15sdp"
                                     android:paddingBottom="@dimen/_15sdp"
                                     android:hint="IFSC Code"
-                                    android:inputType="text"
+                                    android:inputType="none"
                                     android:textColorHint="@color/colorLine"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_16sdp" />
@@ -280,7 +280,7 @@
                                     android:paddingTop="@dimen/_15sdp"
                                     android:paddingBottom="@dimen/_15sdp"
                                     android:hint="Pan Card Number"
-                                    android:inputType="text"
+                                    android:inputType="none"
                                     android:textColorHint="@color/colorLine"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_16sdp" />
@@ -307,7 +307,7 @@
                                     android:paddingTop="@dimen/_15sdp"
                                     android:paddingBottom="@dimen/_15sdp"
                                     android:hint="Adhar Card Number"
-                                    android:inputType="text"
+                                    android:inputType="none"
                                     android:textColorHint="@color/colorLine"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_16sdp" />
@@ -335,7 +335,7 @@
                                     android:paddingTop="@dimen/_15sdp"
                                     android:paddingBottom="@dimen/_15sdp"
                                     android:hint="Document Number"
-                                    android:inputType="text"
+                                    android:inputType="none"
                                     android:textColorHint="@color/colorLine"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_16sdp" />
@@ -348,48 +348,60 @@
                                 android:background="@drawable/bg_button_red_new"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_45sdp"
-                                android:layout_gravity="center"
-                                android:layout_weight="2"
-                                android:gravity="center"
+                                android:weightSum="2"
                                 android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_10sdp"
                                     android:gravity="center"
-                                    android:paddingTop="5.0dip"
-                                    android:text="@string/totalportfolio"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="50dp"
-                                    android:layout_height="wrap_content"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:paddingTop="5.0dip"
+                                        android:text="@string/totalportfolio"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_14sdp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="left"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:layout_marginLeft="@dimen/_10sdp"
-                                    android:text="-"
-                                    android:paddingTop="5.0dip"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:layout_gravity="center|right"
+                                    android:gravity="right"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_weight="1">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="left"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:text="-"
+                                        android:paddingTop="5.0dip"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_12sdp" />
 
-                                <TextView
-                                    android:id="@+id/tv_available"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="left"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:layout_marginLeft="@dimen/_10sdp"
-                                    android:paddingTop="5.0dip"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    <TextView
+                                        android:id="@+id/tv_available"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="left"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:paddingTop="5.0dip"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_12sdp" />
+                                </LinearLayout>
+
+
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -399,46 +411,62 @@
                                 android:layout_height="@dimen/_45sdp"
                                 android:layout_gravity="center"
                                 android:gravity="center"
-                                android:layout_weight="1"
+                                android:weightSum="2"
                                 android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="left"
-                                    android:paddingTop="5.0dip"
-                                    android:text="@string/profit"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="150dp"
-                                    android:layout_height="wrap_content"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="left"
+                                    android:layout_gravity="center"
+                                    android:gravity="start"
                                     android:layout_marginLeft="@dimen/_10sdp"
-                                    android:text="-"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:paddingTop="5.0dip"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <TextView
-                                    android:id="@+id/tv_profit"
-                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="left"
+                                        android:paddingTop="5.0dip"
+                                        android:text="@string/profit"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_14sdp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="left"
-                                    android:fontFamily="@font/lato_regular"
-                                    android:layout_marginLeft="@dimen/_10sdp"
-                                    android:paddingTop="5.0dip"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:layout_gravity="center|right"
+                                    android:gravity="right"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_weight="1">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:gravity="left"
+                                        android:paddingTop="5.0dip"
+                                        android:text="-"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_12sdp" />
+
+                                    <TextView
+                                        android:id="@+id/tv_profit"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="left"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:paddingTop="5.0dip"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_12sdp" />
+                                </LinearLayout>
+
+
+
+
                             </LinearLayout>
                             <LinearLayout
                                 android:layout_width="match_parent"

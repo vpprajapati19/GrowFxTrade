@@ -118,10 +118,12 @@ public class MyPortfolioActivity extends AppCompatActivity implements View.OnCli
                 }else {
                     if(Double.parseDouble(profit_loss)<0){
                         tv_proitloss.setTextColor(getResources().getColor(R.color.red));
-                        tv_proitloss.setText("$ " + profit_loss);
+                        Double value= Double.valueOf(profit_loss);
+                        tv_proitloss.setText("$ " + String.format("%.2f", value));
                     }else {
                         tv_proitloss.setTextColor(getResources().getColor(R.color.green));
-                        tv_proitloss.setText("$ " + profit_loss);
+                        Double value= Double.valueOf(profit_loss);
+                        tv_proitloss.setText("$ " + String.format("%.2f", value));
                     }
                 }
 
@@ -129,12 +131,16 @@ public class MyPortfolioActivity extends AppCompatActivity implements View.OnCli
                   // tv_available.setText("$ " + "0");
                     tv_totalportfolio.setText("$ " + "0");
                 }else {
-                    tv_totalportfolio.setText("$ " + total_portfolio);
+                    Double value= Double.valueOf(total_portfolio);
+                    tv_totalportfolio.setText("$ " + String.format("%.2f", value));
                    // tv_available.setText("$ " + available);
                 }
-                tv_available.setText("$ " + available);
-                tv_withdrawl.setText("$ " + withdraw);
-                tv_totalorex.setText("$ " + total_buy);
+                Double value_available= Double.valueOf(available);
+                Double value_withdraw= Double.valueOf(withdraw);
+                Double value_total_buy= Double.valueOf(total_buy);
+                tv_available.setText("$ " + String.format("%.2f", value_available));
+                tv_withdrawl.setText("$ " + String.format("%.2f", value_withdraw));
+                tv_totalorex.setText("$ " + String.format("%.2f", value_total_buy));
                 //tv_totalorex.setText("$ " + new DecimalFormat("##.###").format(Double.parseDouble(total_buy)));
             }
 

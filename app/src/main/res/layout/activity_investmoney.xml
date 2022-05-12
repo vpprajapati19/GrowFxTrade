@@ -73,6 +73,7 @@
                             </RelativeLayout>
 
                         </androidx.appcompat.widget.Toolbar>
+
                         <RelativeLayout
                             android:id="@+id/rel_bgRounded"
                             android:layout_width="match_parent"
@@ -100,16 +101,16 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="5dp"
                                         android:backgroundTint="@color/colorLine"
-                                        android:drawableLeft="@drawable/ic_user_sv"
                                         android:cursorVisible="true"
-                                        android:fontFamily="@font/lato_regular"
+                                        android:drawableLeft="@drawable/ic_user_sv"
                                         android:drawablePadding="@dimen/_15sdp"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:hint="Name"
+                                        android:inputType="none"
                                         android:paddingTop="@dimen/_15sdp"
                                         android:paddingBottom="@dimen/_15sdp"
-                                        android:hint="Name"
-                                        android:inputType="text"
-                                        android:textColorHint="@color/colorLine"
                                         android:textColor="@color/black"
+                                        android:textColorHint="@color/colorLine"
                                         android:textSize="@dimen/_16sdp" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -127,16 +128,16 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="5dp"
                                         android:backgroundTint="@color/colorLine"
-                                        android:drawableLeft="@drawable/ic_email_sv"
                                         android:cursorVisible="true"
-                                        android:fontFamily="@font/lato_regular"
+                                        android:drawableLeft="@drawable/ic_email_sv"
                                         android:drawablePadding="@dimen/_15sdp"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:hint="@string/email"
+                                        android:inputType="none"
                                         android:paddingTop="@dimen/_15sdp"
                                         android:paddingBottom="@dimen/_15sdp"
-                                        android:hint="@string/email"
-                                        android:inputType="text"
-                                        android:textColorHint="@color/colorLine"
                                         android:textColor="@color/black"
+                                        android:textColorHint="@color/colorLine"
                                         android:textSize="@dimen/_16sdp" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -154,16 +155,16 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="5dp"
                                         android:backgroundTint="@color/colorLine"
-                                        android:drawableLeft="@drawable/ic_phone_sv"
                                         android:cursorVisible="true"
-                                        android:fontFamily="@font/lato_regular"
+                                        android:drawableLeft="@drawable/ic_phone_sv"
                                         android:drawablePadding="@dimen/_15sdp"
+                                        android:fontFamily="@font/lato_regular"
+                                        android:hint="@string/contactno"
+                                        android:inputType="none"
                                         android:paddingTop="@dimen/_15sdp"
                                         android:paddingBottom="@dimen/_15sdp"
-                                        android:hint="@string/contactno"
-                                        android:inputType="text"
-                                        android:textColorHint="@color/colorLine"
                                         android:textColor="@color/black"
+                                        android:textColorHint="@color/colorLine"
                                         android:textSize="@dimen/_16sdp" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -172,9 +173,9 @@
                                     android:id="@+id/input_coundtrycode"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:visibility="gone"
                                     android:layout_marginTop="@dimen/_10sdp"
-                                    android:textColorHint="@color/colorLine">
+                                    android:textColorHint="@color/colorLine"
+                                    android:visibility="gone">
 
                                     <com.google.android.material.textfield.TextInputEditText
                                         android:id="@+id/et_coundtrycode"
@@ -182,16 +183,16 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="5dp"
                                         android:backgroundTint="@color/colorLine"
-                                        android:drawableLeft="@drawable/ic_user_new"
                                         android:cursorVisible="true"
-                                        android:fontFamily="@font/lato_regular"
+                                        android:drawableLeft="@drawable/ic_user_new"
                                         android:drawablePadding="@dimen/_15sdp"
-                                        android:paddingTop="@dimen/_15sdp"
-                                        android:paddingBottom="@dimen/_15sdp"
+                                        android:fontFamily="@font/lato_regular"
                                         android:hint="@string/coundtrycode"
                                         android:inputType="text"
-                                        android:textColorHint="@color/colorLine"
+                                        android:paddingTop="@dimen/_15sdp"
+                                        android:paddingBottom="@dimen/_15sdp"
                                         android:textColor="@color/black"
+                                        android:textColorHint="@color/colorLine"
                                         android:textSize="@dimen/_16sdp" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -204,14 +205,13 @@
                                     android:hint="Country"
                                     android:textColorHint="@color/colorLine">
 
-                                    <TextView
-                                        xmlns:android="http://schemas.android.com/apk/res/android"
+                                    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
                                         android:id="@android:id/text1"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:textColor="@color/colorLine"
                                         android:layout_marginLeft="@dimen/_29sdp"
                                         android:text="Country"
+                                        android:textColor="@color/colorLine"
                                         android:textSize="@dimen/_9sdp" />
 
                                     <androidx.appcompat.widget.AppCompatSpinner
@@ -219,13 +219,13 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="@dimen/_30sdp"
                                         android:layout_marginTop="@dimen/_5sdp"
-                                        android:textSize="@dimen/_14sdp"/>
+                                        android:textSize="@dimen/_14sdp" />
 
                                     <View
-                                        android:layout_marginTop="@dimen/_5sdp"
                                         android:layout_width="match_parent"
                                         android:layout_height="1dp"
-                                        android:background="@color/colorLine"/>
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:background="@color/colorLine" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -242,16 +242,16 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="5dp"
                                         android:backgroundTint="@color/colorLine"
-                                        android:drawableLeft="@drawable/ic_many_sv"
                                         android:cursorVisible="true"
-                                        android:fontFamily="@font/lato_regular"
+                                        android:drawableLeft="@drawable/ic_many_sv"
                                         android:drawablePadding="@dimen/_15sdp"
-                                        android:paddingTop="@dimen/_15sdp"
-                                        android:paddingBottom="@dimen/_15sdp"
+                                        android:fontFamily="@font/lato_regular"
                                         android:hint="@string/investmoney"
                                         android:inputType="numberDecimal"
-                                        android:textColorHint="@color/colorLine"
+                                        android:paddingTop="@dimen/_15sdp"
+                                        android:paddingBottom="@dimen/_15sdp"
                                         android:textColor="@color/black"
+                                        android:textColorHint="@color/colorLine"
                                         android:textSize="@dimen/_16sdp" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -264,14 +264,13 @@
                                     android:hint="CRYPTO"
                                     android:textColorHint="@color/colorLine">
 
-                                    <TextView
-                                        xmlns:android="http://schemas.android.com/apk/res/android"
+                                    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
                                         android:id="@android:id/text1"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:textColor="@color/colorLine"
                                         android:layout_marginLeft="@dimen/_29sdp"
                                         android:text="Choose Deposit Option"
+                                        android:textColor="@color/colorLine"
                                         android:textSize="@dimen/_9sdp" />
 
                                     <RelativeLayout
@@ -290,65 +289,69 @@
                                             android:scrollIndicators="none"
                                             android:spinnerMode="dropdown"
                                             android:textSize="@dimen/_14sdp" />
+
                                         <LinearLayout
                                             android:layout_width="@dimen/_16sdp"
                                             android:layout_height="@dimen/_16sdp"
-                                            android:gravity="right"
-                                            android:layout_marginLeft="@dimen/_10sdp"
-                                            android:layout_marginRight="@dimen/_5sdp"
-                                            android:layout_marginTop="@dimen/_10sdp"
                                             android:layout_alignParentLeft="true"
-                                            android:background="@drawable/ic_dolar_sv"/>
+                                            android:layout_marginLeft="@dimen/_10sdp"
+                                            android:layout_marginTop="@dimen/_10sdp"
+                                            android:layout_marginRight="@dimen/_5sdp"
+                                            android:background="@drawable/ic_dolar_sv"
+                                            android:gravity="right" />
+
                                         <LinearLayout
                                             android:layout_width="@dimen/_25sdp"
                                             android:layout_height="@dimen/_25sdp"
-                                            android:gravity="right"
-                                            android:layout_marginRight="@dimen/_5sdp"
-                                            android:layout_marginTop="@dimen/_10sdp"
                                             android:layout_alignParentRight="true"
-                                            android:background="@drawable/ic_baseline_expand_more_24"/>
+                                            android:layout_marginTop="@dimen/_10sdp"
+                                            android:layout_marginRight="@dimen/_5sdp"
+                                            android:background="@drawable/ic_baseline_expand_more_24"
+                                            android:gravity="right" />
                                     </RelativeLayout>
 
                                     <View
-                                        android:layout_marginTop="@dimen/_5sdp"
                                         android:layout_width="match_parent"
                                         android:layout_height="1dp"
-                                        android:background="@color/colorLine"/>
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:background="@color/colorLine" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
 
 
                                 <LinearLayout
                                     android:id="@+id/btn_submit"
-                                    android:layout_marginTop="@dimen/_45sdp"
-                                    android:layout_marginBottom="@dimen/_20sdp"
-                                    android:background="@drawable/bg_button_red_new"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_45sdp"
                                     android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_45sdp"
+                                    android:layout_marginBottom="@dimen/_20sdp"
                                     android:layout_weight="2"
+                                    android:background="@drawable/bg_button_red_new"
                                     android:gravity="center"
                                     android:orientation="horizontal">
+
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="SUBMIT"
-                                        android:layout_weight="0.6"
-                                        android:textSize="@dimen/_16sdp"
-                                        android:textColor="@color/white"
-                                        android:gravity="left"
-                                        android:textStyle="bold"
                                         android:layout_marginLeft="@dimen/_25sdp"
+                                        android:layout_weight="0.6"
                                         android:fontFamily="@font/lato_bold"
+                                        android:gravity="left"
                                         android:paddingTop="@dimen/_10sdp"
-                                        android:paddingBottom="@dimen/_11sdp"/>
+                                        android:paddingBottom="@dimen/_11sdp"
+                                        android:text="SUBMIT"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_16sdp"
+                                        android:textStyle="bold" />
+
                                     <ImageView
                                         android:layout_width="match_parent"
                                         android:layout_height="@dimen/_24sdp"
-                                        facebook:tint="#FFFFFF"
-                                        android:layout_weight="1.4"
                                         android:layout_gravity="center_vertical"
-                                        android:src="@drawable/ic_icon_button_new" />
+                                        android:layout_weight="1.4"
+                                        android:src="@drawable/ic_icon_button_new"
+                                        facebook:tint="#FFFFFF" />
                                 </LinearLayout>
 
                             </LinearLayout>

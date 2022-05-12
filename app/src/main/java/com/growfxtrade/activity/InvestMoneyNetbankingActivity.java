@@ -223,7 +223,7 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
         if (v == ivicon) {
             finish();
             onBackPressed();
-        }else if (v== btn_sent_money_netbank){
+        }else if (v == btn_sent_money_netbank){
             addMoney(price);
         }
     }
@@ -251,10 +251,16 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
         Bitmap reduse= ImageResizer.reduceBitmapSize(fullsize,240000);
         File fileredues=getbitmapfile(reduse);
 */
-        Log.e("debug_800",""+path);
-        File file = new File(path);
-        RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
-        MultipartBody.Part part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
+        MultipartBody.Part part;
+        if (path==null){
+            part =MultipartBody.Part.createFormData("image","");
+        }else{
+            Log.e("debug_800",""+path);
+            File file = new File(path);
+            RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
+            part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
+        }
+
 
       /*  RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), pathh);
         MultipartBody.Part document_image = MultipartBody.Part.createFormData("image", pathh.getName(), fileReqBody);
@@ -294,7 +300,7 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
                 }
                 if (staus.equalsIgnoreCase("0")) {
-                    final Dialog dialog1 = new Dialog(InvestMoneyNetbankingActivity.this, R.style.df_dialog);
+                    final Dialog dialog1 = new Dialog(InvestMoneyNetbankingActivity.this, R.style.CustomAlertDialog);
                     dialog1.setContentView(R.layout.dialog);
                     dialog1.setCancelable(true);
                     dialog1.setCanceledOnTouchOutside(true);
@@ -305,7 +311,7 @@ public class InvestMoneyNetbankingActivity extends AppCompatActivity implements 
                     dialogButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            dialog.dismiss();
+                            dialog1.dismiss();
                             startActivity(new Intent(InvestMoneyNetbankingActivity.this,MainActivity.class));
                             finish();
                         }

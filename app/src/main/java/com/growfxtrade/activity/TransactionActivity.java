@@ -113,12 +113,15 @@ public class TransactionActivity extends AppCompatActivity {
                     Log.e("profit170","=="+profit);
                     Log.e("loss170","=="+loss);
 
-
-                    tv_invest.setText(invest);
+                    Double value_invest= Double.valueOf(invest);
+                    Double value_withdrawal= Double.valueOf(withdrawal);
+                    Double value_profit= Double.valueOf(profit);
+                    Double value_loss= Double.valueOf(loss);
+                    tv_invest.setText(String.format("%.2f", value_invest));
                    // tv_invest.setText(new DecimalFormat("####.##").format(invest));
-                    tv_withdrawal.setText(withdrawal);
-                    tv_profit.setText(profit);
-                    tv_loss.setText(loss);
+                    tv_withdrawal.setText(String.format("%.2f", value_withdrawal));
+                    tv_profit.setText(String.format("%.2f", value_profit));
+                    tv_loss.setText(String.format("%.2f", value_loss));
                   /*  JSONObject jsonObject1= jsonObject.getJSONObject("data");
 
                     for(int i=0;i<jsonObject1.length();i++){

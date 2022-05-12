@@ -224,14 +224,25 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
             finish();
             onBackPressed();
         }else if(v== btn_sent_money_upi){
-            addMoney(price);
+           Log.e("path---22227","==="+path);
+            if(path == null){
+                screenshot(getWindow().getDecorView().getRootView(),"result");
+            }else {
+                addMoney(price);
+            }
         }
     }
     public void addMoney(String money) {
-        Log.e("debug_800",""+path);
-        File file = new File(path);
-        RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
-        MultipartBody.Part part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
+
+        MultipartBody.Part part;
+        if (path==null){
+            part =MultipartBody.Part.createFormData("image","");
+        }else{
+            Log.e("debug_800",""+path);
+            File file = new File(path);
+            RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
+            part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
+        }
 
         RequestBody useridpart = RequestBody.create(MediaType.parse("text/plain"), PrefrenceManager.getString(InvestMoneyUpiActivity.this, PrefrenceManager.USERID));
         RequestBody typee = RequestBody.create(MediaType.parse("text/plain"), "Upi");
@@ -262,7 +273,7 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
                 }
                 if (staus.equalsIgnoreCase("0")) {
 
-                    final Dialog dialog1 = new Dialog(InvestMoneyUpiActivity.this, R.style.df_dialog);
+                    final Dialog dialog1 = new Dialog(InvestMoneyUpiActivity.this, R.style.CustomAlertDialog);
                     dialog1.setContentView(R.layout.dialog);
                     dialog1.setCancelable(true);
                     dialog1.setCanceledOnTouchOutside(true);
@@ -273,7 +284,7 @@ public class InvestMoneyUpiActivity extends AppCompatActivity implements View.On
                     dialogButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            dialog.dismiss();
+                            dialog1.dismiss();
                             startActivity(new Intent(InvestMoneyUpiActivity.this,MainActivity.class));
                             finish();
                         }

@@ -63,10 +63,8 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
         } else {
             orderHIstoryModelArrayList.clear();
             getCurrencyList();
-
         }
     }
-
     private void initComponent() {
         ivicon = findViewById(R.id.ivicon);
         ivicon.setOnClickListener(this);
@@ -140,8 +138,6 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
             }
         });
     }
-
-
     @Override
     public void onClick(View view) {
         if (view == ivicon) {
@@ -150,8 +146,6 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
             startActivity(intent);
             overridePendingTransition(R.anim.enter_from_left,
                     R.anim.exit_to_right);
-
-
         }
     }
 
@@ -187,8 +181,10 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
 
                 final OrderHIstoryModel orderHIstoryModel = currencyModelArrayList.get(position);
                 final ItemViewHeader mholder = (ItemViewHeader) holder;
-                mholder.tv_amount.setText(orderHIstoryModel.getTotal());
-                mholder.tv_currency_price.setText(orderHIstoryModel.getAmount());
+                Double value_available= Double.valueOf(orderHIstoryModel.getTotal());
+                mholder.tv_amount.setText(String.format("%.2f", value_available));
+                Double value_getAmount= Double.valueOf(orderHIstoryModel.getAmount());
+                mholder.tv_currency_price.setText(String.format("%.2f", value_getAmount));
                 mholder.tv_currencyname.setText(orderHIstoryModel.getCurrency_name());
                 mholder.tv_orderid.setText(orderHIstoryModel.getOrder_id());
                 mholder.tv_currencyprice.setText(orderHIstoryModel.getAmount());
@@ -271,6 +267,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     String msg;
                     dialog.dismiss();
+                    getProfileInfo();
                     try {
                        // alertDialog.dismiss();
                         String jsonst = response.body().string();
@@ -329,8 +326,55 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
                 super(v);
             }
         }
+        public void getProfileInfo() {
+            dialog = CommonMethods.showDialogProgressBarNew(mContext);
+            RequestInterface req = RetrofitClient.getClient(mContext).create(RequestInterface.class);
+            Call<ResponseBody> call = req.getPrfile(PrefrenceManager.getString((Activity) mContext, PrefrenceManager.USERID));
 
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    Log.e("res_197", "=" + response.body());
+                    Log.e("res__198", "=" + response);
+                    dialog.dismiss();
+                    CommonMethods.PrintLog("urll", "url  " + response.raw().request().url());
+                    String usernm = "";
+                    String email = "";
+                    String mono = "";
+                    String amount = "";
+                    String profit = "";
+                    try {
+                        String res = response.body().string();
+
+                        JSONObject jsonObject = new JSONObject(res);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("wallet_data");
+//                    usernm=jsonObject1.getString("user_id");
+//                    email=jsonObject1.getString("email");
+//                    mono=jsonObject1.getString("mono");
+                        amount = jsonObject1.getString("amountt");
+                        PrefrenceManager.setString(mContext, PrefrenceManager.user_balence, amount);
+                        Double value= Double.valueOf(PrefrenceManager.getString((Activity) mContext, PrefrenceManager.user_balence));
+                        Log.e("aaaaaaaaaaaaaaaaaaaaaa",""+value);
+                        //  tv_amount.setText("$ "+ String.format("%.2f", value));
+//                    profit=jsonObject1.getString("profit");
+                        //   Log.e("ammount217","=="+PrefrenceManager.getString(WithdrawMoneyActivity.this, PrefrenceManager.user_balence));
+
+                    } catch (Exception e) {
+                        CommonMethods.PrintLog("Exception", " " + e.toString());
+                    }
+                    //et_wallet.setText("$ " + amount);
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    dialog.dismiss();
+                    CommonMethods.simpleSnackbar(mContext, AppUtils.SERVER_ERROR);
+//                CommonMethods.PrintLog(TAG, t.toString());
+
+                }
+            });
+        }
     }
+
 
     public void getBuySell(String id, String qty) {
         dialog = CommonMethods.showDialogProgressBarNew(this);

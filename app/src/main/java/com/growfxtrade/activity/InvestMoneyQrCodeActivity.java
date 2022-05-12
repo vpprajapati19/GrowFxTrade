@@ -205,11 +205,15 @@ public class InvestMoneyQrCodeActivity extends AppCompatActivity implements View
     }
     public void addMoney(String money) {
 
-        Log.e("debug_800",""+path);
-        File file = new File(path);
-        RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
-        MultipartBody.Part part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
-
+        MultipartBody.Part part;
+        if (path==null){
+            part =MultipartBody.Part.createFormData("image","");
+        }else{
+            Log.e("debug_800",""+path);
+            File file = new File(path);
+            RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
+            part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
+        }
         RequestBody useridpart = RequestBody.create(MediaType.parse("text/plain"), PrefrenceManager.getString(InvestMoneyQrCodeActivity.this, PrefrenceManager.USERID));
         RequestBody typee = RequestBody.create(MediaType.parse("text/plain"), "Crypto");
         RequestBody moneyy = RequestBody.create(MediaType.parse("text/plain"), money);
@@ -239,7 +243,7 @@ public class InvestMoneyQrCodeActivity extends AppCompatActivity implements View
                 }
                 if (staus.equalsIgnoreCase("0")) {
 
-                    final Dialog dialog1 = new Dialog(InvestMoneyQrCodeActivity.this, R.style.df_dialog);
+                    final Dialog dialog1 = new Dialog(InvestMoneyQrCodeActivity.this, R.style.CustomAlertDialog);
                     dialog1.setContentView(R.layout.dialog);
                     dialog1.setCancelable(true);
                     dialog1.setCanceledOnTouchOutside(true);
@@ -250,7 +254,7 @@ public class InvestMoneyQrCodeActivity extends AppCompatActivity implements View
                     dialogButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            dialog.dismiss();
+                            dialog1.dismiss();
                             startActivity(new Intent(InvestMoneyQrCodeActivity.this,MainActivity.class));
                             finish();
                         }

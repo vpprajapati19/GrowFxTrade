@@ -176,9 +176,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 }else {
                     et_docno.setHint("Other");
                 }
-
-
-                tv_profit.setText("$ "+profit);
+                Double value= Double.valueOf(profit);
+                tv_profit.setText("$ "+String.format("%.2f", value));
 
             }
 
@@ -220,7 +219,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 } catch (Exception e) {
                     CommonMethods.PrintLog(TAG, "url Exception " + e.toString());
                 }
-                tv_available.setText("$ "+total_portfolio);
+                Double value= Double.valueOf(total_portfolio);
+                tv_available.setText("$ "+String.format("%.2f", value));
             }
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
